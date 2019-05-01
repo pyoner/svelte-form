@@ -21,5 +21,8 @@
     "dev": "run-p start:dev autobuild",
     "start": "sirv public",
     "start:dev": "sirv public --dev"
+  },
+  "dependencies": {
+    "svelte-form": "^0.0.0"
   }
 }

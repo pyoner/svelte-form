@@ -1,8 +1,9 @@
 <h1>Hello {name}!</h1>
 <p>
-  <Counter />
-  <Counter value={1}>Counter 1</Counter>
-  <Counter value={100} step={3}>Counter 2</Counter>
+  Boolean Field:
+  <BooleanField value={true} />
+  Number Field:
+  <NumberField />
 </p>
 
 <style>
@@ -12,7 +13,8 @@
 </style>
 
 <script lang="ts">
-  import Counter from "./Counter.svelte";
+  import BooleanField from "svelte-form/src/fields/BooleanField.svelte";
+  import NumberField from "svelte-form/src/fields/NumberField.svelte";
 
   export let name: string;
 </script>
