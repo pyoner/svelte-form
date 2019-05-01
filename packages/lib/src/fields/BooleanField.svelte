@@ -1,5 +1,5 @@
 <svelte:component this={wrapper} {schema} {error}>
-  <input type="checkbox" {value} />
+  <input type="checkbox" bind:value />
 </svelte:component>
 
 <script lang="ts">
