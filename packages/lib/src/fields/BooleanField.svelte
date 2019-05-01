@@ -6,10 +6,10 @@
   import { JSONSchema } from 'json-schema-typed'
   import { ErrorObject } from 'ajv'
 
-  import GenericField from './GenericField.svelte'
+  import WrapperField from './WrapperField.svelte'
 
-  export let value: boolean
-  export let error: ErrorObject
+  export let value: boolean | null = null
+  export let error: ErrorObject | null = null
   export let schema: JSONSchema
-  export let wrapper = GenericField
+  export let wrapper = WrapperField
 </script>

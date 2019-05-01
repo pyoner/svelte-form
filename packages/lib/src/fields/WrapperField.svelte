@@ -18,6 +18,6 @@
   import { JSONSchema } from 'json-schema-typed'
   import { ErrorObject } from 'ajv'
 
-  export let error: ErrorObject
+  export let error: ErrorObject | null = null
   export let schema: JSONSchema
 </script>
