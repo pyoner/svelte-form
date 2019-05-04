@@ -1,15 +1,21 @@
 <svelte:component this={wrapper} {schema} {error}>
-  <input type="number" bind:value />
+  <input type="number" value />
 </svelte:component>
 
 <script lang="ts">
-  import { JSONSchema } from 'json-schema-typed'
-  import { ErrorObject } from 'ajv'
+  /* import { onMount } from 'svelte' */
+  import { makeProps } from './helpers'
 
-  import WrapperField from './WrapperField.svelte'
+ const props = makeProps<number>();
+ console.log(makeProps)
+ export let value = props.value;
+ export let error = props.error
+ export let schema = props.schema
+ export let wrapper = props.wrapper
 
-  export let value: number | null = null
-  export let error: ErrorObject | null = null
-  export let schema: JSONSchema
-  export let wrapper = WrapperField
+  /* onMount(() => {
+   *   if (value === null && schema && 'default' in schema) {
+   *     value = schema.default
+   *   }
+   * }) */
 </script>
