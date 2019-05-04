@@ -1628,6 +1628,11 @@
   dependencies:
     typescript "^3.4.4"
 
+"@pyoner/svelte-types@^3.1.0-1":
+  version "3.1.0-1"
+  resolved "https://registry.yarnpkg.com/@pyoner/svelte-types/-/svelte-types-3.1.0-1.tgz#50589ba02f56c7ec104c15bfa8778df4bab00aa7"
+  integrity sha512-abdJJg8xUHB6Ijq+JdDTjRK45aOhCIQisf2EqW8Sy57XLGVXIFvAiZVxf0jYshjzXzeL1IHNq49zpbY2JSLFNw==
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
