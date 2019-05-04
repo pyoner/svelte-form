@@ -49,7 +49,10 @@ export default {
     // https://github.com/rollup/rollup-plugin-commonjs
     resolve(),
     commonjs(),
-    typescript(),
+    typescript({
+      // verbosity: 3,
+      include: ["**/*.ts", "../lib/**/*.ts"]
+    }),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
