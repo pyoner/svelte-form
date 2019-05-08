@@ -1,15 +1,18 @@
-<svelte:component this={wrapper} {schema} {error}>
-  <input type="checkbox" bind:value />
-</svelte:component>
-
 <script lang="ts">
-  import { JSONSchema } from 'json-schema-typed'
-  import { ErrorObject } from 'ajv'
+  import { onMount } from 'svelte'
+  import { createProps, defaultValue } from './helpers'
 
-  import WrapperField from './WrapperField.svelte'
+  const props = createProps()
+  export let value = props.value
+  export let error = props.error
+  export let schema = props.schema
+  export let wrapper = props.wrapper
 
-  export let value: boolean | null = null
-  export let error: ErrorObject | null = null
-  export let schema: JSONSchema
-  export let wrapper = WrapperField
+  onMount(() => {
+    value = defaultValue(value, schema)
+  })
 </script>
+
+<svelte:component this={wrapper} {schema} {error}>
+  <input type="checkbox" bind:checked={value} />
+</svelte:component>
