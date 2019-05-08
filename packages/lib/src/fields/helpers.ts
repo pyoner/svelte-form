@@ -3,16 +3,22 @@ import { ErrorObject } from 'ajv'
 import WrapperField from './WrapperField.svelte'
 
 export interface Props<T> {
-  value: T | null
-  error: ErrorObject | null
-  schema: JSONSchema | null
+  value?: T
+  error?: ErrorObject
+  schema?: JSONSchema
   wrapper: any
 }
-export function makeProps<T>(): Props<T> {
-  return {
-    value: null,
-    error: null,
-    schema: null,
+export function createProps<T>(): Props<T> {
+  const props: Props<T> = {
     wrapper: WrapperField
   }
+
+  return props
+}
+
+export function defaultValue<T>(value?: T, schema?: JSONSchema) {
+  if (value === undefined && schema && 'default' in schema) {
+    return schema.default
+  }
+  return value
 }
