@@ -1,7 +1,19 @@
 <script lang="ts">
+  import NullField from "svelte-form/src/fields/NullField.svelte";
   import BooleanField from "svelte-form/src/fields/BooleanField.svelte";
   import NumberField from "svelte-form/src/fields/NumberField.svelte";
   import StringField from "svelte-form/src/fields/StringField.svelte";
+
+  const nullSchema = {
+    type: "null",
+    title: "title",
+    description: "description"
+  };
+
+  const nullProps = {
+    value: null,
+    schema: nullSchema
+  };
 
   const boolSchema = {
     type: "boolean",
@@ -59,6 +71,8 @@
 
 <h1>Hello {name}!</h1>
 <p>
+  Null Field:
+  <NullField {...nullProps} />
   Boolean Field:
   <BooleanField {...boolProps} />
   Number Field:
