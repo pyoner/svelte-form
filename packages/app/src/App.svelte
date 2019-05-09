@@ -1,6 +1,7 @@
 <script lang="ts">
   import BooleanField from "svelte-form/src/fields/BooleanField.svelte";
   import NumberField from "svelte-form/src/fields/NumberField.svelte";
+  import StringField from "svelte-form/src/fields/StringField.svelte";
 
   const boolSchema = {
     type: "boolean",
@@ -26,6 +27,27 @@
     schema: numSchema
   };
 
+  const stringSchema = {
+    type: "string",
+    title: "title",
+    description: "description"
+  };
+
+  const stringProps = {
+    value: "This is text",
+    schema: stringSchema
+  };
+
+  const stringDateSchema = {
+    type: "string",
+    title: "title",
+    description: "description",
+    format: "date"
+  };
+
+  const stringDateProps = {
+    schema: stringDateSchema
+  };
   export let name: string;
 </script>
 
@@ -41,4 +63,8 @@
   <BooleanField {...boolProps} />
   Number Field:
   <NumberField {...numProps} />
+  String Field:
+  <StringField {...stringProps} />
+  String Date Field:
+  <StringField {...stringDateProps} />
 </p>
