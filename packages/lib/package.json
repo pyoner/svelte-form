@@ -87,6 +87,7 @@
     "@pyoner/svelte-ts-preprocess": "^0.0.2",
     "@pyoner/svelte-types": "^3.1.0-1",
     "@types/jest": "^24.0.12",
+    "@types/json-schema": "^7.0.3",
     "@types/node": "^11.13.8",
     "colors": "^1.3.2",
     "commitizen": "^3.0.0",
@@ -113,7 +114,7 @@
     "rollup-plugin-typescript2": "^0.21.0",
     "semantic-release": "^15.9.16",
     "shelljs": "^0.8.3",
-    "svelte": "^3.1.0",
+    "svelte": "^3.2.1",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.1.0",
@@ -124,7 +125,6 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "ajv": "^6.10.0",
-    "svelte": "^3.2.0"
+    "ajv": "^6.10.0"
   }
 }

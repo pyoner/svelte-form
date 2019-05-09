@@ -1,14 +1,14 @@
-import { JSONSchema } from 'json-schema-typed'
+import { JSONSchema7, JSONSchema7Type } from 'json-schema'
 import { ErrorObject } from 'ajv'
 import WrapperField from './WrapperField.svelte'
 
-export interface Props<T> {
+export interface Props<T extends JSONSchema7Type> {
   value?: T
   error?: ErrorObject
-  schema?: JSONSchema
+  schema?: JSONSchema7
   wrapper: any
 }
-export function createProps<T>(): Props<T> {
+export function createProps<T extends JSONSchema7Type>(): Props<T> {
   const props: Props<T> = {
     wrapper: WrapperField
   }
@@ -16,9 +16,9 @@ export function createProps<T>(): Props<T> {
   return props
 }
 
-export function defaultValue<T>(value?: T, schema?: JSONSchema) {
+export function defaultValue<T extends JSONSchema7Type>(value?: T, schema?: JSONSchema7) {
   if (value === undefined && schema && 'default' in schema) {
-    return schema.default
+    return schema.default as T
   }
   return value
 }
