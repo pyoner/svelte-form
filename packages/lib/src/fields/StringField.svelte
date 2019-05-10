@@ -2,21 +2,16 @@
   import { onMount } from 'svelte'
   import { createProps, defaultValue } from './helpers'
 
-  const props = createProps()
+  const props = createProps<string>()
   export let value = props.value
   export let error = props.error
   export let schema = props.schema
   export let wrapper = props.wrapper
 
-  const formatMap: Record<string, string> = {
-    'date-time': 'datetime',
-    time: 'time',
-    date: 'date'
-  }
   let format: string | undefined
 
   onMount(() => {
-    value = defaultValue(value, schema)
+    value = defaultValue<string>(value, schema)
 
     format = schema && schema.format
   })

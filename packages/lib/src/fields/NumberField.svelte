@@ -2,14 +2,14 @@
   import { onMount } from 'svelte'
   import { createProps, defaultValue } from './helpers'
 
-  const props = createProps()
+  const props = createProps<number>()
   export let value = props.value
   export let error = props.error
   export let schema = props.schema
   export let wrapper = props.wrapper
 
   onMount(() => {
-    value = defaultValue(value, schema)
+    value = defaultValue<number>(value, schema)
   })
 </script>
 

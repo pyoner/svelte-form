@@ -13,7 +13,7 @@
 
   onMount(() => {
     mounted = true
-    value = defaultValue <null> (value, schema)
+    value = defaultValue<null>(value, schema)
     checked = value === null
   })
 
