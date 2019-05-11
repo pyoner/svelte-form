@@ -64,12 +64,29 @@
 
   const objectSchema = {
     type: "object",
+    title: "Person",
     properties: {
       name: {
-        type: "string"
+        type: "string",
+        title: "Name"
       },
       age: {
-        type: "integer"
+        type: "integer",
+        title: "Age"
+      },
+      address: {
+        type: "object",
+        title: "Address",
+        properties: {
+          country: {
+            type: "string",
+            title: "Country"
+          },
+          city: {
+            type: "string",
+            title: "City"
+          }
+        }
       }
     }
   };
@@ -78,7 +95,8 @@
     schema: objectSchema,
     value: {
       name: "Alice",
-      age: 18
+      age: 18,
+      address: {}
     }
   };
 
