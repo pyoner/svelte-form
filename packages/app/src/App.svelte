@@ -3,6 +3,7 @@
   import BooleanField from "svelte-form/src/fields/BooleanField.svelte";
   import NumberField from "svelte-form/src/fields/NumberField.svelte";
   import StringField from "svelte-form/src/fields/StringField.svelte";
+  import ObjectField from "svelte-form/src/fields/ObjectField.svelte";
 
   const nullSchema = {
     type: "null",
@@ -60,6 +61,27 @@
   const stringDateProps = {
     schema: stringDateSchema
   };
+
+  const objectSchema = {
+    type: "object",
+    properties: {
+      name: {
+        type: "string"
+      },
+      age: {
+        type: "integer"
+      }
+    }
+  };
+
+  const objectProps = {
+    schema: objectSchema,
+    value: {
+      name: "Alice",
+      age: 18
+    }
+  };
+
   export let name: string;
 </script>
 
@@ -81,4 +103,6 @@
   <StringField {...stringProps} />
   String Date Field:
   <StringField {...stringDateProps} />
+  Object Field:
+  <ObjectField {...objectProps} />
 </p>
