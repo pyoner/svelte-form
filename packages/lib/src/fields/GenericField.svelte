@@ -20,16 +20,14 @@
   })
 </script>
 
-<svelte:component this={wrapper} {schema} {error}>
-  {#if schema.type == 'boolean'}
-    <BooleanField bind:value {schema} {wrapper} />
-  {:else if schema.type == 'null'}
-    <NullField bind:value {schema} {wrapper} />
-  {:else if numTypes.includes(schema.type)}
-    <NumberField bind:value {schema} {wrapper} />
-  {:else if schema.type == 'string'}
-    <StringField bind:value {schema} {wrapper} />
-  {:else}
-    <div>Unknown schema type "{schema.type}"</div>
-  {/if}
-</svelte:component>
+{#if schema.type == 'boolean'}
+  <BooleanField bind:value {schema} {wrapper} />
+{:else if schema.type == 'null'}
+  <NullField bind:value {schema} {wrapper} />
+{:else if numTypes.includes(schema.type)}
+  <NumberField bind:value {schema} {wrapper} />
+{:else if schema.type == 'string'}
+  <StringField bind:value {schema} {wrapper} />
+{:else}
+  <div>Unknown schema type "{schema.type}"</div>
+{/if}
