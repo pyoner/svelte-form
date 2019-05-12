@@ -19,7 +19,7 @@
     {#if schema.type == 'object'}
       <svelte:self {map} {schema} {wrapper} bind:value={value[key]} />
     {:else}
-      <svelte:component this={map[schema.type]} {schema} {wrapper} bind:value={value[key]} />
+      <svelte:component this={map[schema.type]} {map} {schema} {wrapper} bind:value={value[key]} />
     {/if}
   {/each}
 </svelte:component>
