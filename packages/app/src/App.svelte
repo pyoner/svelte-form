@@ -4,6 +4,7 @@
   import NumberField from "svelte-form/src/fields/NumberField.svelte";
   import StringField from "svelte-form/src/fields/StringField.svelte";
   import ObjectField from "svelte-form/src/fields/ObjectField.svelte";
+  import { typeComponentMap } from "svelte-form/src/fields/map";
 
   const nullSchema = {
     type: "null",
@@ -27,6 +28,8 @@
     value: true,
     schema: boolSchema
   };
+
+  let boolField = BooleanField;
 
   const numSchema = {
     type: "number",
@@ -92,6 +95,7 @@
   };
 
   const objectProps = {
+    map: typeComponentMap,
     schema: objectSchema,
     value: {
       name: "Alice",
@@ -124,3 +128,7 @@
   Object Field:
   <ObjectField {...objectProps} />
 </p>
+
+<div>
+  <svelte:component this={boolField} bind:value={boolProps.value} schema={boolProps.schema} />
+</div>
