@@ -14,7 +14,7 @@ export interface Components {
   object: SvelteComponent
 }
 
-export interface Props<T extends JSONSchema7Type> {
+export interface FieldProps<T extends JSONSchema7Type> {
   value?: T
   error?: ErrorObject
   schema?: JSONSchema7
