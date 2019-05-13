@@ -22,7 +22,7 @@ export interface FieldProps<T extends JSONSchema7Type> {
 }
 
 export interface FormComponents extends FieldComponents {
-  form: SvelteComponent
+  layout: SvelteComponent
 }
 
 export interface FormProps<T extends JSONSchema7Type> {

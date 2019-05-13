@@ -5,7 +5,12 @@
   import StringField from "svelte-form/src/components/StringField.svelte";
   import ObjectField from "svelte-form/src/components/ObjectField.svelte";
   import ArrayField from "svelte-form/src/components/ArrayField.svelte";
-  import { defaultFieldComponents as components } from "svelte-form/src/components";
+  import Form from "svelte-form/src/Form.svelte";
+
+  import {
+    defaultFieldComponents as components,
+    defaultFormComponents
+  } from "svelte-form/src/components";
 
   const nullSchema = {
     type: "null",
@@ -120,6 +125,16 @@
     value: [1, 2, 3]
   };
 
+  const formProps = {
+    components: defaultFormComponents,
+    schema: objectSchema,
+    data: {
+      name: "Bob",
+      age: 21,
+      address: {}
+    }
+  };
+
   export let name: string;
 </script>
 
@@ -145,4 +160,9 @@
   <ObjectField {...objectProps} />
   Array Field:
   <ArrayField {...arrayProps} />
+  Form:
+  <Form {...formProps}>
+    <button type="reset">Reset</button>
+    <button type="submit">Submit</button>
+  </Form>
 </p>
