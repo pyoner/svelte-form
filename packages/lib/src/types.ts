@@ -3,7 +3,7 @@ import { ErrorObject } from 'ajv'
 
 export interface SvelteComponent {}
 
-export interface Components {
+export interface FieldComponents {
   wrapper: SvelteComponent
   boolean: SvelteComponent
   null: SvelteComponent
@@ -18,5 +18,15 @@ export interface FieldProps<T extends JSONSchema7Type> {
   value?: T
   error?: ErrorObject
   schema?: JSONSchema7
-  components?: Components
+  components?: FieldComponents
+}
+
+export interface FormComponents extends FieldComponents {
+  form: SvelteComponent
+}
+
+export interface FormProps<T extends JSONSchema7Type> {
+  data: T
+  schema: JSONSchema7
+  components: FormComponents
 }
