@@ -5,7 +5,7 @@
   import StringField from "svelte-form/src/fields/StringField.svelte";
   import ObjectField from "svelte-form/src/fields/ObjectField.svelte";
   import ArrayField from "svelte-form/src/fields/ArrayField.svelte";
-  import { typeComponentMap } from "svelte-form/src/fields/map";
+  import { defaultComponents as components } from "svelte-form/src/fields/components";
 
   const nullSchema = {
     type: "null",
@@ -14,6 +14,7 @@
   };
 
   const nullProps = {
+    components,
     value: null,
     schema: nullSchema
   };
@@ -26,11 +27,10 @@
   };
 
   const boolProps = {
+    components,
     value: true,
     schema: boolSchema
   };
-
-  let boolField = BooleanField;
 
   const numSchema = {
     type: "number",
@@ -40,6 +40,7 @@
   };
 
   const numProps = {
+    components,
     value: 14,
     schema: numSchema
   };
@@ -51,6 +52,7 @@
   };
 
   const stringProps = {
+    components,
     value: "This is text",
     schema: stringSchema
   };
@@ -63,6 +65,7 @@
   };
 
   const stringDateProps = {
+    components,
     schema: stringDateSchema
   };
 
@@ -96,7 +99,7 @@
   };
 
   const objectProps = {
-    map: typeComponentMap,
+    components,
     schema: objectSchema,
     value: {
       name: "Alice",
@@ -112,7 +115,7 @@
     }
   };
   const arrayProps = {
-    map: typeComponentMap,
+    components,
     schema: arraySchema,
     value: [1, 2, 3]
   };
@@ -143,7 +146,3 @@
   Array Field:
   <ArrayField {...arrayProps} />
 </p>
-
-<div>
-  <svelte:component this={boolField} bind:value={boolProps.value} schema={boolProps.schema} />
-</div>

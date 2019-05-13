@@ -6,20 +6,21 @@
   export let value = props.value
   export let error = props.error
   export let schema = props.schema
-  export let wrapper = props.wrapper
-  export let map: Record<string, any>
+  export let components = props.components
 
   onMount(() => {
     value = defaultValue<object>(value, schema)
   })
 </script>
 
-<svelte:component this={wrapper} {schema} {error}>
-  {#each Object.entries(schema.properties) as [key, schema] (key)}
-    {#if schema.type == 'object'}
-      <svelte:self {map} {schema} {wrapper} bind:value={value[key]} />
-    {:else}
-      <svelte:component this={map[schema.type]} {map} {schema} {wrapper} bind:value={value[key]} />
-    {/if}
-  {/each}
-</svelte:component>
+{#if components}
+  <svelte:component this={components.wrapper} {schema} {error}>
+    {#each Object.entries(schema.properties) as [key, schema] (key)}
+      {#if schema.type == 'object'}
+        <svelte:self {schema} {components} bind:value={value[key]} />
+      {:else}
+        <svelte:component this={components[schema.type]} {schema} {components} bind:value={value[key]} />
+      {/if}
+    {/each}
+  </svelte:component>
+{/if}

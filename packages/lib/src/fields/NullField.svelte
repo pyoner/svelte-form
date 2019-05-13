@@ -6,7 +6,7 @@
   export let value = props.value
   export let error = props.error
   export let schema = props.schema
-  export let wrapper = props.wrapper
+  export let components = props.components
 
   let checked = false
   let mounted = false
@@ -22,6 +22,8 @@
   }
 </script>
 
-<svelte:component this={wrapper} {schema} {error}>
-  <input type="checkbox" bind:checked />
-</svelte:component>
+{#if components}
+  <svelte:component this={components.wrapper} {schema} {error}>
+    <input type="checkbox" bind:checked />
+  </svelte:component>
+{/if}

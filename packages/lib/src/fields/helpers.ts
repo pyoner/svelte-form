@@ -1,17 +1,14 @@
 import { JSONSchema7, JSONSchema7Type } from 'json-schema'
 import { ErrorObject } from 'ajv'
-import WrapperField from './WrapperField.svelte'
 
 export interface Props<T extends JSONSchema7Type> {
   value?: T
   error?: ErrorObject
   schema?: JSONSchema7
-  wrapper: any
+  components?: Record<string, any>
 }
 export function createProps<T extends JSONSchema7Type>(): Props<T> {
-  const props: Props<T> = {
-    wrapper: WrapperField
-  }
+  const props: Props<T> = {}
 
   return props
 }
