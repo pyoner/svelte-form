@@ -5,7 +5,7 @@
   import StringField from "svelte-form/src/fields/StringField.svelte";
   import ObjectField from "svelte-form/src/fields/ObjectField.svelte";
   import ArrayField from "svelte-form/src/fields/ArrayField.svelte";
-  import { defaultComponents as components } from "svelte-form/src/fields/components";
+  import { defaultComponents as components } from "svelte-form/src/components";
 
   const nullSchema = {
     type: "null",

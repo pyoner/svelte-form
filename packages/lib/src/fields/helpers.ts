@@ -1,12 +1,6 @@
 import { JSONSchema7, JSONSchema7Type } from 'json-schema'
-import { ErrorObject } from 'ajv'
+import { Props } from '../types'
 
-export interface Props<T extends JSONSchema7Type> {
-  value?: T
-  error?: ErrorObject
-  schema?: JSONSchema7
-  components?: Record<string, any>
-}
 export function createProps<T extends JSONSchema7Type>(): Props<T> {
   const props: Props<T> = {}
 
