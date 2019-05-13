@@ -1,11 +1,11 @@
-import { FieldComponents } from './types'
-import BooleanField from './fields/BooleanField.svelte'
-import NullField from './fields/NullField.svelte'
-import NumberField from './fields/NumberField.svelte'
-import StringField from './fields/StringField.svelte'
-import ObjectField from './fields/ObjectField.svelte'
-import ArrayField from './fields/ArrayField.svelte'
-import WrapperField from './fields/WrapperField.svelte'
+import { FieldComponents } from '../types'
+import BooleanField from './BooleanField.svelte'
+import NullField from './NullField.svelte'
+import NumberField from './NumberField.svelte'
+import StringField from './StringField.svelte'
+import ObjectField from './ObjectField.svelte'
+import ArrayField from './ArrayField.svelte'
+import WrapperField from './WrapperField.svelte'
 
 export const defaultFieldComponents: FieldComponents = {
   boolean: BooleanField,

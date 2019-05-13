@@ -1,10 +1,10 @@
 <script lang="ts">
-  import NullField from "svelte-form/src/fields/NullField.svelte";
-  import BooleanField from "svelte-form/src/fields/BooleanField.svelte";
-  import NumberField from "svelte-form/src/fields/NumberField.svelte";
-  import StringField from "svelte-form/src/fields/StringField.svelte";
-  import ObjectField from "svelte-form/src/fields/ObjectField.svelte";
-  import ArrayField from "svelte-form/src/fields/ArrayField.svelte";
+  import NullField from "svelte-form/src/components/NullField.svelte";
+  import BooleanField from "svelte-form/src/components/BooleanField.svelte";
+  import NumberField from "svelte-form/src/components/NumberField.svelte";
+  import StringField from "svelte-form/src/components/StringField.svelte";
+  import ObjectField from "svelte-form/src/components/ObjectField.svelte";
+  import ArrayField from "svelte-form/src/components/ArrayField.svelte";
   import { defaultFieldComponents as components } from "svelte-form/src/components";
 
   const nullSchema = {
