@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { JSONSchema7Array } from 'json-schema'
   import { onMount } from 'svelte'
   import { createProps, defaultValue } from './helpers'
 
-  const props = createProps<any[]>()
+  const props = createProps<JSONSchema7Array>()
   export let value = props.value
   export let error = props.error
   export let schema = props.schema
@@ -10,7 +11,7 @@
   export let map: Record<string, any>
 
   onMount(() => {
-    value = defaultValue<any[]>(value, schema)
+    value = defaultValue<JSONSchema7Array>(value, schema)
   })
 </script>
 
