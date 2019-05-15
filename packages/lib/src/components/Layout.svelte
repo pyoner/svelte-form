@@ -1,4 +1,2 @@
-<form action="">
-  <slot name="fields" />
-  <slot name="ctrl" />
-</form>
+<slot class="fields" name="fields" />
+<slot class="ctrl" name="ctrl" />

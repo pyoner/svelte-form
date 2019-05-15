@@ -161,8 +161,12 @@
   Array Field:
   <ArrayField {...arrayProps} />
   Form:
-  <Form {...formProps}>
+  <Form
+    components={defaultFormComponents}
+    schema={objectSchema}
+    bind:data={formProps.data}>
     <button type="reset">Reset</button>
     <button type="submit">Submit</button>
   </Form>
+   {JSON.stringify(formProps.data)}
 </p>
