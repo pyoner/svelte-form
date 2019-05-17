@@ -15,8 +15,8 @@ export interface FieldComponents {
 }
 
 export interface FieldProps<T extends JSONSchema7Type> {
-  value?: T
-  error?: ErrorObject
+  value: T | null
+  error: ErrorObject | null
   schema?: JSONSchema7
   components?: FieldComponents
 }
