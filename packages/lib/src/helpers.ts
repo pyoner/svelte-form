@@ -17,4 +17,6 @@ export function defaultValue<T extends JSONSchema7Type>(value: T, schema?: JSONS
   return value
 }
 
-export function resetField(field: JSONSchema7Type, schema?: JSONSchema7): JSONSchema7Type {}
+export function resetValue<T extends JSONSchema7Type>(value: T, schema?: JSONSchema7): T | null {
+  return defaultValue<T>(value, schema) || null
+}
