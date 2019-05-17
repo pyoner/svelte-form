@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { createProps, defaultValue } from './helpers'
+  import { createProps, defaultValue } from '../helpers'
 
   const props = createProps<string>()
   export let value = props.value

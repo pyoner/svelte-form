@@ -1,7 +1,7 @@
 <script lang="ts">
   import { JSONSchema7Array } from 'json-schema'
   import { onMount } from 'svelte'
-  import { createProps, defaultValue } from './helpers'
+  import { createProps, defaultValue } from '../helpers'
 
   const props = createProps<JSONSchema7Array>()
   export let value = props.value
