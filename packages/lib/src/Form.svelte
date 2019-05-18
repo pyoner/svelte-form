@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, createEventDispatcher } from 'svelte'
   import { JSONSchema7, JSONSchema7Type } from 'json-schema'
 
   import { defaultValue } from './helpers'
@@ -8,10 +8,16 @@
   export let data: JSONSchema7Type
   export let components: Record<string, any>
 
-  const submit = (e: Event) => console.log('submit', e)
-  const resetField = (f: JSONSchema7Type) => {}
+  const dispatch = createEventDispatcher<JSONSchema7Type>()
+  const submit = (e: Event) => {
+    /* TODO: normalize data */
+    dispatch('submit', data)
+  }
 
-  const reset = (e: Event) => {}
+  const reset = (e: Event) => {
+    data = defaultValue(null, schema)
+    dispatch('reset', data)
+  }
 
   let mounted = false
   onMount(() => {
@@ -21,7 +27,7 @@
 </script>
 
 {#if mounted}
-  <form on:submit={submit} on:reset={reset}>
+  <form on:submit|preventDefault={submit} on:reset={reset}>
     <svelte:component this={components.layout}>
       <div slot="fields">
         <svelte:component this={components[schema.type]} {schema} {components} bind:value={data} />

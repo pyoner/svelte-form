@@ -161,6 +161,12 @@
   <ArrayField {...arrayProps} />
   Form:
   <Form
+    on:submit={e => {
+      console.log('submit', e);
+    }}
+    on:reset={e => {
+      console.log('reset', e);
+    }}
     components={defaultFormComponents}
     schema={objectSchema}
     bind:data={formProps.data}>
