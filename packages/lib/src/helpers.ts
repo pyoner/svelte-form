@@ -10,7 +10,7 @@ export function createProps<T extends JSONSchema7Type>(): FieldProps<T> {
   return props
 }
 
-export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema7) {
+export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema7): JSONObject {
   const v: JSONObject = {}
   const { properties } = schema
   if (properties) {
@@ -26,21 +26,14 @@ export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema7
   return v
 }
 
-export function defaultValue<T extends JSONSchema7Type>(
-  value: T | null,
-  schema: JSONSchema7
-): T | null {
-  if (value === null && 'default' in schema) {
-    value = schema.default as T
+export function defaultValue(value: JSONSchema7Type, schema: JSONSchema7): JSONSchema7Type {
+  if (value === null && schema.default !== undefined) {
+    value = schema.default
   }
 
   if (schema.type === 'object') {
-    return objectDefaultValue(<JSONObject>value, schema) as T
+    return objectDefaultValue(<JSONObject>value, schema)
   }
 
   return value
-}
-
-export function resetValue<T extends JSONSchema7Type>(value: T, schema: JSONSchema7): T | null {
-  return defaultValue<T>(value, schema) || null
 }
