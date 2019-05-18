@@ -130,8 +130,7 @@
     schema: objectSchema,
     data: {
       name: "Bob",
-      age: 21,
-      address: {}
+      age: 21
     }
   };
 

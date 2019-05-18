@@ -1,6 +1,8 @@
 import { JSONSchema7, JSONSchema7Type } from 'json-schema'
 import { ErrorObject } from 'ajv'
 
+export type JSONObject = Record<string, JSONSchema7Type>
+
 export interface SvelteComponent {}
 
 export interface FieldComponents {

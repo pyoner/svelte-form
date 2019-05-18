@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { createProps, defaultValue } from '../helpers'
+  import { createProps } from '../helpers'
 
   const props = createProps<string>()
   export let value = props.value
@@ -8,16 +7,11 @@
   export let schema = props.schema
   export let components = props.components
 
-  let format: string | undefined
-
-  onMount(() => {
-    value = defaultValue<string>(value, schema)
-
-    format = schema && schema.format
-  })
+  let format = ''
+  $: format = (schema && schema.format) || ''
 </script>
 
-{#if components}
+{#if schema && components}
   <svelte:component this={components.wrapper} {schema} {error}>
     {#if format == 'date-time'}
       <input type="datatime" bind:value />
