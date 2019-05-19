@@ -1,80 +1,10 @@
 <script lang="ts">
-  import NullField from "svelte-form/src/components/NullField.svelte";
-  import BooleanField from "svelte-form/src/components/BooleanField.svelte";
-  import NumberField from "svelte-form/src/components/NumberField.svelte";
-  import StringField from "svelte-form/src/components/StringField.svelte";
-  import ObjectField from "svelte-form/src/components/ObjectField.svelte";
-  import ArrayField from "svelte-form/src/components/ArrayField.svelte";
   import Form from "svelte-form/src/Form.svelte";
+  import { defaultFormComponents } from "svelte-form/src/components";
 
-  import {
-    defaultFieldComponents as components,
-    defaultFormComponents
-  } from "svelte-form/src/components";
+  const components = defaultFormComponents;
 
-  const nullSchema = {
-    type: "null",
-    title: "title",
-    description: "description"
-  };
-
-  const nullProps = {
-    components,
-    value: null,
-    schema: nullSchema
-  };
-
-  const boolSchema = {
-    type: "boolean",
-    title: "title",
-    description: "description",
-    default: false
-  };
-
-  const boolProps = {
-    components,
-    value: true,
-    schema: boolSchema
-  };
-
-  const numSchema = {
-    type: "number",
-    title: "title",
-    description: "description",
-    default: 18
-  };
-
-  const numProps = {
-    components,
-    value: 14,
-    schema: numSchema
-  };
-
-  const stringSchema = {
-    type: "string",
-    title: "title",
-    description: "description"
-  };
-
-  const stringProps = {
-    components,
-    value: "This is text",
-    schema: stringSchema
-  };
-
-  const stringDateSchema = {
-    type: "string",
-    title: "title",
-    description: "description",
-    format: "date"
-  };
-
-  const stringDateProps = {
-    components,
-    schema: stringDateSchema
-  };
-
-  const objectSchema = {
+  const schema = {
     type: "object",
     title: "Person",
     properties: {
@@ -82,9 +12,10 @@
         type: "string",
         title: "Name"
       },
-      age: {
-        type: "integer",
-        title: "Age"
+      birthDay: {
+        type: "string",
+        title: "Birth Day",
+        format: "date"
       },
       address: {
         type: "object",
@@ -97,81 +28,31 @@
           city: {
             type: "string",
             title: "City"
+          },
+          zipCode: {
+            type: "integer",
+            title: "Zip code"
           }
         }
       }
     }
   };
 
-  const objectProps = {
-    components,
-    schema: objectSchema,
-    value: {
-      name: "Alice",
-      age: 18,
-      address: {}
-    }
+  let data = {
+    name: "Bob"
   };
-
-  const arraySchema = {
-    type: "array",
-    items: {
-      type: "number"
-    }
-  };
-  const arrayProps = {
-    components,
-    schema: arraySchema,
-    value: [1, 2, 3]
-  };
-
-  const formProps = {
-    components: defaultFormComponents,
-    schema: objectSchema,
-    data: {
-      name: "Bob",
-      age: 21
-    }
-  };
-
-  export let name: string;
 </script>
 
-<style>
-  h1 {
-    color: purple;
-  }
-</style>
-
-<h1>Hello {name}!</h1>
-<p>
-  Null Field:
-  <NullField {...nullProps} />
-  Boolean Field:
-  <BooleanField {...boolProps} />
-  Number Field:
-  <NumberField {...numProps} />
-  String Field:
-  <StringField {...stringProps} />
-  String Date Field:
-  <StringField {...stringDateProps} />
-  Object Field:
-  <ObjectField {...objectProps} />
-  Array Field:
-  <ArrayField {...arrayProps} />
-  Form:
-  <Form
-    on:submit={e => {
-      console.log('submit', e);
-    }}
-    on:reset={e => {
-      console.log('reset', e);
-    }}
-    components={defaultFormComponents}
-    schema={objectSchema}
-    bind:data={formProps.data}>
-    <button type="reset">Reset</button>
-    <button type="submit">Submit</button>
-  </Form>
-   {JSON.stringify(formProps.data)}
-</p>
+<Form
+  {schema}
+  {components}
+  bind:data
+  on:submit={e => {
+    console.log('submit', e);
+  }}
+  on:reset={e => {
+    console.log('reset', e);
+  }}>
+  <button type="reset">Reset</button>
+  <button type="submit">Submit</button>
+</Form>
