@@ -1,7 +1,6 @@
-import { JSONSchema7, JSONSchema7Type } from 'json-schema'
-import { FieldProps, JSONObject } from './types'
+import { FieldProps, JSONObject, JSONSchema, JSONSchemaType } from './types'
 
-export function createProps<T extends JSONSchema7Type>(): FieldProps<T> {
+export function createProps<T extends JSONSchemaType>(): FieldProps<T> {
   const props: FieldProps<T> = {
     value: null,
     error: null
@@ -10,7 +9,7 @@ export function createProps<T extends JSONSchema7Type>(): FieldProps<T> {
   return props
 }
 
-export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema7): JSONObject {
+export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema): JSONObject {
   const v: JSONObject = {}
   const { properties } = schema
   if (properties) {
@@ -26,7 +25,7 @@ export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema7
   return v
 }
 
-export function defaultValue(value: JSONSchema7Type, schema: JSONSchema7): JSONSchema7Type {
+export function defaultValue(value: JSONSchemaType, schema: JSONSchema): JSONSchemaType {
   if (value === null && schema.default !== undefined) {
     value = schema.default
   }

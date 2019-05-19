@@ -1,14 +1,14 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte'
-  import { JSONSchema7, JSONSchema7Type } from 'json-schema'
 
+  import { JSONSchema, JSONSchemaType } from './types'
   import { defaultValue } from './helpers'
 
-  export let schema: JSONSchema7
-  export let data: JSONSchema7Type
+  export let schema: JSONSchema
+  export let data: JSONSchemaType
   export let components: Record<string, any>
 
-  const dispatch = createEventDispatcher<JSONSchema7Type>()
+  const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
     /* TODO: normalize data */
     dispatch('submit', data)
