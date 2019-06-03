@@ -10,7 +10,6 @@
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
-    /* TODO: normalize data */
     dispatch('submit', normalizeValue(data))
   }
 
