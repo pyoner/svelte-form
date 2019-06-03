@@ -33,9 +33,11 @@
             type: "integer",
             title: "Zip code"
           }
-        }
+        },
+        required: ["country", "city", "zipCode"]
       }
-    }
+    },
+    required: ["name", "birthDay"]
   };
 
   let data = {
