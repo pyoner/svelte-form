@@ -10,11 +10,12 @@
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
-    const errors = validate(schema, data)
+    const value = normalizeValue(data)
+    const errors = validate(schema, value)
     if (errors) {
       console.log(errors)
     } else {
-      dispatch('submit', normalizeValue(data))
+      dispatch('submit', value)
     }
   }
 
