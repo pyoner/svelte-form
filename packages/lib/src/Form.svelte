@@ -2,7 +2,7 @@
   import { onMount, createEventDispatcher } from 'svelte'
 
   import { JSONSchema, JSONSchemaType } from './types'
-  import { defaultValue, normalizeValue } from './helpers'
+  import { defaultValue, normalizeValue, validate } from './helpers'
 
   export let schema: JSONSchema
   export let data: JSONSchemaType
@@ -10,7 +10,12 @@
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
-    dispatch('submit', normalizeValue(data))
+    const errors = validate(schema, data)
+    if (errors) {
+      console.log(errors)
+    } else {
+      dispatch('submit', normalizeValue(data))
+    }
   }
 
   const reset = (e: Event) => {

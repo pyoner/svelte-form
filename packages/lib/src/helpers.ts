@@ -1,4 +1,5 @@
 import typeDetect from 'type-detect'
+import Ajv from 'ajv'
 import { FieldProps, JSONObject, JSONSchema, JSONSchemaType } from './types'
 
 export function createProps<T extends JSONSchemaType>(): FieldProps<T> {
@@ -52,4 +53,13 @@ export function normalizeObject(value: JSONObject): JSONObject | null {
 
 export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
+}
+
+const ajv = new Ajv()
+export function validate(schema: JSONSchema, data: JSONSchemaType) {
+  const valid = ajv.validate(schema, data) as boolean
+  if (!valid) {
+    return ajv.errors as Ajv.ErrorObject[]
+  }
+  return null
 }
