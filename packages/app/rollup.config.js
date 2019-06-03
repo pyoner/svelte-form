@@ -3,6 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
+import json from "rollup-plugin-json";
 
 import {
   preprocess,
@@ -52,6 +53,13 @@ export default {
     typescript({
       // verbosity: 3,
       include: ["**/*.ts", "../lib/**/*.ts"]
+    }),
+    json({
+      // for tree-shaking, properties will be declared as
+      // variables, using either `var` or `const`
+      preferConst: true,
+      // ignores indent and generates the smallest code
+      compact: true
     }),
 
     // If we're building for production (npm run build
