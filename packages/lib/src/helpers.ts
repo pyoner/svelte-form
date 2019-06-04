@@ -39,16 +39,16 @@ export function defaultValue(value: JSONSchemaType, schema: JSONSchema): JSONSch
   return value
 }
 
-export function normalizeObject(value: JSONObject): JSONObject | null {
+export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | null {
   const obj: JSONObject = {}
   for (const k in value) {
     let v = value[k]
-    v = typeDetect(v) === 'Object' ? normalizeObject(v as JSONObject) : v
+    v = typeDetect(v) === 'Object' ? normalizeObject(v as JSONObject, false) : v
     if (v !== null) {
       obj[k] = v
     }
   }
-  return Object.keys(obj).length ? obj : null
+  return Object.keys(obj).length ? obj : isRoot ? {} : null
 }
 
 export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
