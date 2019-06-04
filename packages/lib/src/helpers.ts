@@ -55,7 +55,7 @@ export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
 }
 
-const ajv = new Ajv()
+const ajv = new Ajv({ allErrors: true })
 export function validate(schema: JSONSchema, data: JSONSchemaType) {
   const valid = ajv.validate(schema, data) as boolean
   if (!valid) {
