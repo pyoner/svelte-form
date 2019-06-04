@@ -20,14 +20,14 @@
   }
 
   const reset = (e: Event) => {
-    data = defaultValue(null, schema)
+    data = defaultValue(schema, null)
     dispatch('reset', normalizeValue(data))
   }
 
   let mounted = false
   onMount(() => {
     mounted = true
-    data = defaultValue(data, schema)
+    data = defaultValue(schema, data)
   })
 </script>
 

@@ -11,7 +11,7 @@ export function createProps<T extends JSONSchemaType>(): FieldProps<T> {
   return props
 }
 
-export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema): JSONObject {
+export function objectDefaultValue(schema: JSONSchema, value: JSONObject | null): JSONObject {
   const v: JSONObject = {}
   const { properties } = schema
   if (properties) {
@@ -20,20 +20,20 @@ export function objectDefaultValue(value: JSONObject | null, schema: JSONSchema)
 
       if (typeof propSchema !== 'boolean') {
         const item = value && value[k]
-        v[k] = defaultValue(item, propSchema)
+        v[k] = defaultValue(propSchema, item)
       }
     }
   }
   return v
 }
 
-export function defaultValue(value: JSONSchemaType, schema: JSONSchema): JSONSchemaType {
+export function defaultValue(schema: JSONSchema, value: JSONSchemaType): JSONSchemaType {
   if (value === null && schema.default !== undefined) {
     value = schema.default
   }
 
   if (schema.type === 'object') {
-    return objectDefaultValue(<JSONObject>value, schema)
+    return objectDefaultValue(schema, <JSONObject>value)
   }
 
   return value
