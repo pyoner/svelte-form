@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { ErrorRecord } from '../types'
   import { createProps } from '../helpers'
 
-  const props = createProps<object>()
+  const props = createProps<object, ErrorRecord>()
   export let value = props.value
   export let error = props.error
   export let schema = props.schema

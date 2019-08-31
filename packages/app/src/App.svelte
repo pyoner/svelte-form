@@ -10,7 +10,10 @@
     properties: {
       name: {
         type: "string",
-        title: "Name"
+        title: "Name",
+        pattern: "^[A-Z]",
+        minLength: 3,
+        maxLength: 15
       },
       birthDay: {
         type: "string",
@@ -23,7 +26,8 @@
         properties: {
           country: {
             type: "string",
-            title: "Country"
+            title: "Country",
+            pattern: "^[A-Z]"
           },
           city: {
             type: "string",

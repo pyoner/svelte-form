@@ -127,6 +127,7 @@
   },
   "dependencies": {
     "ajv": "^6.10.0",
+    "monocle-ts": "^1.7.2",
     "type-detect": "^4.0.8"
   }
 }
