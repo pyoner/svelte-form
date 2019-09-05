@@ -67,7 +67,7 @@ export function validate(schema: JSONSchema, data: JSONSchemaType) {
   return null
 }
 
-export function errorObjectsToMap(errors: Ajv.ErrorObject[]) {
+export function errorsToMap(errors: Ajv.ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
     .map(

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte'
 
-  import { JSONSchema, JSONSchemaType } from './types'
-  import { defaultValue, normalizeValue, validate } from './helpers'
+  import { JSONSchema, JSONSchemaType, ErrorRecord } from './types'
+  import { defaultValue, normalizeValue, validate, errorsToMap } from './helpers'
 
   export let schema: JSONSchema
   export let data: JSONSchemaType
   export let components: Record<string, any>
+  let error: ErrorRecord
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
@@ -14,6 +15,8 @@
     const errors = validate(schema, value)
     if (errors) {
       console.log(errors)
+      error = errorsToMap(errors)
+      console.log(error)
     } else {
       dispatch('submit', value)
     }
