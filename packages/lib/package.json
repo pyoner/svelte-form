@@ -115,6 +115,7 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-typescript2": "^0.21.0",
     "semantic-release": "^15.9.16",
+    "set-value": "^3.0.1",
     "shelljs": "^0.8.3",
     "svelte": "^3.2.1",
     "travis-deploy-once": "^5.0.9",
