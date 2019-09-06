@@ -6,6 +6,12 @@
   export let schema: JSONSchema
 </script>
 
+<style>
+  .error {
+    color: red;
+  }
+</style>
+
 <div class="field">
   {#if schema && schema.title}
     <label class="label">{schema.title}</label>
