@@ -11,6 +11,7 @@
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
+    errors = null
     const value = normalizeValue(data)
     const errorList = validate(schema, value)
     if (errorList) {
