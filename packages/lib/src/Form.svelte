@@ -1,22 +1,22 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte'
 
-  import { JSONSchema, JSONSchemaType, ErrorRecord } from './types'
+  import { JSONSchema, JSONSchemaType, Errors } from './types'
   import { defaultValue, normalizeValue, validate, errorsToMap } from './helpers'
 
   export let schema: JSONSchema
   export let data: JSONSchemaType
   export let components: Record<string, any>
-  let error: ErrorRecord
+  let errors: Errors | null = null
 
   const dispatch = createEventDispatcher<JSONSchemaType>()
   const submit = (e: Event) => {
     const value = normalizeValue(data)
-    const errors = validate(schema, value)
-    if (errors) {
+    const errorList = validate(schema, value)
+    if (errorList) {
+      console.log(errorList)
+      errors = schema.type === 'object' ? errorsToMap(errorList) : errorList
       console.log(errors)
-      error = errorsToMap(errors)
-      console.log(error)
     } else {
       dispatch('submit', value)
     }
@@ -38,7 +38,7 @@
   <form on:submit|preventDefault={submit} on:reset={reset}>
     <svelte:component this={components.layout}>
       <div slot="fields">
-        <svelte:component this={components[schema.type]} {schema} {components} bind:value={data} />
+        <svelte:component this={components[schema.type]} {schema} {components} bind:value={data} {errors} />
       </div>
       <div slot="ctrl">
         <slot />

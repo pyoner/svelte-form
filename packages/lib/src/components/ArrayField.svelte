@@ -4,20 +4,20 @@
 
   const props = createProps<JSONSchemaArray, ErrorRecord>()
   export let value = props.value
-  export let error = props.error
+  export let errors = props.errors
   export let schema = props.schema
   export let components = props.components
 </script>
 
 {#if schema && components}
-  <svelte:component this={components.wrapper} {schema} {error}>
+  <svelte:component this={components.wrapper} {schema} {errors}>
     {#if schema && schema.items}
       {#if schema.items.type}
-        {#each value as v}
+        {#each value as v, i}
           {#if schema.items.type == 'array'}
             <svelte:self schema={schema.items} {components} bind:value={v} />
           {:else}
-            <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} />
+            <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
           {/if}
         {/each}
       {/if}

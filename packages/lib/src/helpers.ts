@@ -2,13 +2,13 @@ import typeDetect from 'type-detect'
 import Ajv, { ErrorObject } from 'ajv'
 import { FieldProps, JSONObject, JSONSchema, JSONSchemaType, ErrorRecord, Errors } from './types'
 
-export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject>(): FieldProps<
-  T,
-  E
-> {
+export function createProps<
+  T extends JSONSchemaType,
+  E extends Errors = ErrorObject[]
+>(): FieldProps<T, E> {
   const props: FieldProps<T, E> = {
     value: null,
-    error: null
+    errors: null
   }
 
   return props
@@ -67,11 +67,11 @@ export function validate(schema: JSONSchema, data: JSONSchemaType) {
   return null
 }
 
-export function errorsToMap(errors: Ajv.ErrorObject[]): ErrorRecord {
+export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
     .map(
-      (error): [string[], Ajv.ErrorObject] => {
+      (error): [string[], ErrorObject] => {
         const pathSuffix =
           error.keyword === 'required'
             ? `.${(<Ajv.RequiredParams>error.params).missingProperty}`
@@ -82,11 +82,18 @@ export function errorsToMap(errors: Ajv.ErrorObject[]): ErrorRecord {
     )
     .reduce((acc, [path, error]) => {
       path.reduce((obj, key, i, arr) => {
+        // build tree
         if (i !== arr.length - 1) {
-          return obj[key] ? (obj[key] as ErrorRecord) : (obj[key] = {})
+          return (obj[key] ? obj[key] : (obj[key] = obj[key] || {})) as ErrorRecord
         }
 
-        obj[key] = error
+        // add error
+        if (obj[key]) {
+          ;(obj[key] as ErrorObject[]).push(error)
+        } else {
+          obj[key] = [error]
+        }
+
         return obj
       }, acc)
       return acc
