@@ -23,6 +23,7 @@
   }
 
   const reset = (e: Event) => {
+    errors = null
     data = defaultValue(schema, null)
     dispatch('reset', normalizeValue(data))
   }
