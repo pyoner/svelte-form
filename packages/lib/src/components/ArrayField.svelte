@@ -10,12 +10,12 @@
 </script>
 
 {#if schema && components}
-  <svelte:component this={components.wrapper} {schema} {errors}>
+  <svelte:component this={components.wrapper} {schema}>
     {#if schema && schema.items}
       {#if schema.items.type}
         {#each value as v, i}
           {#if schema.items.type == 'array'}
-            <svelte:self schema={schema.items} {components} bind:value={v} />
+            <svelte:self schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
           {:else}
             <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
           {/if}

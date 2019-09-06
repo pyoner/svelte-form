@@ -10,10 +10,10 @@
 </script>
 
 {#if schema && components}
-  <svelte:component this={components.wrapper} {schema} {errors}>
+  <svelte:component this={components.wrapper} {schema}>
     {#each Object.entries(schema.properties) as [key, schema] (key)}
       {#if schema.type == 'object'}
-        <svelte:self {schema} {components} bind:value={value[key]} {errors} />
+        <svelte:self {schema} {components} bind:value={value[key]} errors={errors && errors[key]} />
       {:else}
         <svelte:component this={components[schema.type]} {schema} {components} bind:value={value[key]} errors={errors && errors[key]} />
       {/if}
