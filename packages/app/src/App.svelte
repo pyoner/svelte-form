@@ -1,8 +1,6 @@
 <script lang="ts">
-  import Form from "svelte-form/src/Form.svelte";
-  import { defaultFormComponents } from "svelte-form/src/components";
-
-  const components = defaultFormComponents;
+  import Form from "@pyoner/svelte-form/src/Form.svelte";
+  import { defaultFormComponents as components } from "@pyoner/svelte-form/src/components";
 
   const schema = {
     type: "object",

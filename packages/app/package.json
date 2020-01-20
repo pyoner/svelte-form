@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "svelte-ts-app",
+  "name": "app",
   "version": "1.0.0",
   "devDependencies": {
     "@pyoner/svelte-ts-preprocess": "1.2.1",
@@ -26,6 +26,6 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "svelte-form": "^0.0.1"
+    "@pyoner/svelte-form": "^0.0.0"
   }
 }

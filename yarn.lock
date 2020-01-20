@@ -9784,11 +9784,6 @@ supports-hyperlinks@^1.0.1:
     has-flag "^2.0.0"
     supports-color "^5.0.0"
 
-svelte-form@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/svelte-form/-/svelte-form-0.0.1.tgz#40077309df4a9ea1cc8d955110e40d9e3ff1ccfe"
-  integrity sha512-XeoPlwcLW7ji1P66EGKhVMgqL3qvBmHhSGYSaJfrG78dtMEkpKegdjUZg8YpMReZNsUD9jgreKc0Tb4QLRbFWw==
-
 svelte@^3.17.1:
   version "3.17.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.17.1.tgz#71aedbfb5bf831dad7b00a944f2fdded6b482184"
