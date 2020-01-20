@@ -9,7 +9,7 @@
   export let components: Record<string, any>
   let errors: Errors | null = null
 
-  const dispatch = createEventDispatcher<JSONSchemaType>()
+  const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
     errors = null
     const value = normalizeValue(data)
