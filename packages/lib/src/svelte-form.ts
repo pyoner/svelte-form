@@ -1,1 +1,1 @@
-export { default as GenericField } from './fields/GenericField.svelte'
+export { default as Form } from './Form.svelte'
