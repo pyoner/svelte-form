@@ -3,7 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@wessberg/rollup-plugin-ts";
 import json from "@rollup/plugin-json";
 
 const svelteOptions = require("./svelte.config");
@@ -42,10 +42,7 @@ export default {
         importee === "svelte" || importee.startsWith("svelte/")
     }),
     commonjs(),
-    typescript({
-      verbosity: 3
-      // include: ["**/*.ts", "../lib/**/*.ts"]
-    }),
+    typescript({}),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
