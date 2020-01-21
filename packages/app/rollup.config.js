@@ -4,6 +4,7 @@ import commonjs from "rollup-plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
+import json from "@rollup/plugin-json";
 
 const svelteOptions = require("./svelte.config");
 
@@ -18,6 +19,7 @@ export default {
     file: "public/bundle.js"
   },
   plugins: [
+    json(),
     svelte({
       ...svelteOptions,
       // enable run-time checks when not in production
@@ -26,7 +28,7 @@ export default {
       // a separate file — better for performance
       css: css => {
         css.write("public/bundle.css");
-      },
+      }
     }),
 
     // If you have external dependencies installed from
@@ -40,7 +42,10 @@ export default {
         importee === "svelte" || importee.startsWith("svelte/")
     }),
     commonjs(),
-    typescript(),
+    typescript({
+      verbosity: 3
+      // include: ["**/*.ts", "../lib/**/*.ts"]
+    }),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production

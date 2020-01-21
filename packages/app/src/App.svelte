@@ -55,6 +55,7 @@
   };
 </script>
 
+<h1>Form examples</h1>
 <Form
   {schema}
   {components}
