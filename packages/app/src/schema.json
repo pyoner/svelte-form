@@ -6,79 +6,98 @@
   "properties": {
     "basics": {
       "type": "object",
+      "title": "Basics",
       "additionalProperties": true,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "title": "Name"
         },
         "label": {
           "type": "string",
+          "title": "Label",
           "description": "e.g. Web Developer"
         },
         "image": {
           "type": "string",
+          "title": "Image",
           "description": "URL (as per RFC 3986) to a image in JPEG or PNG format"
         },
         "email": {
           "type": "string",
+          "title": "Email",
           "description": "e.g. thomas@gmail.com",
           "format": "email"
         },
         "phone": {
           "type": "string",
+          "title": "Phone",
           "description": "Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923"
         },
         "url": {
           "type": "string",
+          "title": "URL",
           "description": "URL (as per RFC 3986) to your website, e.g. personal homepage",
           "format": "uri"
         },
         "summary": {
           "type": "string",
+          "title": "Summary",
           "description": "Write a short 2-3 sentence biography about yourself"
         },
         "location": {
           "type": "object",
+          "title": "Location",
           "additionalProperties": true,
           "properties": {
             "address": {
               "type": "string",
+              "title": "Address",
               "description": "To add multiple address lines, use \n. For example, 1234 Glücklichkeit Straße\nHinterhaus 5. Etage li."
             },
             "postalCode": {
-              "type": "string"
+              "type": "string",
+              "title": "Postal Code"
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "title": "City"
             },
             "countryCode": {
               "type": "string",
+              "title": "Country Code",
               "description": "code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN"
             },
             "region": {
               "type": "string",
+              "title": "Region",
               "description": "The general region where you live. Can be a US state, or a province, for instance."
             }
           }
         },
         "profiles": {
           "type": "array",
+          "title": "Profiles",
           "description": "Specify any number of social networks that you participate in",
           "additionalItems": false,
           "items": {
             "type": "object",
+            "title": "Profile",
             "additionalProperties": true,
             "properties": {
               "network": {
                 "type": "string",
+                "title": "Network",
                 "description": "e.g. Facebook or Twitter"
               },
               "username": {
                 "type": "string",
+                "title": "Username",
                 "description": "e.g. neutralthoughts"
               },
               "url": {
                 "type": "string",
+                "title": "URL",
                 "description": "e.g. http://twitter.example.com/neutralthoughts"
               }
             }
@@ -88,52 +107,64 @@
     },
     "work": {
       "type": "array",
+      "title": "Work List",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Work",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. Facebook"
           },
           "location": {
             "type": "string",
+            "title": "Location",
             "description": "e.g. Menlo Park, CA"
           },
           "description": {
             "type": "string",
+            "title": "Description",
             "description": "e.g. Social Media Company"
           },
           "position": {
             "type": "string",
+            "title": "Position",
             "description": "e.g. Software Engineer"
           },
           "url": {
             "type": "string",
+            "title": "URL",
             "description": "e.g. http://facebook.example.com",
             "format": "uri"
           },
           "startDate": {
             "type": "string",
+            "title": "Start Date",
             "description": "resume.json uses the ISO 8601 date standard e.g. 2014-06-29",
             "format": "date"
           },
           "endDate": {
             "type": "string",
+            "title": "End Date",
             "description": "e.g. 2012-06-29",
             "format": "date"
           },
           "summary": {
             "type": "string",
+            "title": "Summary",
             "description": "Give an overview of your responsibilities at the company"
           },
           "highlights": {
             "type": "array",
+            "title": "Highlights",
             "description": "Specify multiple accomplishments",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Highlight",
               "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
             }
           }
@@ -142,44 +173,54 @@
     },
     "volunteer": {
       "type": "array",
+      "title": "Volunteers",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Volunteer",
         "additionalProperties": true,
         "properties": {
           "organization": {
             "type": "string",
+            "title": "Organization",
             "description": "e.g. Facebook"
           },
           "position": {
             "type": "string",
+            "title": "Position",
             "description": "e.g. Software Engineer"
           },
           "url": {
             "type": "string",
+            "title": "URL",
             "description": "e.g. http://facebook.example.com",
             "format": "uri"
           },
           "startDate": {
             "type": "string",
+            "title": "Start Date",
             "description": "resume.json uses the ISO 8601 date standard e.g. 2014-06-29",
             "format": "date"
           },
           "endDate": {
             "type": "string",
+            "title": "End Date",
             "description": "e.g. 2012-06-29",
             "format": "date"
           },
           "summary": {
             "type": "string",
+            "title": "Summary",
             "description": "Give an overview of your responsibilities at the company"
           },
           "highlights": {
             "type": "array",
+            "title": "Highlights",
             "description": "Specify accomplishments and achievements",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Highlight",
               "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
             }
           }
@@ -188,43 +229,53 @@
     },
     "education": {
       "type": "array",
+      "title": "Education List",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Education",
         "additionalProperties": true,
         "properties": {
           "institution": {
             "type": "string",
+            "title": "Institution",
             "description": "e.g. Massachusetts Institute of Technology"
           },
           "area": {
             "type": "string",
+            "title": "Area",
             "description": "e.g. Arts"
           },
           "studyType": {
             "type": "string",
+            "title": "Study Type",
             "description": "e.g. Bachelor"
           },
           "startDate": {
             "type": "string",
+            "title": "Start Date",
             "description": "e.g. 2014-06-29",
             "format": "date"
           },
           "endDate": {
             "type": "string",
+            "title": "End Date",
             "description": "e.g. 2012-06-29",
             "format": "date"
           },
           "gpa": {
             "type": "string",
+            "title": "Grade Poin Average (GPA)",
             "description": "grade point average, e.g. 3.67/4.0"
           },
           "courses": {
             "type": "array",
+            "title": "Courses",
             "description": "List notable courses/subjects",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Course",
               "description": "e.g. H1302 - Introduction to American history"
             }
           }
@@ -233,27 +284,33 @@
     },
     "awards": {
       "type": "array",
+      "title": "Awards",
       "description": "Specify any awards you have received throughout your professional career",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Award",
         "additionalProperties": true,
         "properties": {
           "title": {
             "type": "string",
+            "title": "Title",
             "description": "e.g. One of the 100 greatest minds of the century"
           },
           "date": {
             "type": "string",
+            "title": "Date",
             "description": "e.g. 1989-06-12",
             "format": "date"
           },
           "awarder": {
             "type": "string",
+            "title": "Awarder",
             "description": "e.g. Time Magazine"
           },
           "summary": {
             "type": "string",
+            "title": "Summary",
             "description": "e.g. Received for my work with Quantum Physics"
           }
         }
@@ -261,30 +318,37 @@
     },
     "publications": {
       "type": "array",
+      "title": "Publications",
       "description": "Specify your publications through your career",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Publication",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. The World Wide Web"
           },
           "publisher": {
             "type": "string",
+            "title": "Publisher",
             "description": "e.g. IEEE, Computer Magazine"
           },
           "releaseDate": {
             "type": "string",
+            "title": "Release Date",
             "description": "e.g. 1990-08-01"
           },
           "url": {
             "type": "string",
+            "title": "URL",
             "description": "e.g. http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html"
           },
           "summary": {
             "type": "string",
+            "title": "Summary",
             "description": "Short summary of publication. e.g. Discussion of the World Wide Web, HTTP, HTML."
           }
         }
@@ -292,26 +356,32 @@
     },
     "skills": {
       "type": "array",
+      "title": "Skills",
       "description": "List out your professional skill-set",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Skill",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. Web Development"
           },
           "level": {
             "type": "string",
+            "title": "Level",
             "description": "e.g. Master"
           },
           "keywords": {
             "type": "array",
+            "title": "Keywords",
             "description": "List some keywords pertaining to this skill",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Keyword",
               "description": "e.g. HTML"
             }
           }
@@ -320,18 +390,22 @@
     },
     "languages": {
       "type": "array",
+      "title": "Languages",
       "description": "List any other languages you speak",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Language",
         "additionalProperties": true,
         "properties": {
           "language": {
             "type": "string",
+            "title": "Language",
             "description": "e.g. English, Spanish"
           },
           "fluency": {
             "type": "string",
+            "title": "Fluency",
             "description": "e.g. Fluent, Beginner"
           }
         }
@@ -339,20 +413,25 @@
     },
     "interests": {
       "type": "array",
+      "title": "Interests",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Interest",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. Philosophy"
           },
           "keywords": {
             "type": "array",
+            "title": "Keywords",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Keyword",
               "description": "e.g. Friedrich Nietzsche"
             }
           }
@@ -361,18 +440,22 @@
     },
     "references": {
       "type": "array",
+      "title": "References",
       "description": "List references you have received",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Reference",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. Timothy Cook"
           },
           "reference": {
             "type": "string",
+            "title": "Reference",
             "description": "e.g. Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing."
           }
         }
@@ -380,68 +463,83 @@
     },
     "projects": {
       "type": "array",
+      "title": "Projects",
       "description": "Specify career projects",
       "additionalItems": false,
       "items": {
         "type": "object",
+        "title": "Project",
         "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
+            "title": "Name",
             "description": "e.g. The World Wide Web"
           },
-           "description": {
+          "description": {
             "type": "string",
+            "title": "Description",
             "description": "Short summary of project. e.g. Collated works of 2017."
           },
           "highlights": {
             "type": "array",
+            "title": "Highlights",
             "description": "Specify multiple features",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Highlight",
               "description": "e.g. Directs you close but not quite there"
             }
           },
           "keywords": {
             "type": "array",
+            "title": "Keywords",
             "description": "Specify special elements involved",
             "additionalItems": false,
             "items": {
               "type": "string",
+              "title": "Keyword",
               "description": "e.g. AngularJS"
             }
           },
           "startDate": {
             "type": "string",
+            "title": "Start Date",
             "description": "resume.json uses the ISO 8601 date standard e.g. 2014-06-29",
             "format": "date"
           },
           "endDate": {
             "type": "string",
+            "title": "End Date",
             "description": "e.g. 2012-06-29",
             "format": "date"
           },
           "url": {
             "type": "string",
-            "format":"uri",
+            "title": "URL",
+            "format": "uri",
             "description": "e.g. http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html"
           },
-          "roles":{
-            "type":"array",
+          "roles": {
+            "type": "array",
+            "title": "Roles",
             "description": "Specify your role on this project or in company",
             "additionalItems": false,
             "items": {
-              "type":"string",
+              "type": "string",
+              "title": "Role",
               "description": "e.g. Team Lead, Speaker, Writer"
             }
           },
-          "entity":{
+          "entity": {
             "type": "string",
+            "title": "Entity",
             "description": "Specify the relevant company/entity affiliations e.g. 'greenpeace', 'corporationXYZ'"
           },
-          "type":{
-            "type":"string",
+          "type": {
+            "type": "string",
+            "title": "Type",
             "description": " e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'"
           }
         }
@@ -449,19 +547,23 @@
     },
     "meta": {
       "type": "object",
+      "title": "Meta",
       "description": "The schema version and any other tooling configuration lives here",
       "additionalProperties": true,
       "properties": {
         "canonical": {
           "type": "string",
+          "title": "Canonical",
           "description": "URL (as per RFC 3986) to latest version of this document"
         },
         "version": {
           "type": "string",
+          "title": "Version",
           "description": "A version field which follows semver - e.g. v1.0.0"
         },
         "lastModified": {
           "type": "string",
+          "title": "Last Modified",
           "description": "Using ISO 8601 with YYYY-MM-DDThh:mm:ss"
         }
       }
