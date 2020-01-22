@@ -2,6 +2,8 @@
   import Form from "@pyoner/svelte-form/src/Form.svelte";
   import { defaultFormComponents as components } from "@pyoner/svelte-form/src/components";
 
+  import resumeSchema from "./schema.json";
+
   const schema = {
     type: "object",
     title: "Person",
@@ -71,6 +73,20 @@
 </Form>
 <Form
   schema={schema2}
+  {components}
+  on:submit={e => {
+    console.log('submit', e);
+  }}
+  on:reset={e => {
+    console.log('reset', e);
+  }}>
+  <button type="reset">Reset</button>
+  <button type="submit">Submit</button>
+</Form>
+
+<h2>Resume form</h2>
+<Form
+  schema={resumeSchema}
   {components}
   on:submit={e => {
     console.log('submit', e);
