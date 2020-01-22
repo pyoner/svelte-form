@@ -2,12 +2,11 @@ import typeDetect from 'type-detect'
 import Ajv, { ErrorObject } from 'ajv'
 import { FieldProps, JSONObject, JSONSchema, JSONSchemaType, ErrorRecord, Errors } from './types'
 
-export function createProps<
-  T extends JSONSchemaType,
-  E extends Errors = ErrorObject[]
->(): FieldProps<T, E> {
+export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
+  value: T | null = null
+): FieldProps<T, E> {
   const props: FieldProps<T, E> = {
-    value: null,
+    value,
     errors: null
   }
 
@@ -70,16 +69,12 @@ export function validate(schema: JSONSchema, data: JSONSchemaType) {
 export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
-    .map(
-      (error): [string[], ErrorObject] => {
-        const pathSuffix =
-          error.keyword === 'required'
-            ? `.${(<Ajv.RequiredParams>error.params).missingProperty}`
-            : ''
-        const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
-        return [path, error]
-      }
-    )
+    .map((error): [string[], ErrorObject] => {
+      const pathSuffix =
+        error.keyword === 'required' ? `.${(<Ajv.RequiredParams>error.params).missingProperty}` : ''
+      const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
+      return [path, error]
+    })
     .reduce((acc, [path, error]) => {
       path.reduce((obj, key, i, arr) => {
         // build tree
