@@ -28,6 +28,7 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
 export interface FormComponents extends FieldComponents {
   layout: typeof SvelteComponent
   wrapper: typeof SvelteComponent
+  form: typeof SvelteComponent
 }
 
 export interface FormProps<T extends JSONSchemaType> {

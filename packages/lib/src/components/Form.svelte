@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte'
 
-  import { JSONSchema, JSONSchemaType, Errors } from './types'
-  import { defaultValue, normalizeValue, validate, errorsToMap } from './helpers'
+  import { JSONSchema, JSONSchemaType, Errors, FormComponents } from '../types'
+  import { defaultValue, normalizeValue, validate, errorsToMap } from '../helpers'
 
   export let schema: JSONSchema
   export let data: JSONSchemaType
-  export let components: Record<string, any>
+  export let components: FormComponents
   let errors: Errors | null = null
 
   const dispatch = createEventDispatcher()

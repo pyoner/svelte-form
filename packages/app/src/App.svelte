@@ -1,6 +1,5 @@
 <script lang="ts">
-  import Form from "@pyoner/svelte-form/src/Form.svelte";
-  import { defaultFormComponents as components } from "@pyoner/svelte-form/src/components";
+  import { Form, components } from "@pyoner/svelte-form/src";
 
   import resumeSchema from "./schema.json";
 

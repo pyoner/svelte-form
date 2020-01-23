@@ -7,6 +7,7 @@ import ObjectField from './ObjectField.svelte'
 import ArrayField from './ArrayField.svelte'
 import Wrapper from './Wrapper.svelte'
 import Layout from './Layout.svelte'
+import Form from './Form.svelte'
 
 export const defaultFieldComponents: FieldComponents = {
   boolean: BooleanField,
@@ -21,5 +22,6 @@ export const defaultFieldComponents: FieldComponents = {
 export const defaultFormComponents: FormComponents = {
   ...defaultFieldComponents,
   layout: Layout,
-  wrapper: Wrapper
+  wrapper: Wrapper,
+  form: Form
 }
