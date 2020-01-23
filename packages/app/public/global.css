@@ -59,3 +59,7 @@ button:active {
 button:focus {
 	border-color: #666;
 }
+
+form .field {
+    margin: 0px 10px 20px;
+}

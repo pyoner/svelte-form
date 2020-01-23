@@ -15,15 +15,13 @@
   }
 </script>
 
-{#if schema && components}
+{#if components && schema && schema.items && schema.items.type}
   <svelte:component this={components.wrapper} {schema}>
-    {#if schema && schema.items}
-      {#if schema.items.type}
-        {#each value as v, i (i)}
-          <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
-        {/each}
-        <button type="button" on:click={addItem}>Add Item</button>
-      {/if}
-    {/if}
+    {#each value as v, i (i)}
+      <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
+    {/each}
   </svelte:component>
+
+  <button type="button" on:click={addItem}>Add {schema.items.title}</button>
+
 {/if}
