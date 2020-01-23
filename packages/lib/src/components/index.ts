@@ -15,11 +15,11 @@ export const defaultFieldComponents: FieldComponents = {
   integer: NumberField,
   string: StringField,
   object: ObjectField,
-  array: ArrayField,
-  wrapper: Wrapper
+  array: ArrayField
 }
 
 export const defaultFormComponents: FormComponents = {
   ...defaultFieldComponents,
-  layout: Layout
+  layout: Layout,
+  wrapper: Wrapper
 }

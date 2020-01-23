@@ -1,5 +1,6 @@
 import { JSONSchema7, JSONSchema7Type, JSONSchema7Array } from 'json-schema'
 import { ErrorObject } from 'ajv'
+import { SvelteComponent } from 'svelte'
 
 export interface JSONSchema extends JSONSchema7 {}
 export interface JSONSchemaArray extends JSONSchema7Array {}
@@ -7,17 +8,14 @@ export interface JSONSchemaArray extends JSONSchema7Array {}
 export type JSONSchemaType = JSONSchema7Type
 export type JSONObject = Record<string, JSONSchemaType>
 
-export interface SvelteComponent {}
-
 export interface FieldComponents {
-  wrapper: SvelteComponent
-  boolean: SvelteComponent
-  null: SvelteComponent
-  integer: SvelteComponent
-  number: SvelteComponent
-  string: SvelteComponent
-  array: SvelteComponent
-  object: SvelteComponent
+  boolean: typeof SvelteComponent
+  null: typeof SvelteComponent
+  integer: typeof SvelteComponent
+  number: typeof SvelteComponent
+  string: typeof SvelteComponent
+  array: typeof SvelteComponent
+  object: typeof SvelteComponent
 }
 
 export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]> {
@@ -28,7 +26,8 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
 }
 
 export interface FormComponents extends FieldComponents {
-  layout: SvelteComponent
+  layout: typeof SvelteComponent
+  wrapper: typeof SvelteComponent
 }
 
 export interface FormProps<T extends JSONSchemaType> {
