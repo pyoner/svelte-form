@@ -8,10 +8,24 @@
   export let schema = props.schema
   export let components = props.components
 
-  const addItem = () => {
-    console.log('addItem')
-    value = value.concat([{}])
-    console.log('value', value)
+  const removeItem = (index: number) => {
+    value.splice(index, 1)
+    value = [...value]
+  }
+
+  let showItemForm = false
+  const renderItemForm = () => {
+    showItemForm = true
+  }
+
+  const submit = event => {
+    value = value.concat([event.detail])
+    showItemForm = false
+    console.log('Submit', event)
+  }
+
+  const reset = event => {
+    console.log('Reset', event)
   }
 </script>
 
@@ -19,9 +33,26 @@
   <svelte:component this={components.wrapper} {schema}>
     {#each value as v, i (i)}
       <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
+      <button
+        type="button"
+        on:click={e => {
+          removeItem(i)
+        }}>
+        Remove
+      </button>
     {/each}
+
+    {#if showItemForm}
+      <svelte:component
+        this={components.form}
+        schema={schema.items}
+        {components}
+        on:submit={submit}
+        on:reset={reset}>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </svelte:component>
+    {/if}
+    <button type="button" on:click={renderItemForm}>New</button>
   </svelte:component>
-
-  <button type="button" on:click={addItem}>Add {schema.items.title}</button>
-
 {/if}
