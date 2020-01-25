@@ -1,5 +1,7 @@
 import typeDetect from 'type-detect'
 import Ajv, { ErrorObject } from 'ajv'
+import jsonSchemaDraft4 from 'ajv/lib/refs/json-schema-draft-04.json'
+
 import { FieldProps, JSONObject, JSONSchema, JSONSchemaType, ErrorRecord, Errors } from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
@@ -57,8 +59,13 @@ export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
 }
 
-const ajv = new Ajv({ allErrors: true })
-export function validate(schema: JSONSchema, data: JSONSchemaType) {
+const ajv = new Ajv({ schemaId: 'auto', allErrors: true })
+ajv.addMetaSchema(jsonSchemaDraft4)
+
+export const options = {
+  ajv
+}
+export function validate(ajv: Ajv.Ajv, schema: JSONSchema, data: JSONSchemaType) {
   const valid = ajv.validate(schema, data) as boolean
   if (!valid) {
     return ajv.errors as Ajv.ErrorObject[]

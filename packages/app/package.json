@@ -27,6 +27,7 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "@pyoner/svelte-form": "^0.0.0"
+    "@pyoner/svelte-form": "^0.0.0",
+    "ajv": "^6.11.0"
   }
 }

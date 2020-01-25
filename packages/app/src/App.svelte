@@ -1,7 +1,16 @@
 <script lang="ts">
+  import Ajv from "ajv";
   import { Form, components } from "@pyoner/svelte-form/src";
 
   import resumeSchema from "./schema.json";
+  import jsonSchemaDraft4 from "ajv/lib/refs/json-schema-draft-04.json";
+
+  const ajv = new Ajv({ schemaId: "auto" });
+  ajv.addMetaSchema(jsonSchemaDraft4);
+
+  const options = {
+    ajv
+  };
 
   const schema = {
     type: "object",
@@ -87,6 +96,7 @@
 <Form
   schema={resumeSchema}
   {components}
+  {options}
   on:submit={e => {
     console.log('submit', e);
   }}

@@ -2,18 +2,26 @@
   import { onMount, createEventDispatcher } from 'svelte'
 
   import { JSONSchema, JSONSchemaType, Errors, FormComponents } from '../types'
-  import { defaultValue, normalizeValue, validate, errorsToMap } from '../helpers'
+  import {
+    defaultValue,
+    normalizeValue,
+    validate,
+    errorsToMap,
+    options as defaultOptions
+  } from '../helpers'
 
   export let schema: JSONSchema
   export let data: JSONSchemaType
   export let components: FormComponents
+  export let options = defaultOptions
+
   let errors: Errors | null = null
 
   const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
     errors = null
     const value = normalizeValue(data)
-    const errorList = validate(schema, value)
+    const errorList = validate(options.ajv, schema, value)
     if (errorList) {
       console.log(errorList)
       errors = schema.type === 'object' ? errorsToMap(errorList) : errorList
