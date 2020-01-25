@@ -63,3 +63,8 @@ button:focus {
 form .field {
     margin: 0px 10px 20px;
 }
+
+form .item {
+    display: flex; 
+    align-items: center;
+}

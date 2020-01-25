@@ -32,14 +32,16 @@
 {#if components && schema && schema.items && schema.items.type}
   <svelte:component this={components.wrapper} {schema}>
     {#each value as v, i (i)}
-      <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
-      <button
-        type="button"
-        on:click={e => {
-          removeItem(i)
-        }}>
-        Remove
-      </button>
+      <div class="item">
+        <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
+        <button
+          type="button"
+          on:click={e => {
+            removeItem(i)
+          }}>
+          Remove
+        </button>
+      </div>
     {/each}
 
     {#if showItemForm}
