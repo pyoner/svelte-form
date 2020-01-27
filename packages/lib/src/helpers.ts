@@ -59,11 +59,15 @@ export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
 }
 
-const ajv = new Ajv({ schemaId: 'auto', allErrors: true })
-ajv.addMetaSchema(jsonSchemaDraft4)
-
+let ajv: Ajv.Ajv
 export const options = {
-  ajv
+  get ajv() {
+    if (!ajv) {
+      ajv = new Ajv({ schemaId: 'auto', allErrors: true })
+      ajv.addMetaSchema(jsonSchemaDraft4)
+    }
+    return ajv
+  }
 }
 export function validate(ajv: Ajv.Ajv, schema: JSONSchema, data: JSONSchemaType) {
   const valid = ajv.validate(schema, data) as boolean
