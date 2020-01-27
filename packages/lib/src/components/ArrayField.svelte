@@ -9,6 +9,9 @@
   export let components = props.components
 
   const removeItem = (index: number) => {
+    if (!value) {
+      return
+    }
     value.splice(index, 1)
     value = [...value]
   }
@@ -18,13 +21,16 @@
     showItemForm = true
   }
 
-  const submit = event => {
+  const submit = (event: CustomEvent) => {
+    if (!value) {
+      return
+    }
     value = value.concat([event.detail])
     showItemForm = false
     console.log('Submit', event)
   }
 
-  const reset = event => {
+  const reset = (event: CustomEvent) => {
     console.log('Reset', event)
   }
 </script>
