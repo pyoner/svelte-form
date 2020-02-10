@@ -80,12 +80,16 @@ export function validate(ajv: Ajv.Ajv, schema: JSONSchema, data: JSONSchemaType)
 export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
-    .map((error): [string[], ErrorObject] => {
-      const pathSuffix =
-        error.keyword === 'required' ? `.${(<Ajv.RequiredParams>error.params).missingProperty}` : ''
-      const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
-      return [path, error]
-    })
+    .map(
+      (error): [string[], ErrorObject] => {
+        const pathSuffix =
+          error.keyword === 'required'
+            ? `.${(<Ajv.RequiredParams>error.params).missingProperty}`
+            : ''
+        const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
+        return [path, error]
+      }
+    )
     .reduce((acc, [path, error]) => {
       path.reduce((obj, key, i, arr) => {
         // build tree

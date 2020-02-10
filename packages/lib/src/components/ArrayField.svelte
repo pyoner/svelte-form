@@ -35,7 +35,7 @@
   }
 </script>
 
-{#if components && schema && schema.items && schema.items.type}
+{#if components && schema && schema.items && schema.items.type && value && value.length}
   <svelte:component this={components.wrapper} {schema}>
     {#each value as v, i (i)}
       <div class="item">
