@@ -36,8 +36,12 @@ export function defaultValue(schema: JSONSchema, value: JSONSchemaType): JSONSch
     value = schema.default
   }
 
-  if (schema.type === 'object') {
-    return objectDefaultValue(schema, <JSONObject>value)
+  switch (schema.type) {
+    case 'object':
+      return objectDefaultValue(schema, <JSONObject>value)
+
+    case 'array':
+      return value || []
   }
 
   return value
