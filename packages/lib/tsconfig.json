@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "es5",
     "module": "es2015",
@@ -13,7 +14,6 @@
     "emitDecoratorMetadata": true,
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
-    "typeRoots": ["node_modules/@types", "../../node_modules/@types"],
     "types": ["svelte"]
   },
   "include": ["src"]

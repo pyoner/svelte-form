@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/svelte-form.umd.js",
-  "module": "dist/svelte-form.es5.js",
-  "typings": "dist/types/svelte-form.d.ts",
+  "main": "src/index.ts",
+  "svelte": "src/index.ts",
   "files": [
-    "dist"
+    "src"
   ],
   "author": "Jungle <devex.soft@gmail.com>",
   "repository": {
@@ -31,8 +30,7 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
-    "travis-deploy-once": "travis-deploy-once",
-    "prepare": "npm run build"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

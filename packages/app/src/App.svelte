@@ -1,6 +1,6 @@
 <script lang="ts">
   import Ajv from "ajv";
-  import { Form, components } from "@pyoner/svelte-form/src";
+  import { Form, components } from "@pyoner/svelte-form";
 
   import resumeSchema from "./schema.json";
   import jsonSchemaDraft4 from "ajv/lib/refs/json-schema-draft-04.json";
