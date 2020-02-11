@@ -11,7 +11,7 @@
   } from '../helpers'
 
   export let schema: JSONSchema
-  export let data: JSONSchemaType
+  export let data: JSONSchemaType = null
   export let components: FormComponents
   export let options = defaultOptions
 
