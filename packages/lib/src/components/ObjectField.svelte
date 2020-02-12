@@ -12,7 +12,7 @@
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
-      <svelte:component this={getComponent(components, propSchema.type, key)} components={repackComponents(components, propSchema.type, key)} schema={propSchema} bind:value={value[key]} errors={errors && errors[key]} />
+      <svelte:component this={getComponent(components, propSchema.type, key)} {...getComponentProps(components, propSchema.type, key)} components={repackComponents(components, propSchema.type, key)} schema={propSchema} bind:value={value[key]} errors={errors && errors[key]} />
     {/each}
   </svelte:component>
 {/if}
