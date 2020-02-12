@@ -1,8 +1,20 @@
 import typeDetect from 'type-detect'
 import Ajv, { ErrorObject } from 'ajv'
 import jsonSchemaDraft4 from 'ajv/lib/refs/json-schema-draft-04.json'
+import { SvelteComponent } from 'svelte'
 
-import { FieldProps, JSONObject, JSONSchema, JSONSchemaType, ErrorRecord, Errors } from './types'
+import {
+  FieldProps,
+  JSONObject,
+  JSONSchema,
+  JSONSchemaType,
+  JSONSchemaTypeName,
+  ErrorRecord,
+  Errors,
+  FormComponents,
+  Props,
+  PathComponents
+} from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
   value: T | null = null
@@ -112,4 +124,52 @@ export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
       }, acc)
       return acc
     }, errorMap)
+}
+
+export function repackComponents(
+  components: FormComponents,
+  type: JSONSchemaTypeName,
+  key: string
+): FormComponents {
+  if (type === 'object') {
+    if (components.path) {
+      const path = components.path[key] as PathComponents
+      return { ...components, path }
+    }
+  }
+
+  return components
+}
+
+export function getComponent(
+  components: FormComponents,
+  type: JSONSchemaTypeName,
+  key: string
+): typeof SvelteComponent {
+  if (type === 'object') {
+    const pathComponent = components.path && components.path[key]
+    if (pathComponent) {
+      if (Array.isArray(pathComponent)) {
+        return pathComponent[0] as typeof SvelteComponent
+      }
+      return pathComponent as typeof SvelteComponent
+    }
+  }
+
+  return components[type]
+}
+
+export function getComponentProps(
+  components: FormComponents,
+  type: JSONSchemaTypeName,
+  key: string
+): Props {
+  if (type === 'object') {
+    const pathComponent = components.path && components.path[key]
+    if (pathComponent && Array.isArray(pathComponent)) {
+      return pathComponent[1] as Props
+    }
+  }
+
+  return {}
 }

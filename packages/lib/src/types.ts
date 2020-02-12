@@ -7,6 +7,7 @@ export interface JSONSchemaArray extends JSONSchema7Array {}
 
 export type JSONSchemaType = JSONSchema7Type
 export type JSONObject = Record<string, JSONSchemaType>
+export type JSONSchemaTypeName = 'array' | 'boolean' | 'null' | 'number' | 'object' | 'string'
 
 export interface FieldComponents {
   boolean: typeof SvelteComponent
@@ -25,10 +26,17 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
   components?: FieldComponents
 }
 
+export type Props = Record<string, any>
+
+export interface PathComponents {
+  [k: string]: typeof SvelteComponent | [typeof SvelteComponent, Props] | PathComponents
+}
+
 export interface FormComponents extends FieldComponents {
   layout: typeof SvelteComponent
   wrapper: typeof SvelteComponent
   form: typeof SvelteComponent
+  path?: PathComponents
 }
 
 export interface FormProps<T extends JSONSchemaType> {
