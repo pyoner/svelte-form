@@ -13,7 +13,7 @@ import {
   Errors,
   FormComponents,
   Props,
-  PathComponents
+  ExtraComponents
 } from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
@@ -129,12 +129,15 @@ export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
 export function repackComponents(
   components: FormComponents,
   type: JSONSchemaTypeName,
-  key: string
+  key?: string
 ): FormComponents {
   if (type === 'object') {
-    if (components.path) {
-      const path = components.path[key] as PathComponents
-      return { ...components, path }
+    if (components.extra) {
+      if (!key) {
+        throw new Error('Missing key')
+      }
+      const extra = (components.extra as ExtraComponents)[key]
+      return { ...components, extra }
     }
   }
 
@@ -143,31 +146,26 @@ export function repackComponents(
 
 export function getComponent(
   components: FormComponents,
-  type: JSONSchemaTypeName,
-  key: string
+  type: JSONSchemaTypeName
 ): typeof SvelteComponent {
-  if (type === 'object') {
-    const pathComponent = components.path && components.path[key]
-    if (pathComponent) {
-      if (Array.isArray(pathComponent)) {
-        return pathComponent[0] as typeof SvelteComponent
+  if (type !== 'object') {
+    const extraComponent = components.extra
+    if (extraComponent) {
+      if (Array.isArray(extraComponent)) {
+        return extraComponent[0] as typeof SvelteComponent
       }
-      return pathComponent as typeof SvelteComponent
+      return extraComponent as typeof SvelteComponent
     }
   }
 
-  return components[type]
+  return components.fields[type]
 }
 
-export function getComponentProps(
-  components: FormComponents,
-  type: JSONSchemaTypeName,
-  key: string
-): Props {
-  if (type === 'object') {
-    const pathComponent = components.path && components.path[key]
-    if (pathComponent && Array.isArray(pathComponent)) {
-      return pathComponent[1] as Props
+export function getComponentProps(components: FormComponents, type: JSONSchemaTypeName): Props {
+  if (type !== 'object') {
+    const extraComponent = components.extra
+    if (extraComponent && Array.isArray(extraComponent)) {
+      return extraComponent[1] as Props
     }
   }
 

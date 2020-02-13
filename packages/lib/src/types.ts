@@ -23,20 +23,22 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
   value: T | null
   errors: E | null
   schema?: JSONSchema
-  components?: FieldComponents
+  components?: FormComponents
 }
 
 export type Props = Record<string, any>
+export type SvelteComponentTuple = [typeof SvelteComponent, Props]
 
-export interface PathComponents {
-  [k: string]: typeof SvelteComponent | [typeof SvelteComponent, Props] | PathComponents
+export interface ExtraComponents {
+  [k: string]: typeof SvelteComponent | SvelteComponentTuple | ExtraComponents
 }
 
-export interface FormComponents extends FieldComponents {
+export interface FormComponents {
   layout: typeof SvelteComponent
   wrapper: typeof SvelteComponent
   form: typeof SvelteComponent
-  path?: PathComponents
+  fields: FieldComponents
+  extra?: ExtraComponents | typeof SvelteComponent | SvelteComponentTuple
 }
 
 export interface FormProps<T extends JSONSchemaType> {

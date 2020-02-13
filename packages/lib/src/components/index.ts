@@ -20,8 +20,8 @@ export const defaultFieldComponents: FieldComponents = {
 }
 
 export const defaultFormComponents: FormComponents = {
-  ...defaultFieldComponents,
   layout: Layout,
   wrapper: Wrapper,
-  form: Form
+  form: Form,
+  fields: defaultFieldComponents
 }
