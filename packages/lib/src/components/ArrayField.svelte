@@ -1,6 +1,6 @@
 <script lang="ts">
   import { JSONSchemaArray, ErrorRecord } from '../types'
-  import { createProps } from '../helpers'
+  import { createProps, getComponent, getComponentProps, repackComponents } from '../helpers'
 
   const props = createProps<JSONSchemaArray, ErrorRecord>([])
   export let value = props.value
@@ -40,7 +40,7 @@
     {#if value}
       {#each value as v, i (i)}
         <div class="item">
-          <svelte:component this={components[schema.items.type]} schema={schema.items} {components} bind:value={v} errors={errors && errors[i]} />
+          <svelte:component this={getComponent(components, schema.items.type)} {...getComponentProps(components, schema.items.type)} schema={schema.items} components={repackComponents(components, schema.items.type)} bind:value={v} errors={errors && errors[i]} />
           <button
             type="button"
             on:click={e => {
