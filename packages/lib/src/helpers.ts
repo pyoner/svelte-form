@@ -132,10 +132,7 @@ export function repackComponents(
   key?: string
 ): FormComponents {
   if (type === 'object') {
-    if (components.extra) {
-      if (!key) {
-        throw new Error('Missing key')
-      }
+    if (components.extra && key) {
       const extra = (components.extra as ExtraComponents)[key]
       return { ...components, extra }
     }
