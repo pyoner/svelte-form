@@ -54,4 +54,4 @@ export interface SvelteSchema extends JSONSchema {
   }
 }
 
-export const supportedTypes = ['boolean', 'null', 'integer', 'number', 'string', 'array', 'object']
+export const supportedTypes = ['array', 'boolean', 'null', 'number', 'object', 'string']
