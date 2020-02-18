@@ -22,7 +22,7 @@ export interface FieldComponents {
 export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]> {
   value: T | null
   errors: E | null
-  schema?: JSONSchema
+  schema?: SvelteSchema
   components?: FormComponents
 }
 
@@ -37,7 +37,7 @@ export interface FormComponents {
 
 export interface FormProps<T extends JSONSchemaType> {
   data: T
-  schema: JSONSchema
+  schema: SvelteSchema
   components: FormComponents
 }
 
