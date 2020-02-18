@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ErrorRecord } from '../types'
-  import { createProps, getComponent, getComponentProps, repackComponents } from '../helpers'
+  import { createProps, getComponent, getComponentProps } from '../helpers'
 
   const props = createProps<object, ErrorRecord>({})
   export let value = props.value
@@ -12,7 +12,13 @@
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
-      <svelte:component this={getComponent(components, propSchema.type)} {...getComponentProps(components, propSchema.type)} components={repackComponents(components, propSchema.type, key)} schema={propSchema} bind:value={value[key]} errors={errors && errors[key]} />
+      <svelte:component
+        this={getComponent(propSchema, components)}
+        {...getComponentProps(propSchema)}
+        {components}
+        schema={propSchema}
+        bind:value={value[key]}
+        errors={errors && errors[key]} />
     {/each}
   </svelte:component>
 {/if}

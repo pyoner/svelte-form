@@ -9,8 +9,7 @@
     errorsToMap,
     options as defaultOptions,
     getComponent,
-    getComponentProps,
-    repackComponents
+    getComponentProps
   } from '../helpers'
 
   export let schema: JSONSchema
@@ -51,7 +50,13 @@
   <form on:submit|preventDefault={submit} on:reset={reset}>
     <svelte:component this={components.layout}>
       <div slot="fields">
-        <svelte:component this={getComponent(components, schema.type)} {...getComponentProps(components, schema.type)} {schema} components={repackComponents(components, schema.type)} bind:value={data} {errors} />
+        <svelte:component
+          this={getComponent(schema, components)}
+          {...getComponentProps(schema)}
+          {components}
+          {schema}
+          bind:value={data}
+          {errors} />
       </div>
       <div slot="ctrl">
         <slot />

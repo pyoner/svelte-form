@@ -8,12 +8,11 @@ import {
   JSONObject,
   JSONSchema,
   JSONSchemaType,
-  JSONSchemaTypeName,
   ErrorRecord,
   Errors,
   FormComponents,
   Props,
-  ExtraComponents
+  SvelteSchema
 } from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
@@ -96,16 +95,12 @@ export function validate(ajv: Ajv.Ajv, schema: JSONSchema, data: JSONSchemaType)
 export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
-    .map(
-      (error): [string[], ErrorObject] => {
-        const pathSuffix =
-          error.keyword === 'required'
-            ? `.${(<Ajv.RequiredParams>error.params).missingProperty}`
-            : ''
-        const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
-        return [path, error]
-      }
-    )
+    .map((error): [string[], ErrorObject] => {
+      const pathSuffix =
+        error.keyword === 'required' ? `.${(<Ajv.RequiredParams>error.params).missingProperty}` : ''
+      const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
+      return [path, error]
+    })
     .reduce((acc, [path, error]) => {
       path.reduce((obj, key, i, arr) => {
         // build tree
@@ -126,45 +121,17 @@ export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
     }, errorMap)
 }
 
-export function repackComponents(
-  components: FormComponents,
-  type: JSONSchemaTypeName,
-  key?: string
-): FormComponents {
-  if (type === 'object') {
-    if (components.extra && key) {
-      const extra = (components.extra as ExtraComponents)[key]
-      return { ...components, extra }
-    }
-  }
-
-  return components
-}
-
 export function getComponent(
-  components: FormComponents,
-  type: JSONSchemaTypeName
+  schema: SvelteSchema,
+  components: FormComponents
 ): typeof SvelteComponent {
-  if (type !== 'object') {
-    const extraComponent = components.extra
-    if (extraComponent) {
-      if (Array.isArray(extraComponent)) {
-        return extraComponent[0] as typeof SvelteComponent
-      }
-      return extraComponent as typeof SvelteComponent
-    }
+  if (typeof schema.type !== 'string') {
+    throw new Error(`Type "${schema.type}" is not supported`)
   }
 
-  return components.fields[type]
+  return (schema.$svelte && schema.$svelte.component) || components.fields[schema.type]
 }
 
-export function getComponentProps(components: FormComponents, type: JSONSchemaTypeName): Props {
-  if (type !== 'object') {
-    const extraComponent = components.extra
-    if (extraComponent && Array.isArray(extraComponent)) {
-      return extraComponent[1] as Props
-    }
-  }
-
-  return {}
+export function getComponentProps(schema: SvelteSchema): Props {
+  return (schema.$svelte && schema.$svelte.props) || {}
 }

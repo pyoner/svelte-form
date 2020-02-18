@@ -27,18 +27,12 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
 }
 
 export type Props = Record<string, any>
-export type SvelteComponentTuple = [typeof SvelteComponent, Props]
-
-export interface ExtraComponents {
-  [k: string]: typeof SvelteComponent | SvelteComponentTuple | ExtraComponents
-}
 
 export interface FormComponents {
   layout: typeof SvelteComponent
   wrapper: typeof SvelteComponent
   form: typeof SvelteComponent
   fields: FieldComponents
-  extra?: ExtraComponents | typeof SvelteComponent | SvelteComponentTuple
 }
 
 export interface FormProps<T extends JSONSchemaType> {
@@ -52,3 +46,12 @@ export interface ErrorRecord {
 }
 
 export type Errors = ErrorRecord | ErrorObject[]
+
+export interface SvelteSchema extends JSONSchema {
+  $svelte?: {
+    component?: typeof SvelteComponent
+    props?: Props
+  }
+}
+
+export const supportedTypes = ['boolean', 'null', 'integer', 'number', 'string', 'array', 'object']
