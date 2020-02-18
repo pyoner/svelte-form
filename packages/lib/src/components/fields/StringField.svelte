@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps } from '../helpers'
+  import { createProps } from '../../helpers'
 
   const props = createProps<string>()
   export let value = props.value

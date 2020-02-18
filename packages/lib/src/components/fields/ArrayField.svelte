@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { JSONSchemaArray, ErrorRecord } from '../types'
-  import { createProps, getComponent, getComponentProps } from '../helpers'
+  import { JSONSchemaArray, ErrorRecord } from '../../types'
+  import { createProps, getComponent, getComponentProps } from '../../helpers'
 
   const props = createProps<JSONSchemaArray, ErrorRecord>([])
   export let value = props.value

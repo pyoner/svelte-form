@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { createProps } from '../helpers'
+  import { createProps } from '../../helpers'
 
-  const props = createProps<boolean>()
+  const props = createProps<number>()
   export let value = props.value
   export let errors = props.errors
   export let schema = props.schema
@@ -10,6 +10,6 @@
 
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema} {errors}>
-    <input type="checkbox" bind:checked={value} />
+    <input type="number" bind:value />
   </svelte:component>
 {/if}

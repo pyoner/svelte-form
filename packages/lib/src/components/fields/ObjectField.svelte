@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { ErrorRecord } from '../types'
-  import { createProps, getComponent, getComponentProps } from '../helpers'
+  import { ErrorRecord } from '../../types'
+  import { createProps, getComponent, getComponentProps } from '../../helpers'
 
   const props = createProps<object, ErrorRecord>({})
   export let value = props.value
