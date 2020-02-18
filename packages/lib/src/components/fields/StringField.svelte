@@ -14,7 +14,7 @@
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema} {errors}>
     {#if format == 'date-time'}
-      <input type="datatime" bind:value />
+      <input type="datetime" bind:value />
     {:else if format == 'date'}
       <input type="date" bind:value />
     {:else if format == 'time'}
