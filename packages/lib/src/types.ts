@@ -24,6 +24,7 @@ export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorOb
   errors: E | null
   schema?: SvelteSchema
   components?: FormComponents
+  props?: Props
 }
 
 export type Props = Record<string, any>

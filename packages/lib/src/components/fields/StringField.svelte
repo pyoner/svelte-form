@@ -1,11 +1,12 @@
 <script lang="ts">
   import { createProps } from '../../helpers'
 
-  const props = createProps<string>()
-  export let value = props.value
-  export let errors = props.errors
-  export let schema = props.schema
-  export let components = props.components
+  const p = createProps<string>()
+  export let value = p.value
+  export let errors = p.errors
+  export let schema = p.schema
+  export let components = p.components
+  export let props = p.props
 
   let format = ''
   $: format = (schema && schema.format) || ''
@@ -14,13 +15,13 @@
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema} {errors}>
     {#if format == 'date-time'}
-      <input type="datetime" bind:value />
+      <input {...props} type="datetime" bind:value />
     {:else if format == 'date'}
-      <input type="date" bind:value />
+      <input {...props} type="date" bind:value />
     {:else if format == 'time'}
-      <input type="time" bind:value />
+      <input {...props} type="time" bind:value />
     {:else}
-      <input type="text" bind:value />
+      <input {...props} type="text" bind:value />
     {/if}
   </svelte:component>
 {/if}

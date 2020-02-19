@@ -1,15 +1,16 @@
 <script lang="ts">
   import { createProps } from '../../helpers'
 
-  const props = createProps<boolean>()
-  export let value = props.value
-  export let errors = props.errors
-  export let schema = props.schema
-  export let components = props.components
+  const p = createProps<boolean>()
+  export let value = p.value
+  export let errors = p.errors
+  export let schema = p.schema
+  export let components = p.components
+  export let props = p.props
 </script>
 
 {#if schema && components}
   <svelte:component this={components.wrapper} {schema} {errors}>
-    <input type="checkbox" bind:checked={value} />
+    <input {...props} type="checkbox" bind:checked={value} />
   </svelte:component>
 {/if}

@@ -2,11 +2,12 @@
   import { JSONSchemaArray, ErrorRecord } from '../../types'
   import { createProps, getComponent, getComponentProps } from '../../helpers'
 
-  const props = createProps<JSONSchemaArray, ErrorRecord>([])
-  export let value = props.value
-  export let errors = props.errors
-  export let schema = props.schema
-  export let components = props.components
+  const p = createProps<JSONSchemaArray, ErrorRecord>([])
+  export let value = p.value
+  export let errors = p.errors
+  export let schema = p.schema
+  export let components = p.components
+  export let props = p.props
 
   const removeItem = (index: number) => {
     if (!value) {
@@ -42,7 +43,7 @@
         <div class="item">
           <svelte:component
             this={getComponent(schema.items, components)}
-            {...getComponentProps(schema.items)}
+            props={getComponentProps(schema.items)}
             {components}
             schema={schema.items}
             bind:value={v}
