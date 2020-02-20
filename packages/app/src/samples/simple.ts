@@ -1,3 +1,5 @@
+import TextareaField from "@pyoner/svelte-form/src/components/fields/extra/TextareaField.svelte";
+
 export const schema = {
   title: "A registration form",
   description: "A simple form example.",
@@ -7,7 +9,12 @@ export const schema = {
     firstName: {
       type: "string",
       title: "First name",
-      default: "Chuck"
+      default: "Chuck",
+      $svelte: {
+        props: {
+          autofocus: true
+        }
+      }
     },
     lastName: {
       type: "string",
@@ -19,7 +26,10 @@ export const schema = {
     },
     bio: {
       type: "string",
-      title: "Bio"
+      title: "Bio",
+      $svelte: {
+        component: TextareaField
+      }
     },
     password: {
       type: "string",
