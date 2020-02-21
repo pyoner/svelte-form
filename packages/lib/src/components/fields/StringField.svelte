@@ -1,12 +1,18 @@
 <script lang="ts">
-  import { createProps } from '../../helpers'
+  import { createProps, defaultValue } from '../../helpers'
 
-  const p = createProps<string>()
+  type T = string
+  const p = createProps<T>()
   export let value = p.value
   export let errors = p.errors
   export let schema = p.schema
   export let components = p.components
   export let props = p.props
+
+  /* on reset do recalc a default value */
+  $: if (schema && value === null) {
+    value = defaultValue<T | null>(schema, value)
+  }
 
   let format = ''
   $: format = (schema && schema.format) || ''
@@ -21,7 +27,7 @@
     {:else if format == 'time'}
       <input {...props} type="time" bind:value />
     {:else}
-      <input {...props} type="text" bind:value />
+      <input type="text" {...props} bind:value />
     {/if}
   </svelte:component>
 {/if}

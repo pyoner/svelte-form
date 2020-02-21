@@ -42,17 +42,17 @@ export function objectDefaultValue(schema: JSONSchema, value: JSONObject | null)
   return v
 }
 
-export function defaultValue(schema: JSONSchema, value: JSONSchemaType): JSONSchemaType {
+export function defaultValue<T extends JSONSchemaType>(schema: JSONSchema, value: T): T {
   if (value === null && schema.default !== undefined) {
-    value = schema.default
+    value = schema.default as T
   }
 
   switch (schema.type) {
     case 'object':
-      return objectDefaultValue(schema, <JSONObject>value)
+      return objectDefaultValue(schema, <JSONObject>value) as T
 
     case 'array':
-      return value || []
+      return (value || []) as T
   }
 
   return value

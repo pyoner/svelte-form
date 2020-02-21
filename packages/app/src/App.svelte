@@ -1,12 +1,15 @@
 <script lang="ts">
   import Ajv from "ajv";
-  import { Form, components as defaultComponents } from "@pyoner/svelte-form";
+  import { Form, components } from "@pyoner/svelte-form";
   import jsonSchemaDraft4 from "ajv/lib/refs/json-schema-draft-04.json";
 
   import * as simple from "./samples/simple";
   import * as single from "./samples/single";
 
-  let samples = [["Simple", simple], ["Single", single]];
+  let samples = [
+    ["Simple", simple],
+    ["Single", single]
+  ];
 
   const ajv = new Ajv({ schemaId: "auto" });
   ajv.addMetaSchema(jsonSchemaDraft4);
@@ -15,7 +18,7 @@
     ajv
   };
 
-  let schema, data, components;
+  let schema, data;
 </script>
 
 <ul>
@@ -24,10 +27,9 @@
       <a
         on:click={() => {
           schema = module.schema;
-          components = { ...defaultComponents, extra: module.extra };
           data = module.data;
         }}>
-         {name}
+        {name}
       </a>
     </li>
   {/each}

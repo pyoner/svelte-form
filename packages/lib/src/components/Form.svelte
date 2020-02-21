@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, createEventDispatcher } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
 
   import { JSONSchema, JSONSchemaType, Errors, FormComponents } from '../types'
   import {
@@ -12,8 +12,9 @@
     getComponentProps
   } from '../helpers'
 
+  type T = JSONSchemaType
   export let schema: JSONSchema
-  export let data: JSONSchemaType = null
+  export let data: T = null
   export let components: FormComponents
   export let options = defaultOptions
 
@@ -34,33 +35,28 @@
   }
 
   const reset = (e: Event) => {
-    errors = null
-    data = defaultValue(schema, null)
-    dispatch('reset', normalizeValue(data))
+    setTimeout(() => {
+      errors = null
+      data = null
+      console.log('reset data', data)
+      dispatch('reset', data)
+    }, 100)
   }
-
-  let mounted = false
-  onMount(() => {
-    mounted = true
-    data = defaultValue(schema, data)
-  })
 </script>
 
-{#if mounted}
-  <form on:submit|preventDefault={submit} on:reset={reset}>
-    <svelte:component this={components.layout}>
-      <div slot="fields">
-        <svelte:component
-          this={getComponent(schema, components)}
-          props={getComponentProps(schema)}
-          {components}
-          {schema}
-          bind:value={data}
-          {errors} />
-      </div>
-      <div slot="ctrl">
-        <slot />
-      </div>
-    </svelte:component>
-  </form>
-{/if}
+<form on:submit|preventDefault={submit} on:reset|preventDefault={reset}>
+  <svelte:component this={components.layout}>
+    <div slot="fields">
+      <svelte:component
+        this={getComponent(schema, components)}
+        props={getComponentProps(schema)}
+        {components}
+        {schema}
+        bind:value={data}
+        {errors} />
+    </div>
+    <div slot="ctrl">
+      <slot />
+    </div>
+  </svelte:component>
+</form>

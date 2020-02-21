@@ -1,13 +1,19 @@
 <script lang="ts">
   import { JSONSchemaArray, ErrorRecord } from '../../types'
-  import { createProps, getComponent, getComponentProps } from '../../helpers'
+  import { createProps, getComponent, getComponentProps, defaultValue } from '../../helpers'
 
-  const p = createProps<JSONSchemaArray, ErrorRecord>([])
+  type T = JSONSchemaArray
+  const p = createProps<T, ErrorRecord>([])
   export let value = p.value
   export let errors = p.errors
   export let schema = p.schema
   export let components = p.components
   export let props = p.props
+
+  /* on reset do recalc a default value */
+  $: if (schema && value === null) {
+    value = defaultValue<T | null>(schema, value)
+  }
 
   const removeItem = (index: number) => {
     if (!value) {

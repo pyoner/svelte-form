@@ -34,7 +34,12 @@ export const schema = {
     password: {
       type: "string",
       title: "Password",
-      minLength: 3
+      minLength: 3,
+      $svelte: {
+        props: {
+          type: "password"
+        }
+      }
     },
     telephone: {
       type: "string",
