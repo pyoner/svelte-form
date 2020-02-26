@@ -23,6 +23,16 @@
     value = [...value]
   }
 
+  const moveItem = (index: number, pos: number) => {
+    if (!value) {
+      return
+    }
+    const current = value[index]
+    value[index] = value[pos]
+    value[pos] = current
+    value = [...value]
+  }
+
   let showItemForm = false
   const renderItemForm = () => {
     showItemForm = true
@@ -60,6 +70,22 @@
               removeItem(i)
             }}>
             Remove
+          </button>
+          <button
+            type="button"
+            disabled={i <= 0}
+            on:click={e => {
+              moveItem(i, i - 1)
+            }}>
+            Move Up
+          </button>
+          <button
+            type="button"
+            disabled={i + 1 == value.length}
+            on:click={e => {
+              moveItem(i, i + 1)
+            }}>
+            Move Down
           </button>
         </div>
       {/each}

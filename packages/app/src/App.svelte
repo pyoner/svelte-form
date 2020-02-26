@@ -5,10 +5,12 @@
 
   import * as simple from "./samples/simple";
   import * as single from "./samples/single";
+  import * as array from "./samples/array";
 
   let samples = [
     ["Simple", simple],
-    ["Single", single]
+    ["Single", single],
+    ["Array", array]
   ];
 
   const ajv = new Ajv({ schemaId: "auto" });
@@ -25,6 +27,7 @@
   {#each samples as [name, module] (name)}
     <li>
       <a
+        href="#{name}"
         on:click={() => {
           schema = module.schema;
           value = module.value;
