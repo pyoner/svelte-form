@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
+  import { createEventDispatcher, tick } from 'svelte'
 
   import { JSONSchema, JSONSchemaType, Errors, FormComponents } from '../types'
   import {
@@ -34,13 +34,12 @@
     }
   }
 
-  const reset = (e: Event) => {
-    setTimeout(() => {
-      errors = null
-      data = null
-      console.log('reset data', data)
-      dispatch('reset', data)
-    }, 100)
+  const reset = async (e: Event) => {
+    errors = null
+    data = null
+    await tick()
+    console.log('reset data', data)
+    dispatch('reset', normalizeValue(data))
   }
 </script>
 
