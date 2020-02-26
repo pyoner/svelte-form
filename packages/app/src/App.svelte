@@ -18,7 +18,7 @@
     ajv
   };
 
-  let schema, data;
+  let schema, value;
 </script>
 
 <ul>
@@ -27,7 +27,7 @@
       <a
         on:click={() => {
           schema = module.schema;
-          data = module.data;
+          value = module.value;
         }}>
         {name}
       </a>
@@ -39,7 +39,7 @@
   <Form
     {schema}
     {components}
-    bind:data
+    bind:value
     on:submit={e => {
       console.log('submit', e);
     }}

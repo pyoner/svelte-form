@@ -14,7 +14,7 @@
 
   type T = JSONSchemaType
   export let schema: JSONSchema
-  export let data: T = null
+  export let value: T = null
   export let components: FormComponents
   export let options = defaultOptions
 
@@ -23,23 +23,20 @@
   const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
     errors = null
-    const value = normalizeValue(data)
-    const errorList = validate(options.ajv, schema, value)
+    const v = normalizeValue(value)
+    const errorList = validate(options.ajv, schema, v)
     if (errorList) {
-      console.log(errorList)
       errors = schema.type === 'object' ? errorsToMap(errorList) : errorList
-      console.log(errors)
     } else {
-      dispatch('submit', value)
+      dispatch('submit', v)
     }
   }
 
   const reset = async (e: Event) => {
     errors = null
-    data = null
+    value = null
     await tick()
-    console.log('reset data', data)
-    dispatch('reset', normalizeValue(data))
+    dispatch('reset', normalizeValue(value))
   }
 </script>
 
@@ -51,7 +48,7 @@
         props={getComponentProps(schema)}
         {components}
         {schema}
-        bind:value={data}
+        bind:value
         {errors} />
     </div>
     <div slot="ctrl">

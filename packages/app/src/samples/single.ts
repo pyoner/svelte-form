@@ -3,5 +3,4 @@ export const schema = {
   type: "string"
 };
 
-export const extra = undefined;
-export const data = "initial value";
+export const value = "initial value";

@@ -37,7 +37,7 @@ export interface FormComponents {
 }
 
 export interface FormProps<T extends JSONSchemaType> {
-  data: T
+  value: T
   schema: SvelteSchema
   components: FormComponents
 }
