@@ -16,7 +16,8 @@
   const ajv = new Ajv({
     schemaId: "auto",
     jsonPointers: true,
-    allErrors: true
+    allErrors: true,
+    coerceTypes: true
   });
   ajv.addMetaSchema(jsonSchemaDraft4);
 
