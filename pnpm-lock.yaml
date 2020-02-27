@@ -40,6 +40,7 @@ importers:
   packages/lib:
     dependencies:
       ajv: 6.11.0
+      ramda: 0.27.0
       type-detect: 4.0.8
     devDependencies:
       '@commitlint/cli': 8.3.5
@@ -48,6 +49,7 @@ importers:
       '@types/jest': 24.9.1
       '@types/json-schema': 7.0.4
       '@types/node': 13.7.0
+      '@types/ramda': 0.26.42
       '@types/type-detect': 4.0.1
       '@wessberg/rollup-plugin-ts': 1.2.16_rollup@1.31.0+typescript@3.7.5
       camelcase: 5.3.1
@@ -78,6 +80,7 @@ importers:
       travis-deploy-once: 5.0.11
       ts-jest: 24.3.0_jest@24.9.0
       ts-node: 8.6.2_typescript@3.7.5
+      ts-toolbelt: 6.3.5
       tslib: 1.10.0
       tslint: 5.20.1_typescript@3.7.5
       tslint-config-prettier: 1.18.0
@@ -91,6 +94,7 @@ importers:
       '@types/jest': ^24.9.0
       '@types/json-schema': ^7.0.4
       '@types/node': ^13.1.8
+      '@types/ramda': ^0.26.42
       '@types/type-detect': ^4.0.1
       '@wessberg/rollup-plugin-ts': ^1.2.13
       ajv: ^6.11.0
@@ -108,6 +112,7 @@ importers:
       prettier: ^1.19.1
       prettier-plugin-svelte: ^0.7.0
       prompt: ^1.0.0
+      ramda: ^0.27.0
       replace-in-file: ^5.0.2
       rimraf: ^3.0.0
       rollup: ^1.29.0
@@ -122,6 +127,7 @@ importers:
       travis-deploy-once: ^5.0.11
       ts-jest: ^24.3.0
       ts-node: ^8.6.2
+      ts-toolbelt: ^6.3.5
       tslib: ^1.10.0
       tslint: ^5.20.1
       tslint-config-prettier: ^1.18.0
@@ -1628,6 +1634,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
+  /@types/ramda/0.26.42:
+    dependencies:
+      ts-toolbelt: 6.3.5
+    dev: true
+    resolution:
+      integrity: sha512-HjMKhIWHR6SPfAR24ghGkzoG/8aBRr1Pb7c2gskneuwgtDJBhO3KJ0tM0sLOX7gjf4LmQ3NLp6wTkDfjKEqimA==
   /@types/resolve/0.0.8:
     dependencies:
       '@types/node': 13.7.0
@@ -6692,6 +6704,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
+  /ramda/0.27.0:
+    dev: false
+    resolution:
+      integrity: sha512-pVzZdDpWwWqEVVLshWUHjNwuVP7SfcmPraYuqocJp1yo2U1R7P+5QAfDhdItkuoGqIBnBYrtPp7rEPqDn9HlZA==
   /rc/1.2.8:
     dependencies:
       deep-extend: 0.6.0
@@ -8168,6 +8184,10 @@ packages:
       typescript: '>=2.7'
     resolution:
       integrity: sha512-4mZEbofxGqLL2RImpe3zMJukvEvcO1XP8bj8ozBPySdCUXEcU5cIRwR0aM3R+VoZq7iXc8N86NC0FspGRqP4gg==
+  /ts-toolbelt/6.3.5:
+    dev: true
+    resolution:
+      integrity: sha512-Xvh/gvBBCRU1qGeholaN8kgiwBH4neyun6VIDDsJf/jNwz4PXyR8ZY/5qdpB1DuMBrWMG2oTT1oWcOzGPOnluQ==
   /tslib/1.10.0:
     dev: true
     resolution:

@@ -13,7 +13,11 @@
     ["Array", array]
   ];
 
-  const ajv = new Ajv({ schemaId: "auto" });
+  const ajv = new Ajv({
+    schemaId: "auto",
+    jsonPointers: true,
+    allErrors: true
+  });
   ajv.addMetaSchema(jsonSchemaDraft4);
 
   const options = {
@@ -42,7 +46,8 @@
   <Form
     {schema}
     {components}
-    bind:value
+    {value}
+    {options}
     on:submit={e => {
       console.log('submit', e);
     }}

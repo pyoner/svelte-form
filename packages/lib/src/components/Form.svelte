@@ -22,12 +22,17 @@
 
   const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
+    console.log('Form submit event', e)
     errors = null
     const v = normalizeValue(value)
     const errorList = validate(options.ajv, schema, v)
     if (errorList) {
-      errors = schema.type === 'object' ? errorsToMap(errorList) : errorList
+      console.log('Form error', errorList)
+      /* errors = schema.type === 'object' ? errorsToMap(errorList) : errorList */
+      errors = errorsToMap(errorList)
+      console.log('Form error', errors)
     } else {
+      console.log('Form submit', v)
       dispatch('submit', v)
     }
   }

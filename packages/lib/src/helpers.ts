@@ -2,6 +2,7 @@ import typeDetect from 'type-detect'
 import Ajv, { ErrorObject } from 'ajv'
 import jsonSchemaDraft4 from 'ajv/lib/refs/json-schema-draft-04.json'
 import { SvelteComponent } from 'svelte'
+import { lensPath, over, append } from 'ramda'
 
 import {
   FieldProps,
@@ -85,7 +86,11 @@ let ajv: Ajv.Ajv
 export const options = {
   get ajv() {
     if (!ajv) {
-      ajv = new Ajv({ schemaId: 'auto', allErrors: true })
+      ajv = new Ajv({
+        schemaId: 'auto',
+        jsonPointers: true,
+        allErrors: true
+      })
       ajv.addMetaSchema(jsonSchemaDraft4)
     }
     return ajv
@@ -103,28 +108,17 @@ export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
   const errorMap: ErrorRecord = {}
   return errors
     .map((error): [string[], ErrorObject] => {
-      const pathSuffix =
-        error.keyword === 'required' ? `.${(<Ajv.RequiredParams>error.params).missingProperty}` : ''
-      const path = `${error.dataPath}${pathSuffix}`.split('.').slice(1)
+      const path = error.dataPath ? error.dataPath.replace(/^\//, '').split('/') : []
+      const propName =
+        error.keyword === 'required' ? (<Ajv.RequiredParams>error.params).missingProperty : ''
+      if (propName) {
+        path.push(propName)
+      }
       return [path, error]
     })
     .reduce((acc, [path, error]) => {
-      path.reduce((obj, key, i, arr) => {
-        // build tree
-        if (i !== arr.length - 1) {
-          return (obj[key] ? obj[key] : (obj[key] = obj[key] || {})) as ErrorRecord
-        }
-
-        // add error
-        if (obj[key]) {
-          ;(obj[key] as ErrorObject[]).push(error)
-        } else {
-          obj[key] = [error]
-        }
-
-        return obj
-      }, acc)
-      return acc
+      const lens = lensPath(path)
+      return over(lens, (list = []) => append(error, list), acc)
     }, errorMap)
 }
 
