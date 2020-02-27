@@ -10,9 +10,9 @@
   export let components = p.components
   export let props = p.props
 
-  /* on reset do recalc a default value */
+  /* recalc a default value */
   $: if (schema && value === null) {
-    value = defaultValue<T | null>(schema, value)
+    value = defaultValue<T>(schema, value)
   }
 
   const removeItem = (index: number) => {

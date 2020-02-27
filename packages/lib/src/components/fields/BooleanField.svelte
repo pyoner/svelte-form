@@ -9,8 +9,9 @@
   export let components = p.components
   export let props = p.props
 
+  /* recalc a default value */
   $: if (schema && value == null) {
-    value = defaultValue<T | null>(schema, value)
+    value = defaultValue<T>(schema, value)
   }
 </script>
 
