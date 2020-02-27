@@ -9,7 +9,7 @@
   export let components = p.components
   export let props = p.props
 
-  $: if (schema && value === null) {
+  $: if (schema && value == null) {
     value = defaultValue<T | null>(schema, value)
   }
 </script>

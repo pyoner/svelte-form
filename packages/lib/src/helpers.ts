@@ -42,8 +42,15 @@ export function objectDefaultValue(schema: JSONSchema, value: JSONObject | null)
   return v
 }
 
-export function defaultValue<T extends JSONSchemaType>(schema: JSONSchema, value: T): T {
-  if (value === null && schema.default !== undefined) {
+export function defaultValue<T extends JSONSchemaType>(
+  schema: JSONSchema,
+  value: T | null
+): T | null {
+  if (value === undefined) {
+    value = null
+  }
+
+  if (value == null && schema.default !== undefined) {
     value = schema.default as T
   }
 
@@ -63,7 +70,7 @@ export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | 
   for (const k in value) {
     let v = value[k]
     v = typeDetect(v) === 'Object' ? normalizeObject(v as JSONObject, false) : v
-    if (v !== null) {
+    if (!(v === null || v === undefined)) {
       obj[k] = v
     }
   }

@@ -10,7 +10,7 @@
   export let props = p.props
 
   /* on reset do recalc a default value */
-  $: if (schema && value === null) {
+  $: if (schema && value == null) {
     value = defaultValue<T | null>(schema, value)
   }
 
