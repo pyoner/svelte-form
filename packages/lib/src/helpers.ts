@@ -13,7 +13,8 @@ import {
   Errors,
   FormComponents,
   Props,
-  SvelteSchema
+  SvelteSchema,
+  Validator
 } from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = Error[]>(
@@ -96,12 +97,14 @@ export const options = {
     return ajv
   }
 }
-export function validate(ajv: Ajv.Ajv, schema: JSONSchema, data: JSONSchemaType) {
-  const valid = ajv.validate(schema, data) as boolean
-  if (!valid) {
-    return ajv.errors as Ajv.ErrorObject[]
+export function createAjvValidator(ajv: Ajv.Ajv): Validator {
+  return (schema: JSONSchema, data: JSONSchemaType) => {
+    const valid = ajv.validate(schema, data) as boolean
+    if (!valid) {
+      return errorsToMap(ajv.errors as Ajv.ErrorObject[])
+    }
+    return null
   }
-  return null
 }
 
 export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
