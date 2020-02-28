@@ -16,7 +16,7 @@ import {
   SvelteSchema
 } from './types'
 
-export function createProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]>(
+export function createProps<T extends JSONSchemaType, E extends Errors = Error[]>(
   value: T | null = null
 ): FieldProps<T, E> {
   const props: FieldProps<T, E> = {

@@ -1,5 +1,4 @@
 import { JSONSchema7, JSONSchema7Type, JSONSchema7Array } from 'json-schema'
-import { ErrorObject } from 'ajv'
 import { SvelteComponent } from 'svelte'
 
 export interface JSONSchema extends JSONSchema7 {}
@@ -19,7 +18,7 @@ export interface FieldComponents {
   object: typeof SvelteComponent
 }
 
-export interface FieldProps<T extends JSONSchemaType, E extends Errors = ErrorObject[]> {
+export interface FieldProps<T extends JSONSchemaType, E extends Errors = Error[]> {
   value: T | null
   errors: E | null
   schema?: SvelteSchema
@@ -40,13 +39,14 @@ export interface FormProps<T extends JSONSchemaType> {
   value: T
   schema: SvelteSchema
   components: FormComponents
+  validator: Validator
 }
 
 export interface ErrorRecord {
-  [k: string]: ErrorObject[] | ErrorRecord
+  [k: string]: Error[] | ErrorRecord
 }
 
-export type Errors = ErrorRecord | ErrorObject[]
+export type Errors = ErrorRecord | Error[]
 
 export interface SvelteSchema extends JSONSchema {
   $svelte?: {
@@ -56,3 +56,5 @@ export interface SvelteSchema extends JSONSchema {
 }
 
 export const supportedTypes = ['array', 'boolean', 'null', 'number', 'object', 'string']
+
+export type Validator = (schema: JSONSchema, data: JSONSchemaType) => Errors | null

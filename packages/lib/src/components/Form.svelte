@@ -1,35 +1,24 @@
 <script lang="ts">
   import { createEventDispatcher, tick } from 'svelte'
 
-  import { JSONSchema, JSONSchemaType, Errors, FormComponents } from '../types'
-  import {
-    defaultValue,
-    normalizeValue,
-    validate,
-    errorsToMap,
-    options as defaultOptions,
-    getComponent,
-    getComponentProps
-  } from '../helpers'
+  import { JSONSchema, JSONSchemaType, Errors, FormComponents, Validator } from '../types'
+  import { defaultValue, normalizeValue, getComponent, getComponentProps } from '../helpers'
 
   type T = JSONSchemaType
   export let schema: JSONSchema
   export let value: T = null
   export let components: FormComponents
-  export let options = defaultOptions
+  export let validator: Validator
 
   let errors: Errors | null = null
 
   const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
     console.log('Form submit event', e)
-    errors = null
     const v = normalizeValue(value)
-    const errorList = validate(options.ajv, schema, v)
-    if (errorList) {
-      console.log('Form error', errorList)
-      /* errors = schema.type === 'object' ? errorsToMap(errorList) : errorList */
-      errors = errorsToMap(errorList)
+    errors = validator(schema, v)
+
+    if (errors) {
       console.log('Form error', errors)
     } else {
       console.log('Form submit', v)
