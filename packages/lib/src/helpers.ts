@@ -1,20 +1,15 @@
 import typeDetect from 'type-detect'
-import Ajv, { ErrorObject } from 'ajv'
-import jsonSchemaDraft4 from 'ajv/lib/refs/json-schema-draft-04.json'
 import { SvelteComponent } from 'svelte'
-import { lensPath, over, append } from 'ramda'
 
 import {
   FieldProps,
   JSONObject,
   JSONSchema,
   JSONSchemaType,
-  ErrorRecord,
   Errors,
   FormComponents,
   Props,
-  SvelteSchema,
-  Validator
+  SvelteSchema
 } from './types'
 
 export function createProps<T extends JSONSchemaType, E extends Errors = Error[]>(
@@ -81,48 +76,6 @@ export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | 
 
 export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
-}
-
-let ajv: Ajv.Ajv
-export const options = {
-  get ajv() {
-    if (!ajv) {
-      ajv = new Ajv({
-        schemaId: 'auto',
-        jsonPointers: true,
-        allErrors: true
-      })
-      ajv.addMetaSchema(jsonSchemaDraft4)
-    }
-    return ajv
-  }
-}
-export function createAjvValidator(ajv: Ajv.Ajv): Validator {
-  return (schema: JSONSchema, data: JSONSchemaType) => {
-    const valid = ajv.validate(schema, data) as boolean
-    if (!valid) {
-      return errorsToMap(ajv.errors as Ajv.ErrorObject[])
-    }
-    return null
-  }
-}
-
-export function errorsToMap(errors: ErrorObject[]): ErrorRecord {
-  const errorMap: ErrorRecord = {}
-  return errors
-    .map((error): [string[], ErrorObject] => {
-      const path = error.dataPath ? error.dataPath.replace(/^\//, '').split('/') : []
-      const propName =
-        error.keyword === 'required' ? (<Ajv.RequiredParams>error.params).missingProperty : ''
-      if (propName) {
-        path.push(propName)
-      }
-      return [path, error]
-    })
-    .reduce((acc, [path, error]) => {
-      const lens = lensPath(path)
-      return over(lens, (list = []) => append(error, list), acc)
-    }, errorMap)
 }
 
 export function getComponent(
