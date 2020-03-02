@@ -1,10 +1,11 @@
 <script lang="ts">
   import { createEventDispatcher, tick } from 'svelte'
 
-  import { JSONSchema, JSONSchemaType, Errors, FormComponents, Validator } from '../types'
+  import { JSONSchema, Errors, Validator } from '@pyoner/svelte-form-common'
+  import { FormComponents } from '../types'
   import { defaultValue, normalizeValue, getComponent, getComponentProps } from '../helpers'
 
-  type T = JSONSchemaType
+  type T = any
   export let schema: JSONSchema
   export let value: T = null
   export let components: FormComponents

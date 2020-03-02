@@ -1,18 +1,11 @@
 import typeDetect from 'type-detect'
 import { SvelteComponent } from 'svelte'
 
-import {
-  FieldProps,
-  JSONObject,
-  JSONSchema,
-  JSONSchemaType,
-  Errors,
-  FormComponents,
-  Props,
-  SvelteSchema
-} from './types'
+import { JSONObject, JSONSchema } from '@pyoner/svelte-form-common'
 
-export function createProps<T extends JSONSchemaType, E extends Errors = Error[]>(
+import { FieldProps, Errors, FormComponents, Props, SvelteSchema } from './types'
+
+export function createProps<T extends any, E extends Errors = Error[]>(
   value: T | null = null
 ): FieldProps<T, E> {
   const props: FieldProps<T, E> = {
@@ -39,10 +32,7 @@ export function objectDefaultValue(schema: JSONSchema, value: JSONObject | null)
   return v
 }
 
-export function defaultValue<T extends JSONSchemaType>(
-  schema: JSONSchema,
-  value: T | null
-): T | null {
+export function defaultValue<T extends any>(schema: JSONSchema, value: T | null): T | null {
   if (value === undefined) {
     value = null
   }
@@ -74,7 +64,7 @@ export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | 
   return Object.keys(obj).length ? obj : isRoot ? {} : null
 }
 
-export function normalizeValue(value: JSONSchemaType): JSONSchemaType {
+export function normalizeValue(value: any): any {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
 }
 

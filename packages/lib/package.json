@@ -82,6 +82,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@pyoner/svelte-form-common": "workspace:^0.0.0",
     "@pyoner/svelte-ts-preprocess": "^1.2.1",
     "@types/jest": "^24.9.0",
     "@types/json-schema": "^7.0.4",

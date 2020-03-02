@@ -1,5 +1,6 @@
 import Ajv, { ErrorObject } from 'ajv'
 
+import { JSONSchema, ErrorRecord, Validator } from '@pyoner/svelte-form-common'
 import { lensPath, over, append } from 'ramda'
 
 export const options = {
@@ -9,7 +10,7 @@ export const options = {
 }
 
 export function createAjvValidator(ajv: Ajv.Ajv): Validator {
-  return (schema: JSONSchema, data: JSONSchemaType) => {
+  return (schema: JSONSchema, data: any) => {
     const valid = ajv.validate(schema, data) as boolean
     if (!valid) {
       return errorsToMap(ajv.errors as Ajv.ErrorObject[])

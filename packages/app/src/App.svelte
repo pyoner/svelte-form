@@ -1,6 +1,7 @@
 <script lang="ts">
   import Ajv from "ajv";
-  import { Form, components, helpers } from "@pyoner/svelte-form";
+  import { Form, components } from "@pyoner/svelte-form";
+  import { createAjvValidator } from "@pyoner/svelte-form-ajv";
   import jsonSchemaDraft4 from "ajv/lib/refs/json-schema-draft-04.json";
 
   import * as simple from "./samples/simple";
@@ -21,7 +22,7 @@
   });
   ajv.addMetaSchema(jsonSchemaDraft4);
 
-  const validator = helpers.createAjvValidator(ajv);
+  const validator = createAjvValidator(ajv);
 
   let schema, value;
 </script>

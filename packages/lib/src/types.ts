@@ -1,12 +1,5 @@
-import { JSONSchema7, JSONSchema7Type, JSONSchema7Array } from 'json-schema'
 import { SvelteComponent } from 'svelte'
-
-export interface JSONSchema extends JSONSchema7 {}
-export interface JSONSchemaArray extends JSONSchema7Array {}
-
-export type JSONSchemaType = JSONSchema7Type
-export type JSONObject = Record<string, JSONSchemaType>
-export type JSONSchemaTypeName = 'array' | 'boolean' | 'null' | 'number' | 'object' | 'string'
+import { JSONSchema } from '@pyoner/svelte-form-common'
 
 export interface FieldComponents {
   boolean: typeof SvelteComponent
@@ -18,7 +11,7 @@ export interface FieldComponents {
   object: typeof SvelteComponent
 }
 
-export interface FieldProps<T extends JSONSchemaType, E extends Errors = Error[]> {
+export interface FieldProps<T extends any, E extends Errors = Error[]> {
   value: T | null
   errors: E | null
   schema?: SvelteSchema
@@ -35,7 +28,7 @@ export interface FormComponents {
   fields: FieldComponents
 }
 
-export interface FormProps<T extends JSONSchemaType> {
+export interface FormProps<T extends any> {
   value: T
   schema: SvelteSchema
   components: FormComponents
@@ -55,6 +48,4 @@ export interface SvelteSchema extends JSONSchema {
   }
 }
 
-export const supportedTypes = ['array', 'boolean', 'null', 'number', 'object', 'string']
-
-export type Validator = (schema: JSONSchema, data: JSONSchemaType) => Errors | null
+export type Validator = (schema: JSONSchema, data: any) => Errors | null

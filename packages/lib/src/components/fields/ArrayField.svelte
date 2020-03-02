@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { JSONSchemaArray, ErrorRecord } from '../../types'
+  import { ErrorRecord } from '@pyoner/svelte-form-common'
   import { createProps, getComponent, getComponentProps, defaultValue } from '../../helpers'
 
-  type T = JSONSchemaArray
+  type T = Array<any>
   const p = createProps<T, ErrorRecord>([])
   export let value = p.value
   export let errors = p.errors
