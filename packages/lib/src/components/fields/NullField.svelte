@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps } from '../../helpers'
+  import { createProps, getComponent, getComponentProps } from '../../helpers'
 
   const p = createProps<null>()
   export let value = p.value
@@ -12,7 +12,7 @@
 </script>
 
 {#if schema && components}
-  <svelte:component this={components.wrapper} {schema} {errors}>
+  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema} {errors}>
     <input {...props} type="checkbox" bind:checked />
   </svelte:component>
 {/if}

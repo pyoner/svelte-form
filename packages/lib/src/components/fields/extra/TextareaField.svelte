@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps, defaultValue } from '../../../helpers'
+  import { createProps, defaultValue, getComponent, getComponentProps } from '../../../helpers'
 
   type T = string
   const p = createProps<T>()
@@ -19,7 +19,7 @@
 </script>
 
 {#if schema && components}
-  <svelte:component this={components.wrapper} {schema} {errors}>
+  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema} {errors}>
     <textarea {...props} bind:value />
   </svelte:component>
 {/if}

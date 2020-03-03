@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ErrorRecord } from '@pyoner/svelte-form-common'
-  import { createProps, getSchemaComponent, getSchemaComponentProps, defaultValue } from '../../helpers'
+  import { createProps, getSchemaComponent, getSchemaComponentProps, defaultValue, getComponent, getComponentProps } from '../../helpers'
 
   type T = Array<any>
   const p = createProps<T, ErrorRecord>([])
@@ -53,7 +53,7 @@
 </script>
 
 {#if components && schema && schema.items && schema.items.type}
-  <svelte:component this={components.wrapper} {schema}>
+    <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema}>
     {#if value}
       {#each value as v, i (i)}
         <div class="item">
@@ -93,7 +93,8 @@
 
     {#if showItemForm}
       <svelte:component
-        this={components.form}
+        {...getComponentProps(components.form)}
+        this={getComponent(components.form)}
         schema={schema.items}
         {components}
         on:submit={submit}

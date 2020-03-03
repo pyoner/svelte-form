@@ -3,7 +3,7 @@
 
   import { JSONSchema, Errors, Validator } from '@pyoner/svelte-form-common'
   import { FormComponents } from '../types'
-  import { defaultValue, normalizeValue, getSchemaComponent, getSchemaComponentProps } from '../helpers'
+  import { defaultValue, normalizeValue, getSchemaComponent, getSchemaComponentProps , getComponent, getComponentProps} from '../helpers'
 
   type T = any
   export let schema: JSONSchema
@@ -36,7 +36,7 @@
 </script>
 
 <form on:submit|preventDefault={submit} on:reset|preventDefault={reset}>
-  <svelte:component this={components.layout}>
+  <svelte:component {...getComponentProps(components.layout)} this={getComponent( components.layout )}>
     <div slot="fields">
       <svelte:component
         this={getSchemaComponent(schema, components)}

@@ -3,7 +3,7 @@ import { SvelteComponent } from 'svelte'
 
 import { JSONObject, JSONSchema } from '@pyoner/svelte-form-common'
 
-import { FieldProps, Errors, FormComponents, Props, SvelteSchema } from './types'
+import { FieldProps, Errors, FormComponents, Props, SvelteSchema, TSvelteComponent } from './types'
 
 export function createProps<T extends any, E extends Errors = Error[]>(
   value: T | null = null
@@ -81,4 +81,12 @@ export function getSchemaComponent(
 
 export function getSchemaComponentProps(schema: SvelteSchema): Props {
   return (schema.$svelte && schema.$svelte.props) || {}
+}
+
+export function getComponent(container: TSvelteComponent): typeof SvelteComponent {
+  return Array.isArray(container) ? container[0] : container
+}
+
+export function getComponentProps(container: TSvelteComponent): Props {
+  return Array.isArray(container) ? container[1] : {}
 }
