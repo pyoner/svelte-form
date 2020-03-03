@@ -1,9 +1,11 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import json from '@rollup/plugin-json'
+
 import sourceMaps from 'rollup-plugin-sourcemaps'
-import camelCase from 'camelcase'
 import typescript from '@wessberg/rollup-plugin-ts'
-import json from 'rollup-plugin-json'
+
+import camelCase from 'camelcase'
 
 import svelte from 'rollup-plugin-svelte'
 import { preprocess, createEnv, readConfigFile } from '@pyoner/svelte-ts-preprocess'

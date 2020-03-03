@@ -117,18 +117,17 @@ importers:
       typescript: ^3.0.3
   packages/lib:
     dependencies:
-      ajv: 6.11.0
-      ramda: 0.27.0
       type-detect: 4.0.8
     devDependencies:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
       '@pyoner/svelte-form-common': 'link:../common'
       '@pyoner/svelte-ts-preprocess': 1.2.1_typescript@3.7.5
+      '@rollup/plugin-commonjs': 11.0.2_rollup@1.31.0
+      '@rollup/plugin-json': 4.0.2_rollup@1.31.0
+      '@rollup/plugin-node-resolve': 7.1.1_rollup@1.31.0
       '@types/jest': 24.9.1
-      '@types/json-schema': 7.0.4
       '@types/node': 13.7.0
-      '@types/ramda': 0.26.42
       '@types/type-detect': 4.0.1
       '@wessberg/rollup-plugin-ts': 1.2.16_rollup@1.31.0+typescript@3.7.5
       camelcase: 5.3.1
@@ -159,7 +158,6 @@ importers:
       travis-deploy-once: 5.0.11
       ts-jest: 24.3.0_jest@24.9.0
       ts-node: 8.6.2_typescript@3.7.5
-      ts-toolbelt: 6.3.5
       tslib: 1.10.0
       tslint: 5.20.1_typescript@3.7.5
       tslint-config-prettier: 1.18.0
@@ -171,13 +169,13 @@ importers:
       '@commitlint/config-conventional': ^8.3.4
       '@pyoner/svelte-form-common': 'workspace:^0.0.0'
       '@pyoner/svelte-ts-preprocess': ^1.2.1
+      '@rollup/plugin-commonjs': ^11.0.2
+      '@rollup/plugin-json': ^4.0.2
+      '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^24.9.0
-      '@types/json-schema': ^7.0.4
       '@types/node': ^13.1.8
-      '@types/ramda': ^0.26.42
       '@types/type-detect': ^4.0.1
       '@wessberg/rollup-plugin-ts': ^1.2.13
-      ajv: ^6.11.0
       camelcase: ^5.3.1
       colors: ^1.4.0
       commitizen: ^4.0.3
@@ -192,7 +190,6 @@ importers:
       prettier: ^1.19.1
       prettier-plugin-svelte: ^0.7.0
       prompt: ^1.0.0
-      ramda: ^0.27.0
       replace-in-file: ^5.0.2
       rimraf: ^3.0.0
       rollup: ^1.29.0
@@ -207,7 +204,6 @@ importers:
       travis-deploy-once: ^5.0.11
       ts-jest: ^24.3.0
       ts-node: ^8.6.2
-      ts-toolbelt: ^6.3.5
       tslib: ^1.10.0
       tslint: ^5.20.1
       tslint-config-prettier: ^1.18.0
@@ -1713,6 +1709,21 @@ packages:
       typescript: ^3.4.4
     resolution:
       integrity: sha512-6iIcYcna76WmNFPl9k9kRXyW9ubLDnGT9lMuiDI8K+8TdA/tFxeXQdE9NeIYEITGNYfUseKbtc3/pN6xEww+WA==
+  /@rollup/plugin-commonjs/11.0.2_rollup@1.31.0:
+    dependencies:
+      '@rollup/pluginutils': 3.0.8_rollup@1.31.0
+      estree-walker: 1.0.1
+      is-reference: 1.1.4
+      magic-string: 0.25.6
+      resolve: 1.15.1
+      rollup: 1.31.0
+    dev: true
+    engines:
+      node: '>= 8.0.0'
+    peerDependencies:
+      rollup: ^1.20.0
+    resolution:
+      integrity: sha512-MPYGZr0qdbV5zZj8/2AuomVpnRVXRU5XKXb3HVniwRoRCreGlf5kOE081isNWeiLIi6IYkwTX9zE0/c7V8g81g==
   /@rollup/plugin-json/4.0.2_rollup@1.31.0:
     dependencies:
       '@rollup/pluginutils': 3.0.8_rollup@1.31.0
@@ -1722,6 +1733,21 @@ packages:
       rollup: ^1.20.0
     resolution:
       integrity: sha512-t4zJMc98BdH42mBuzjhQA7dKh0t4vMJlUka6Fz0c+iO5IVnWaEMiYBy1uBj9ruHZzXBW23IPDGL9oCzBkQ9Udg==
+  /@rollup/plugin-node-resolve/7.1.1_rollup@1.31.0:
+    dependencies:
+      '@rollup/pluginutils': 3.0.8_rollup@1.31.0
+      '@types/resolve': 0.0.8
+      builtin-modules: 3.1.0
+      is-module: 1.0.0
+      resolve: 1.15.1
+      rollup: 1.31.0
+    dev: true
+    engines:
+      node: '>= 8.0.0'
+    peerDependencies:
+      rollup: ^1.20.0
+    resolution:
+      integrity: sha512-14ddhD7TnemeHE97a4rLOhobfYvUVcaYuqTnL8Ti7Jxi9V9Jr5LY7Gko4HZ5k4h4vqQM0gBQt6tsp9xXW94WPA==
   /@rollup/pluginutils/3.0.8_rollup@1.31.0:
     dependencies:
       estree-walker: 1.0.1
@@ -2033,6 +2059,7 @@ packages:
     resolution:
       integrity: sha512-Fb38HkXSVA4L8fGKEZ6le5bB8r6MRWlOCZbVuWZcmOMSCd2wCYOwN1ibj8daIoV9naq7aaOZjrLCoCMptKU/4Q==
   /@types/json-schema/7.0.4:
+    dev: false
     resolution:
       integrity: sha512-8+KAKzEvSUdeo+kmqnKrqgeE+LcA0tjYWFY7RPProVYwnqDjukzO+3b6dLD56rYX5TdWejnEOLJYOIeh4CXKuA==
   /@types/lodash/4.14.149:
@@ -2055,6 +2082,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-GnZbirvmqZUzMgkFn70c74OQpTTUcCzlhQliTzYjQMqg+hVKcDnxdL19Ne3UdYzdMA/+W3eb646FWn/ZaT1NfQ==
+  /@types/node/13.7.7:
+    dev: true
+    resolution:
+      integrity: sha512-Uo4chgKbnPNlxQwoFmYIwctkQVkMMmsAoGGU4JKwLuvBefF0pCq4FybNSnfkfRCpC7ZW7kttcC/TrRtAJsvGtg==
   /@types/normalize-package-data/2.4.0:
     dev: true
     resolution:
@@ -2067,12 +2098,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
-  /@types/ramda/0.26.42:
-    dependencies:
-      ts-toolbelt: 6.3.5
-    dev: true
-    resolution:
-      integrity: sha512-HjMKhIWHR6SPfAR24ghGkzoG/8aBRr1Pb7c2gskneuwgtDJBhO3KJ0tM0sLOX7gjf4LmQ3NLp6wTkDfjKEqimA==
   /@types/ramda/0.26.43:
     dependencies:
       ts-toolbelt: 6.3.5
@@ -2081,7 +2106,7 @@ packages:
       integrity: sha512-VK2EaHR/fpeMNPDboGSPAmH+a6HN1pflWqRt67Jii2n8vGpYt6vxIBc1ZdoYrA/jQXRaGGpJKRiSPcHALRD3/A==
   /@types/resolve/0.0.8:
     dependencies:
-      '@types/node': 13.7.0
+      '@types/node': 13.7.7
     dev: true
     resolution:
       integrity: sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==
@@ -2301,15 +2326,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-quoaXsZ9/BLNae5yiNoUz+Nhkwz83GhWwtYFglcjEQB2NDHCIpApbqXxIFnm4Pq/Nvhrsq5sYJFyohrrxnTGAA==
-  /ajv/6.11.0:
-    dependencies:
-      fast-deep-equal: 3.1.1
-      fast-json-stable-stringify: 2.1.0
-      json-schema-traverse: 0.4.1
-      uri-js: 4.2.2
-    dev: false
-    resolution:
-      integrity: sha512-nCprB/0syFYy9fVYU1ox1l2KN8S9I+tziH8D4zdZuLT3N6RMlGSGt5FSTpAiHB/Whv8Qs1cWHma1aMKZyaHRKA==
   /ajv/6.12.0:
     dependencies:
       fast-deep-equal: 3.1.1
