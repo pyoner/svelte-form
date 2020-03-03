@@ -21,10 +21,12 @@ export interface FieldProps<T extends any, E extends Errors = Error[]> {
 
 export type Props = Record<string, any>
 
+export type TSvelteComponent = typeof SvelteComponent | [typeof SvelteComponent, Props]
+
 export interface FormComponents {
   layout: typeof SvelteComponent
   wrapper: typeof SvelteComponent
-  form: typeof SvelteComponent
+  form: TSvelteComponent
   fields: FieldComponents
 }
 

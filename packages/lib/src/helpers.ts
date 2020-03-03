@@ -68,7 +68,7 @@ export function normalizeValue(value: any): any {
   return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
 }
 
-export function getComponent(
+export function getSchemaComponent(
   schema: SvelteSchema,
   components: FormComponents
 ): typeof SvelteComponent {
@@ -79,6 +79,6 @@ export function getComponent(
   return (schema.$svelte && schema.$svelte.component) || components.fields[schema.type]
 }
 
-export function getComponentProps(schema: SvelteSchema): Props {
+export function getSchemaComponentProps(schema: SvelteSchema): Props {
   return (schema.$svelte && schema.$svelte.props) || {}
 }

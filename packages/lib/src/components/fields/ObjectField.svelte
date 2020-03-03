@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ErrorRecord } from '../../types'
-  import { createProps, getComponent, getComponentProps, defaultValue } from '../../helpers'
+  import { createProps, getSchemaComponent, getSchemaComponentProps, defaultValue } from '../../helpers'
 
   type T = object
   const p = createProps<T, ErrorRecord>({})
@@ -20,8 +20,8 @@
   <svelte:component this={components.wrapper} {schema}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
-        this={getComponent(propSchema, components)}
-        props={getComponentProps(propSchema)}
+        this={getSchemaComponent(propSchema, components)}
+        props={getSchemaComponentProps(propSchema)}
         {components}
         schema={propSchema}
         bind:value={value[key]}
