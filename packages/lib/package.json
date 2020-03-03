@@ -103,6 +103,7 @@
     "lint-staged": "^10.0.0",
     "prettier": "^1.19.1",
     "prettier-plugin-svelte": "^0.7.0",
+    "pretty-quick": "^2.0.1",
     "prompt": "^1.0.0",
     "replace-in-file": "^5.0.2",
     "rimraf": "^3.0.0",
@@ -128,5 +129,10 @@
   "dependencies": {
     "@pyoner/svelte-form-common": "workspace:^0.0.0",
     "type-detect": "^4.0.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
