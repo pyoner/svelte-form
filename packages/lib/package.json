@@ -30,7 +30,8 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "format": "prettier --write 'src/**/*' 'test/**/*'"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -108,9 +109,6 @@
     "replace-in-file": "^5.0.2",
     "rimraf": "^3.0.0",
     "rollup": "^1.29.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.5.0",
     "rollup-plugin-svelte": "^5.1.1",
     "semantic-release": "^16.0.2",
