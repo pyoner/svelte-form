@@ -8,13 +8,16 @@
   type T = any
   export let schema: JSONSchema
   export let value: T = null
-  export let components: FormComponents
-  export let validator: Validator
+  export let components: FormComponents | undefined
+  export let validator: Validator | undefined
 
   let errors: Errors | null = null
 
   const dispatch = createEventDispatcher()
   const submit = (e: Event) => {
+    if (!validator) {
+        throw new Error ('Missing a "validator" property')
+    }
     console.log('Form submit event', e)
     const v = normalizeValue(value)
     errors = validator(schema, v)
@@ -33,6 +36,8 @@
     await tick()
     dispatch('reset', normalizeValue(value))
   }
+
+ $: if (components && validator) {components = {...components, form: [getComponent(components.form), {validator, ...getComponentProps(components.form)}]}}
 </script>
 
 <form on:submit|preventDefault={submit} on:reset|preventDefault={reset}>
