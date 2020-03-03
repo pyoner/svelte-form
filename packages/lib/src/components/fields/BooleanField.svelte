@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps, defaultValue , getComponent, getComponentProps} from '../../helpers'
+  import { createProps, defaultValue, getComponent, getComponentProps } from '../../helpers'
 
   type T = boolean
   const p = createProps<T>()
@@ -16,7 +16,11 @@
 </script>
 
 {#if schema && components}
-  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema} {errors}>
+  <svelte:component
+    this={getComponent(components.wrapper)}
+    {...getComponentProps(components.wrapper)}
+    {schema}
+    {errors}>
     <input {...props} type="checkbox" bind:checked={value} />
   </svelte:component>
 {/if}

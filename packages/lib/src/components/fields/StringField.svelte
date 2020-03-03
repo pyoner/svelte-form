@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps, defaultValue , getComponent, getComponentProps} from '../../helpers'
+  import { createProps, defaultValue, getComponent, getComponentProps } from '../../helpers'
 
   type T = string
   const p = createProps<T>()
@@ -19,7 +19,11 @@
 </script>
 
 {#if schema && components}
-  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema} {errors}>
+  <svelte:component
+    this={getComponent(components.wrapper)}
+    {...getComponentProps(components.wrapper)}
+    {schema}
+    {errors}>
     {#if format == 'date-time'}
       <input {...props} type="datetime" bind:value />
     {:else if format == 'date'}

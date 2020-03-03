@@ -31,7 +31,7 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "travis-deploy-once": "travis-deploy-once",
-    "format": "prettier --write 'src/**/*' 'test/**/*'"
+    "format": "prettier --plugin-search-dir=. --write 'src/**/*' 'test/**/*'"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

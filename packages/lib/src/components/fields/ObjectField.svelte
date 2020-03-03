@@ -1,6 +1,13 @@
 <script lang="ts">
   import { ErrorRecord } from '../../types'
-  import { createProps, getSchemaComponent, getSchemaComponentProps, defaultValue, getComponent, getComponentProps } from '../../helpers'
+  import {
+    createProps,
+    getSchemaComponent,
+    getSchemaComponentProps,
+    defaultValue,
+    getComponent,
+    getComponentProps
+  } from '../../helpers'
 
   type T = object
   const p = createProps<T, ErrorRecord>({})
@@ -17,7 +24,10 @@
 </script>
 
 {#if schema && components}
-  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema}>
+  <svelte:component
+    this={getComponent(components.wrapper)}
+    {...getComponentProps(components.wrapper)}
+    {schema}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
         this={getSchemaComponent(propSchema, components)}

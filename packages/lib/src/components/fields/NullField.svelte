@@ -12,7 +12,11 @@
 </script>
 
 {#if schema && components}
-  <svelte:component {...getComponentProps(components.wrapper)} this={getComponent( components.wrapper )} {schema} {errors}>
+  <svelte:component
+    this={getComponent(components.wrapper)}
+    {...getComponentProps(components.wrapper)}
+    {schema}
+    {errors}>
     <input {...props} type="checkbox" bind:checked />
   </svelte:component>
 {/if}
