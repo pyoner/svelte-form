@@ -2,7 +2,7 @@ import { JSONSchema } from 'json-schema-typed'
 
 export { JSONSchema }
 
-export const supportedTypes = ['array', 'boolean', 'null', 'number', 'object', 'string']
+export const supportedTypes = ['array', 'boolean', 'null', 'number', 'integer', 'object', 'string']
 
 export type JSONObject = Record<string, any>
 
