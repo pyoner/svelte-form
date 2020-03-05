@@ -45,6 +45,10 @@ export const schema = {
       type: "string",
       title: "Telephone",
       minLength: 10
+    },
+    random: {
+      type: "number",
+      title: "Random number"
     }
   }
 };
