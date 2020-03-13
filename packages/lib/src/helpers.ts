@@ -76,7 +76,9 @@ export function getSchemaComponent(
     throw new Error(`Type "${schema.type}" is not supported`)
   }
 
-  return (schema.$svelte && schema.$svelte.component) || components.fields[schema.type]
+  return (
+    (schema.$svelte && schema.$svelte.component) || getComponent(components.fields[schema.type])
+  )
 }
 
 export function getSchemaComponentProps(schema: SvelteSchema): Props {
