@@ -11,6 +11,7 @@
     "prettier-plugin-svelte": "^0.7.0",
     "pretty-quick": "^2.0.1",
     "rollup": "^1.29.0",
+    "rollup-plugin-analyzer": "^3.2.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-livereload": "^1.0.4",

@@ -5,6 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import typescript from "@wessberg/rollup-plugin-ts";
 import json from "@rollup/plugin-json";
+import analyze from "rollup-plugin-analyzer";
 
 const svelteOptions = require("./svelte.config");
 
@@ -19,6 +20,7 @@ export default {
     file: "public/bundle.js"
   },
   plugins: [
+    analyze({ summaryOnly: true }),
     json(),
     svelte({
       ...svelteOptions,

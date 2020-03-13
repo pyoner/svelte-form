@@ -7,6 +7,7 @@ import typescript from '@wessberg/rollup-plugin-ts'
 
 import camelCase from 'camelcase'
 
+import analyze from 'rollup-plugin-analyzer'
 import svelte from 'rollup-plugin-svelte'
 import { preprocess, createEnv, readConfigFile } from '@pyoner/svelte-ts-preprocess'
 
@@ -38,6 +39,7 @@ export default {
     include: 'src/**'
   },
   plugins: [
+    analyze({ summaryOnly: true }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
