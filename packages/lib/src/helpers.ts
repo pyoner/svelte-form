@@ -81,8 +81,14 @@ export function getSchemaComponent(
   )
 }
 
-export function getSchemaComponentProps(schema: SvelteSchema): Props {
-  return (schema.$svelte && schema.$svelte.props) || {}
+export function getSchemaComponentProps(schema: SvelteSchema, components: FormComponents): Props {
+  if (typeof schema.type !== 'string') {
+    throw new Error(`Type "${schema.type}" is not supported`)
+  }
+
+  return (
+    (schema.$svelte && schema.$svelte.props) || getComponentProps(components.fields[schema.type])
+  )
 }
 
 export function getComponent(container: TSvelteComponent): typeof SvelteComponent {

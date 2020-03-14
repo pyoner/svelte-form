@@ -21,6 +21,6 @@
     {...getComponentProps(components.wrapper)}
     {schema}
     {errors}>
-    <input {...props} type="number" step="any" bind:value />
+    <input {...props} type="number" step={props.step || 'any'} bind:value />
   </svelte:component>
 {/if}

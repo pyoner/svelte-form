@@ -59,7 +59,7 @@
     <div slot="fields">
       <svelte:component
         this={getSchemaComponent(schema, components)}
-        props={getSchemaComponentProps(schema)}
+        props={getSchemaComponentProps(schema, components)}
         {components}
         {schema}
         bind:value

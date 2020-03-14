@@ -31,7 +31,7 @@
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
         this={getSchemaComponent(propSchema, components)}
-        props={getSchemaComponentProps(propSchema)}
+        props={getSchemaComponentProps(propSchema, components)}
         {components}
         schema={propSchema}
         bind:value={value[key]}

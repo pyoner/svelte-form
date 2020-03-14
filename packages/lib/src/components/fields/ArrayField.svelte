@@ -69,7 +69,7 @@
         <div class="item">
           <svelte:component
             this={getSchemaComponent(schema.items, components)}
-            props={getSchemaComponentProps(schema.items)}
+            props={getSchemaComponentProps(schema.items, components)}
             {components}
             schema={schema.items}
             bind:value={v}

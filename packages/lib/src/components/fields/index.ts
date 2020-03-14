@@ -6,13 +6,12 @@ import NumberField from './NumberField.svelte'
 import StringField from './StringField.svelte'
 import ObjectField from './ObjectField.svelte'
 import ArrayField from './ArrayField.svelte'
-import IntegerField from './IntegerField.svelte'
 
 export const defaultFieldComponents: FieldComponents = {
   boolean: BooleanField,
   null: NullField,
   number: NumberField,
-  integer: IntegerField,
+  integer: [NumberField, { step: 1 }],
   string: StringField,
   object: ObjectField,
   array: ArrayField
