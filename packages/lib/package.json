@@ -138,7 +138,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
     "typedoc": "^0.16.7",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "@pyoner/svelte-form-common": "workspace:^0.1.0",
