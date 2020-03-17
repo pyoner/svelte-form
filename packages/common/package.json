@@ -134,7 +134,6 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@types/json-schema": "^7.0.4",
     "json-schema-typed": "^7.0.3"
   }
 }
