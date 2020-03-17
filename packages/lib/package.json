@@ -1,8 +1,17 @@
 {
   "name": "@pyoner/svelte-form",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "A library that helps you build a HTML form from a JSON Schema",
+  "keywords": [
+    "svelte",
+    "form",
+    "validate",
+    "validator",
+    "validation",
+    "json",
+    "schema",
+    "json-schema"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.es5.js",
   "svelte": "src/index.ts",
@@ -11,9 +20,13 @@
     "dist"
   ],
   "author": "Jungle <devex.soft@gmail.com>",
+  "homepage": "https://github.com/pyoner/svelte-form/tree/master/packages/lib#readme",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pyoner/svelte-form"
+  },
+  "bugs": {
+    "url": "https://github.com/pyoner/svelte-form/issues"
   },
   "license": "MIT",
   "engines": {
@@ -128,7 +141,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@pyoner/svelte-form-common": "workspace:^0.0.0",
+    "@pyoner/svelte-form-common": "workspace:^0.1.0",
     "type-detect": "^4.0.8"
   },
   "husky": {

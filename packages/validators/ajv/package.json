@@ -1,8 +1,17 @@
 {
   "name": "@pyoner/svelte-form-ajv",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "Ajv validator for @pyoner/svelte-form",
+  "keywords": [
+    "svelte",
+    "form",
+    "validate",
+    "validator",
+    "validation",
+    "json",
+    "schema",
+    "json-schema"
+  ],
   "main": "dist/svelte-form-ajv.umd.js",
   "module": "dist/svelte-form-ajv.es5.js",
   "typings": "dist/types/svelte-form-ajv.d.ts",
@@ -10,9 +19,13 @@
     "dist"
   ],
   "author": "Jungle <devex.soft@gmail.com>",
+  "homepage": "https://github.com/pyoner/svelte-form/tree/master/packages/validators/ajv#readme",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pyoner/svelte-form"
+  },
+  "bugs": {
+    "url": "https://github.com/pyoner/svelte-form/issues"
   },
   "license": "MIT",
   "engines": {
@@ -123,7 +136,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@pyoner/svelte-form-common": "workspace:^0.0.0",
+    "@pyoner/svelte-form-common": "workspace:^0.1.0",
     "ajv": "^6.12.0",
     "ramda": "^0.27.0"
   }

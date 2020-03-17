@@ -1,8 +1,17 @@
 {
   "name": "@pyoner/svelte-form-common",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "Shared library for the Svelte Form ecosystem",
+  "keywords": [
+    "svelte",
+    "form",
+    "validate",
+    "validator",
+    "validation",
+    "json",
+    "schema",
+    "json-schema"
+  ],
   "main": "dist/svelte-form-common.umd.js",
   "module": "dist/svelte-form-common.es5.js",
   "typings": "dist/types/svelte-form-common.d.ts",
@@ -10,9 +19,13 @@
     "dist"
   ],
   "author": "Jungle <devex.soft@gmail.com>",
+  "homepage": "https://github.com/pyoner/svelte-form/tree/master/packages/common#readme",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pyoner/svelte-form"
+  },
+  "bugs": {
+    "url": "https://github.com/pyoner/svelte-form/issues"
   },
   "license": "MIT",
   "engines": {
