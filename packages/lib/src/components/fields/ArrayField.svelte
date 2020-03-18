@@ -15,7 +15,6 @@
   export let errors = p.errors
   export let schema = p.schema
   export let components = p.components
-  export let props = p.props
 
   /* recalc a default value */
   $: if (schema && value === null) {
