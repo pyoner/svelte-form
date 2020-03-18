@@ -1,19 +1,27 @@
 # Svelte JSON Schema Form library
+
 A library that helps you build a HTML form from a JSON Schema
+
+## Note
+
+(WIP) This library is currently under heavy development and isn't ready for production
 
 ### Usage
 
 Install the library:
+
 ```bash
-npm install @pyoner/svelte-form 
+npm install @pyoner/svelte-form
 ```
 
 Install a validator:
+
 ```bash
-npm install @pyoner/svelte-form-ajv 
+npm install @pyoner/svelte-form-ajv
 ```
 
 Create App component:
+
 ```svelte
 <script lang="ts">
   import Ajv from "ajv";
@@ -21,7 +29,7 @@ Create App component:
   import { createAjvValidator } from "@pyoner/svelte-form-ajv";
   import jsonSchemaDraft4 from "ajv/lib/refs/json-schema-draft-04.json";
   import schema from "./schema.json";
-  
+
   const ajv = new Ajv({
     schemaId: "auto",
     jsonPointers: true,
