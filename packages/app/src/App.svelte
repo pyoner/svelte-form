@@ -25,6 +25,7 @@
   const validator = createAjvValidator(ajv);
 
   let schema, value;
+  let data = "";
 </script>
 
 <ul>
@@ -43,6 +44,7 @@
 </ul>
 
 {#if schema}
+  <h1>Form</h1>
   <Form
     {schema}
     {components}
@@ -50,6 +52,7 @@
     {validator}
     on:submit={e => {
       console.log('submit', e);
+      data = JSON.stringify(e.detail);
     }}
     on:reset={e => {
       console.log('reset', e);
@@ -57,4 +60,7 @@
     <button type="reset">Reset</button>
     <button type="submit">Submit</button>
   </Form>
+
+  <h1>Result</h1>
+  <textarea cols="30" id="" name="" rows="10">{data}</textarea>
 {/if}
