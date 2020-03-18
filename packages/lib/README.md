@@ -4,7 +4,7 @@ A library that helps you build a HTML form from a JSON Schema
 
 ## Note
 
-(WIP) This library is currently under heavy development and isn't ready for production
+**(WIP) This library is currently under heavy development and isn't ready for production**
 
 ### Usage
 
