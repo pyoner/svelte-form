@@ -142,7 +142,7 @@
   },
   "dependencies": {
     "@pyoner/svelte-form-common": "workspace:^0.1.0",
-    "type-detect": "^4.0.8"
+    "is-what": "^3.7.1"
   },
   "husky": {
     "hooks": {

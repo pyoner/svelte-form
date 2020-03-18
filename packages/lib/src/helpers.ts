@@ -1,4 +1,5 @@
 import typeDetect from 'type-detect'
+import { isObject } from 'is-what'
 import { SvelteComponent } from 'svelte'
 
 import { JSONObject, JSONSchema } from '@pyoner/svelte-form-common'
@@ -56,7 +57,7 @@ export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | 
   const obj: JSONObject = {}
   for (const k in value) {
     let v = value[k]
-    v = typeDetect(v) === 'Object' ? normalizeObject(v as JSONObject, false) : v
+    v = isObject(v) ? normalizeObject(v as JSONObject, false) : v
     if (!(v === null || v === undefined)) {
       obj[k] = v
     }
@@ -65,7 +66,7 @@ export function normalizeObject(value: JSONObject, isRoot = true): JSONObject | 
 }
 
 export function normalizeValue(value: any): any {
-  return typeDetect(value) === 'Object' ? normalizeObject(value as JSONObject) : value
+  return isObject(value) ? normalizeObject(value as JSONObject) : value
 }
 
 export function getSchemaComponent(

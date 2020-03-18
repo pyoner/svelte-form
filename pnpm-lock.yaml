@@ -124,7 +124,7 @@ importers:
   packages/lib:
     dependencies:
       "@pyoner/svelte-form-common": "link:../common"
-      type-detect: 4.0.8
+      is-what: 3.7.1
     devDependencies:
       "@commitlint/cli": 8.3.5
       "@commitlint/config-conventional": 8.3.4
@@ -188,6 +188,7 @@ importers:
       cross-env: ^6.0.3
       cz-conventional-changelog: ^3.0.2
       husky: ^4.0.10
+      is-what: ^3.7.1
       jest: ^24.9.0
       jest-config: ^24.9.0
       json-schema-typed: ^7.0.3
@@ -212,7 +213,6 @@ importers:
       tslint: ^5.20.1
       tslint-config-prettier: ^1.18.0
       tslint-config-standard: ^9.0.0
-      type-detect: ^4.0.8
       typedoc: ^0.16.7
       typescript: ^3.8.3
   packages/validators/ajv:
@@ -5740,6 +5740,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=
+  /is-what/3.7.1:
+    dev: false
+    resolution:
+      integrity: sha512-IAoapxlqyLSqt0Zr/7ZMT/fjEw9nwxxmz/TlBH+TJjvcXxmmAdRvo41W74uw3XJMGFpbeft97cpkPmLK89lJWw==
   /is-windows/1.0.2:
     dev: true
     engines:
@@ -10547,12 +10551,6 @@ packages:
       node: ">= 0.8.0"
     resolution:
       integrity: sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
-  /type-detect/4.0.8:
-    dev: false
-    engines:
-      node: ">=4"
-    resolution:
-      integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
   /type-fest/0.3.1:
     dev: true
     engines:
