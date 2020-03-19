@@ -13,9 +13,6 @@
   $: if (schema && value == null) {
     value = defaultValue<T>(schema, value)
   }
-
-  let format = ''
-  $: format = (schema && schema.format) || ''
 </script>
 
 {#if schema && components}

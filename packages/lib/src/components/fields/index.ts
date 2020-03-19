@@ -16,3 +16,5 @@ export const defaultFieldComponents: FieldComponents = {
   object: ObjectField,
   array: ArrayField
 }
+
+export { BooleanField, NullField, NumberField, StringField, ObjectField, ArrayField }

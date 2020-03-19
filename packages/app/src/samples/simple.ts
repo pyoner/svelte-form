@@ -1,4 +1,4 @@
-import TextareaField from "@pyoner/svelte-form/src/components/fields/extra/TextareaField.svelte";
+import { extra } from "@pyoner/svelte-form";
 
 export const schema = {
   title: "A registration form",
@@ -28,7 +28,7 @@ export const schema = {
       type: "string",
       title: "Bio",
       $svelte: {
-        component: TextareaField
+        component: extra.TextareaField
       }
     },
     password: {

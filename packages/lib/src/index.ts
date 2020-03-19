@@ -1,6 +1,5 @@
-import { default as Form } from './components/Form.svelte'
-import { defaultFormComponents as components } from './components'
-
+import { Form, defaultFormComponents as components } from './components'
 import * as helpers from './helpers'
+import * as extra from './components/fields/extra'
 
-export { Form, helpers, components }
+export { Form, components, helpers, extra }
