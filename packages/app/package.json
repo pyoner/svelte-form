@@ -30,7 +30,7 @@
     "format": "prettier --plugin-search-dir=. --write 'src/**/*' 'test/**/*'"
   },
   "dependencies": {
-    "@pyoner/svelte-form": "^0.1.0",
+    "@pyoner/svelte-form": "^0.2.0",
     "@pyoner/svelte-form-ajv": "workspace:^0.1.0",
     "ajv": "^6.12.0"
   }
