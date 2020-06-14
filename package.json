@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@pyoner/svelte-form-monorepo",
+  "version": "1.0.0",
+  "description": "This monorepo includes packages:",
+  "main": "index.js",
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyoner/svelte-form.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pyoner/svelte-form/issues"
+  },
+  "homepage": "https://github.com/pyoner/svelte-form#readme"
+}
