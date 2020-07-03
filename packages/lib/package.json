@@ -15,6 +15,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es5.js",
   "svelte": "src/index.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "src",
     "dist"
@@ -35,7 +36,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --emitDeclarationOnly -d --declarationDir ./dist/types && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
@@ -86,10 +87,6 @@
       "src/*.{js,ts}"
     ]
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -105,7 +102,7 @@
     "@types/jest": "^24.9.0",
     "@types/node": "^13.1.8",
     "@types/type-detect": "^4.0.1",
-    "@wessberg/rollup-plugin-ts": "^1.2.13",
+    "@wessberg/rollup-plugin-ts": "^1.2.25",
     "camelcase": "^5.3.1",
     "colors": "^1.4.0",
     "commitizen": "^4.0.3",
@@ -117,8 +114,6 @@
     "jest-config": "^24.9.0",
     "json-schema-typed": "^7.0.3",
     "lint-staged": "^10.0.0",
-    "prettier": "^1.19.1",
-    "prettier-plugin-svelte": "^0.7.0",
     "pretty-quick": "^2.0.1",
     "prompt": "^1.0.0",
     "replace-in-file": "^5.0.2",
@@ -136,13 +131,14 @@
     "tslib": "^1.10.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^9.0.0",
-    "typedoc": "^0.16.7",
-    "typescript": "^3.8.3"
+    "tslint-config-standard": "^9.0.0"
   },
   "dependencies": {
     "@pyoner/svelte-form-common": "workspace:^0.1.0",
     "is-what": "^3.7.1"
+  },
+  "peerDependencies": {
+    "typescript": "^3.9"
   },
   "husky": {
     "hooks": {

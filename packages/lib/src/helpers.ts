@@ -1,4 +1,3 @@
-import typeDetect from 'type-detect'
 import { isObject } from 'is-what'
 import { SvelteComponent } from 'svelte'
 
