@@ -134,7 +134,7 @@
     "tslint-config-standard": "^9.0.0"
   },
   "dependencies": {
-    "@pyoner/svelte-form-common": "workspace:^0.1.0",
+    "@pyoner/svelte-form-common": "workspace:^0.1.1",
     "is-what": "^3.7.1"
   },
   "peerDependencies": {
