@@ -1,42 +1,42 @@
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import json from "@rollup/plugin-json";
 
-import sourceMaps from 'rollup-plugin-sourcemaps'
-import typescript from '@wessberg/rollup-plugin-ts'
+import sourceMaps from "rollup-plugin-sourcemaps";
+import typescript from "@wessberg/rollup-plugin-ts";
 
-import camelCase from 'camelcase'
+import camelCase from "camelcase";
 
-import analyze from 'rollup-plugin-analyzer'
-import svelte from 'rollup-plugin-svelte'
-import { preprocess, createEnv, readConfigFile } from '@pyoner/svelte-ts-preprocess'
+import analyze from "rollup-plugin-analyzer";
+import svelte from "rollup-plugin-svelte";
+import { preprocess, createEnv, readConfigFile } from "@pyoner/svelte-ts-preprocess";
 
-const production = !process.env.ROLLUP_WATCH
+const production = !process.env.ROLLUP_WATCH;
 
-const env = createEnv()
-const compilerOptions = readConfigFile(env)
+const env = createEnv();
+const compilerOptions = readConfigFile(env);
 const opts = {
   env,
   compilerOptions: {
     ...compilerOptions,
-    allowNonTsExtensions: true
-  }
-}
+    allowNonTsExtensions: true,
+  },
+};
 
-const pkg = require('./package.json')
+const pkg = require("./package.json");
 
-const libraryName = 'svelte-form'
+const libraryName = "svelte-form";
 
 export default {
   input: `src/index.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true }
+    { file: pkg.main, name: camelCase(libraryName), format: "umd", sourcemap: true },
+    { file: pkg.module, format: "es", sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
   watch: {
-    include: 'src/**'
+    include: "src/**",
   },
   plugins: [
     analyze({ summaryOnly: true }),
@@ -45,10 +45,10 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file — better for performance
-      css: css => {
-        css.write('public/bundle.css')
+      css: (css) => {
+        css.write("public/bundle.css");
       },
-      preprocess: preprocess(opts)
+      preprocess: preprocess(opts),
     }),
     // Allow json resolution
     json(),
@@ -62,6 +62,6 @@ export default {
     typescript(),
 
     // Resolve source maps to the original source
-    sourceMaps()
-  ]
-}
+    sourceMaps(),
+  ],
+};
