@@ -54,7 +54,6 @@ importers:
     devDependencies:
       '@commitlint/cli': 7.6.1
       '@commitlint/config-conventional': 7.6.0
-      '@rollup/plugin-commonjs': 11.1.0_rollup@1.32.1
       '@rollup/plugin-json': 4.1.0_rollup@1.32.1
       '@rollup/plugin-node-resolve': 7.1.3_rollup@1.32.1
       '@types/jest': 23.3.14
@@ -76,6 +75,7 @@ importers:
       rimraf: 2.7.1
       rollup: 1.32.1
       rollup-plugin-analyzer: 3.2.3
+      rollup-plugin-commonjs: 9.3.4_rollup@1.32.1
       rollup-plugin-sourcemaps: 0.4.2_rollup@1.32.1
       semantic-release: 15.14.0_semantic-release@15.14.0
       shelljs: 0.8.4
@@ -88,7 +88,6 @@ importers:
     specifiers:
       '@commitlint/cli': ^7.1.2
       '@commitlint/config-conventional': ^7.1.2
-      '@rollup/plugin-commonjs': ^11.0.2
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^23.3.2
@@ -111,6 +110,7 @@ importers:
       rimraf: ^2.6.2
       rollup: ^1.20.0
       rollup-plugin-analyzer: ^3.2.2
+      rollup-plugin-commonjs: 9.3.4
       rollup-plugin-sourcemaps: ^0.4.2
       semantic-release: ^15.9.16
       shelljs: ^0.8.3
@@ -128,7 +128,6 @@ importers:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
       '@pyoner/svelte-ts-preprocess': 1.2.1
-      '@rollup/plugin-commonjs': 11.1.0_rollup@1.32.1
       '@rollup/plugin-json': 4.1.0_rollup@1.32.1
       '@rollup/plugin-node-resolve': 7.1.3_rollup@1.32.1
       '@types/jest': 24.9.1
@@ -152,6 +151,7 @@ importers:
       rimraf: 3.0.2
       rollup: 1.32.1
       rollup-plugin-analyzer: 3.2.3
+      rollup-plugin-commonjs: 9.3.4_rollup@1.32.1
       rollup-plugin-sourcemaps: 0.5.0_a03f7739d818091ecdb3592fb85ec902
       rollup-plugin-svelte: 5.2.2_rollup@1.32.1+svelte@3.23.2
       semantic-release: 16.0.4_semantic-release@16.0.4
@@ -169,7 +169,6 @@ importers:
       '@commitlint/config-conventional': ^8.3.4
       '@pyoner/svelte-form-common': 'workspace:^0.1.0'
       '@pyoner/svelte-ts-preprocess': ^1.2.1
-      '@rollup/plugin-commonjs': ^11.0.2
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^24.9.0
@@ -194,6 +193,7 @@ importers:
       rimraf: ^3.0.0
       rollup: ^1.29.0
       rollup-plugin-analyzer: ^3.2.2
+      rollup-plugin-commonjs: 9.3.4
       rollup-plugin-sourcemaps: ^0.5.0
       rollup-plugin-svelte: ^5.1.1
       semantic-release: ^16.0.2
@@ -214,7 +214,6 @@ importers:
     devDependencies:
       '@commitlint/cli': 7.6.1
       '@commitlint/config-conventional': 7.6.0
-      '@rollup/plugin-commonjs': 11.1.0_rollup@1.32.1
       '@rollup/plugin-json': 4.1.0_rollup@1.32.1
       '@rollup/plugin-node-resolve': 7.1.3_rollup@1.32.1
       '@types/jest': 23.3.14
@@ -237,6 +236,7 @@ importers:
       rimraf: 2.7.1
       rollup: 1.32.1
       rollup-plugin-analyzer: 3.2.3
+      rollup-plugin-commonjs: 9.3.4_rollup@1.32.1
       rollup-plugin-sourcemaps: 0.4.2_rollup@1.32.1
       semantic-release: 15.14.0_semantic-release@15.14.0
       shelljs: 0.8.4
@@ -251,7 +251,6 @@ importers:
       '@commitlint/cli': ^7.1.2
       '@commitlint/config-conventional': ^7.1.2
       '@pyoner/svelte-form-common': 'workspace:^0.1.0'
-      '@rollup/plugin-commonjs': ^11.0.2
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^23.3.2
@@ -276,6 +275,7 @@ importers:
       rimraf: ^2.6.2
       rollup: ^1.29.0
       rollup-plugin-analyzer: ^3.2.2
+      rollup-plugin-commonjs: 9.3.4
       rollup-plugin-sourcemaps: ^0.4.2
       semantic-release: ^15.9.16
       shelljs: ^0.8.3
@@ -1800,23 +1800,6 @@ packages:
       typescript: ^3.4.4
     resolution:
       integrity: sha512-6iIcYcna76WmNFPl9k9kRXyW9ubLDnGT9lMuiDI8K+8TdA/tFxeXQdE9NeIYEITGNYfUseKbtc3/pN6xEww+WA==
-  /@rollup/plugin-commonjs/11.1.0_rollup@1.32.1:
-    dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@1.32.1
-      commondir: 1.0.1
-      estree-walker: 1.0.1
-      glob: 7.1.6
-      is-reference: 1.2.0
-      magic-string: 0.25.7
-      resolve: 1.17.0
-      rollup: 1.32.1
-    dev: true
-    engines:
-      node: '>= 8.0.0'
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0
-    resolution:
-      integrity: sha512-Ycr12N3ZPN96Fw2STurD21jMqzKwL9QuFhms3SD7KKRK7oaXUsBU9Zt0jL/rOPHiPYisI21/rXGO3jr9BnLHUA==
   /@rollup/plugin-json/4.1.0_rollup@1.32.1:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@1.32.1
@@ -2142,10 +2125,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
-  /@types/estree/0.0.44:
-    dev: true
-    resolution:
-      integrity: sha512-iaIVzr+w2ZJ5HkidlZ3EJM8VTZb2MJLCjw3V+505yVts0gRC4UMvjw0d1HPtGqI/HQC/KdsYtayfzl+AXY2R8g==
   /@types/estree/0.0.45:
     dev: true
     resolution:
@@ -5812,12 +5791,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
-  /is-reference/1.2.0:
-    dependencies:
-      '@types/estree': 0.0.44
-    dev: true
-    resolution:
-      integrity: sha512-ZVxq+5TkOx6GQdnoMm2aRdCKADdcrOWXLGzGT+vIA8DMpqEJaRk5AL1bS80zJ2bjHunVmjdzfCt0e4BymIEqKQ==
   /is-regex/1.1.0:
     dependencies:
       has-symbols: 1.0.1
@@ -9375,6 +9348,19 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-Oq5GtofTCIGhW4mDNtnxH106gvPKQcdAKTLujWekAiLiTmstXX9Fmye7uMG7NaZVBHgKPPsIWCtPj04ci/YXmg==
+  /rollup-plugin-commonjs/9.3.4_rollup@1.32.1:
+    dependencies:
+      estree-walker: 0.6.1
+      magic-string: 0.25.7
+      resolve: 1.17.0
+      rollup: 1.32.1
+      rollup-pluginutils: 2.8.2
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-commonjs.
+    dev: true
+    peerDependencies:
+      rollup: '>=0.56.0'
+    resolution:
+      integrity: sha512-DTZOvRoiVIHHLFBCL4pFxOaJt8pagxsVldEXBOn6wl3/V21wVaj17HFfyzTsQUuou3sZL3lEJZVWKPFblJfI6w==
   /rollup-plugin-commonjs/9.3.4_rollup@2.18.2:
     dependencies:
       estree-walker: 0.6.1
