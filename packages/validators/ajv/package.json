@@ -1,6 +1,6 @@
 {
   "name": "@pyoner/svelte-form-ajv",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ajv validator for @pyoner/svelte-form",
   "keywords": [
     "svelte",
