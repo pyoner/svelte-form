@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { JSONSchema } from '@pyoner/svelte-form-common'
+  import type { JSONSchema } from "@pyoner/svelte-form-common";
 
-  export let errors: Error[] | null = null
-  export let schema: JSONSchema
+  export let errors: Error[] | null = null;
+  export let schema: JSONSchema;
 </script>
 
 <style>

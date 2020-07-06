@@ -1,6 +1,6 @@
 {
   "name": "@pyoner/svelte-form-ajv",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Ajv validator for @pyoner/svelte-form",
   "keywords": [
     "svelte",
@@ -128,7 +128,7 @@
     "tslint-config-standard": "^8.0.1"
   },
   "dependencies": {
-    "@pyoner/svelte-form-common": "workspace:^0.1.1",
+    "@pyoner/svelte-form-common": "workspace:^0.1.2",
     "ajv": "^6.12.0",
     "ramda": "^0.27.0"
   },

@@ -1,61 +1,61 @@
 <script lang="ts">
-  import { ErrorRecord } from '@pyoner/svelte-form-common'
+  import type { ErrorRecord } from "@pyoner/svelte-form-common";
   import {
     createProps,
     getSchemaComponent,
     getSchemaComponentProps,
     defaultValue,
     getComponent,
-    getComponentProps
-  } from '../../helpers'
+    getComponentProps,
+  } from "../../helpers";
 
-  type T = Array<any>
-  const p = createProps<T, ErrorRecord>([])
-  export let value = p.value
-  export let errors = p.errors
-  export let schema = p.schema
-  export let components = p.components
+  type T = Array<any>;
+  const p = createProps<T, ErrorRecord>([]);
+  export let value = p.value;
+  export let errors = p.errors;
+  export let schema = p.schema;
+  export let components = p.components;
 
   /* recalc a default value */
   $: if (schema && value === null) {
-    value = defaultValue<T>(schema, value)
+    value = defaultValue<T>(schema, value);
   }
 
   const removeItem = (index: number) => {
     if (!value) {
-      return
+      return;
     }
-    value.splice(index, 1)
-    value = [...value]
-  }
+    value.splice(index, 1);
+    value = [...value];
+  };
 
   const moveItem = (index: number, pos: number) => {
     if (!value) {
-      return
+      return;
     }
-    const current = value[index]
-    value[index] = value[pos]
-    value[pos] = current
-    value = [...value]
-  }
+    const current = value[index];
+    value[index] = value[pos];
+    value[pos] = current;
+    value = [...value];
+  };
 
-  let showItemForm = false
+  let showItemForm = false;
   const renderItemForm = () => {
-    showItemForm = true
-  }
+    showItemForm = true;
+  };
 
   const submit = (event: CustomEvent) => {
     if (!value) {
-      return
+      return;
     }
-    value = value.concat([event.detail])
-    showItemForm = false
-    console.log('Submit', event)
-  }
+    value = value.concat([event.detail]);
+    showItemForm = false;
+    console.log("Submit", event);
+  };
 
   const reset = (event: CustomEvent) => {
-    console.log('Reset', event)
-  }
+    console.log("Reset", event);
+  };
 </script>
 
 {#if components && schema && schema.items && schema.items.type}
@@ -75,24 +75,24 @@
             errors={errors && errors[i]} />
           <button
             type="button"
-            on:click={e => {
-              removeItem(i)
+            on:click={(e) => {
+              removeItem(i);
             }}>
             Remove
           </button>
           <button
             type="button"
             disabled={i <= 0}
-            on:click={e => {
-              moveItem(i, i - 1)
+            on:click={(e) => {
+              moveItem(i, i - 1);
             }}>
             Move Up
           </button>
           <button
             type="button"
             disabled={i + 1 == value.length}
-            on:click={e => {
-              moveItem(i, i + 1)
+            on:click={(e) => {
+              moveItem(i, i + 1);
             }}>
             Move Down
           </button>

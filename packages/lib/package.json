@@ -1,6 +1,6 @@
 {
   "name": "@pyoner/svelte-form",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A library that helps you build a HTML form from a JSON Schema",
   "keywords": [
     "svelte",
@@ -134,7 +134,7 @@
     "tslint-config-standard": "^9.0.0"
   },
   "dependencies": {
-    "@pyoner/svelte-form-common": "workspace:^0.1.1",
+    "@pyoner/svelte-form-common": "workspace:^0.1.2",
     "is-what": "^3.7.1"
   },
   "peerDependencies": {

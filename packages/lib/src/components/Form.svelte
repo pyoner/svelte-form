@@ -1,54 +1,54 @@
 <script lang="ts">
-  import { createEventDispatcher, tick } from 'svelte'
+  import { createEventDispatcher, tick } from "svelte";
 
-  import { JSONSchema, Errors, Validator } from '@pyoner/svelte-form-common'
-  import { FormComponents } from '../types'
+  import type { JSONSchema, Errors, Validator } from "@pyoner/svelte-form-common";
+  import type { FormComponents } from "../types";
   import {
     defaultValue,
     normalizeValue,
     getSchemaComponent,
     getSchemaComponentProps,
     getComponent,
-    getComponentProps
-  } from '../helpers'
+    getComponentProps,
+  } from "../helpers";
 
-  type T = any
-  export let schema: JSONSchema
-  export let value: T = null
-  export let components: FormComponents | undefined
-  export let validator: Validator | undefined
+  type T = any;
+  export let schema: JSONSchema;
+  export let value: T = null;
+  export let components: FormComponents | undefined;
+  export let validator: Validator | undefined;
 
-  let errors: Errors | null = null
+  let errors: Errors | null = null;
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
   const submit = (e: Event) => {
     if (!validator) {
-      throw new Error('Missing a "validator" property')
+      throw new Error('Missing a "validator" property');
     }
-    console.log('Form submit event', e)
-    const v = normalizeValue(value)
-    errors = validator(schema, v)
+    console.log("Form submit event", e);
+    const v = normalizeValue(value);
+    errors = validator(schema, v);
 
     if (errors) {
-      console.log('Form error', errors)
+      console.log("Form error", errors);
     } else {
-      console.log('Form submit', v)
-      dispatch('submit', v)
+      console.log("Form submit", v);
+      dispatch("submit", v);
     }
-  }
+  };
 
   const reset = async (e: Event) => {
-    errors = null
-    value = null
-    await tick()
-    dispatch('reset', normalizeValue(value))
-  }
+    errors = null;
+    value = null;
+    await tick();
+    dispatch("reset", normalizeValue(value));
+  };
 
   $: if (components && validator) {
     components = {
       ...components,
-      form: [getComponent(components.form), { validator, ...getComponentProps(components.form) }]
-    }
+      form: [getComponent(components.form), { validator, ...getComponentProps(components.form) }],
+    };
   }
 </script>
 
