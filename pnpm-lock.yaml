@@ -16,7 +16,7 @@ importers:
       '@pyoner/svelte-form-ajv': 'link:../validators/ajv'
       ajv: 6.12.2
     devDependencies:
-      '@pyoner/svelte-ts-preprocess': 1.2.1
+      '@pyoner/svelte-ts-preprocess': 1.3.0
       '@rollup/plugin-json': 4.1.0_rollup@2.18.2
       '@rollup/plugin-node-resolve': 7.1.3_rollup@2.18.2
       '@wessberg/rollup-plugin-ts': 1.2.25_rollup@2.18.2
@@ -33,7 +33,7 @@ importers:
     specifiers:
       '@pyoner/svelte-form': 'workspace:^0.2.0'
       '@pyoner/svelte-form-ajv': 'workspace:^0.1.0'
-      '@pyoner/svelte-ts-preprocess': 1.2.1
+      '@pyoner/svelte-ts-preprocess': ^1.3.0
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@wessberg/rollup-plugin-ts': ^1.2.25
@@ -127,7 +127,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
-      '@pyoner/svelte-ts-preprocess': 1.2.1
+      '@pyoner/svelte-ts-preprocess': 1.3.0
       '@rollup/plugin-json': 4.1.0_rollup@1.32.1
       '@rollup/plugin-node-resolve': 7.1.3_rollup@1.32.1
       '@types/jest': 24.9.1
@@ -167,8 +167,8 @@ importers:
     specifiers:
       '@commitlint/cli': ^8.3.5
       '@commitlint/config-conventional': ^8.3.4
-      '@pyoner/svelte-form-common': 'workspace:^0.1.0'
-      '@pyoner/svelte-ts-preprocess': ^1.2.1
+      '@pyoner/svelte-form-common': 'workspace:^0.1.2'
+      '@pyoner/svelte-ts-preprocess': ^1.3.0
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^24.9.0
@@ -250,7 +250,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^7.1.2
       '@commitlint/config-conventional': ^7.1.2
-      '@pyoner/svelte-form-common': 'workspace:^0.1.0'
+      '@pyoner/svelte-form-common': 'workspace:^0.1.2'
       '@rollup/plugin-json': ^4.0.2
       '@rollup/plugin-node-resolve': ^7.1.1
       '@types/jest': ^23.3.2
@@ -1792,14 +1792,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-oZLYFEAzUKyi3SKnXvj32ZCEGH6RDnao7COuCVhDydMS9NrCSVXhM79VaKyP5+Zc33m0QXEd2DN3UkU7OsHcfw==
-  /@pyoner/svelte-ts-preprocess/1.2.1:
+  /@pyoner/svelte-ts-preprocess/1.3.0:
     dev: true
     engines:
       node: '>=6.0.0'
     peerDependencies:
-      typescript: ^3.4.4
+      typescript: ^3.8
     resolution:
-      integrity: sha512-6iIcYcna76WmNFPl9k9kRXyW9ubLDnGT9lMuiDI8K+8TdA/tFxeXQdE9NeIYEITGNYfUseKbtc3/pN6xEww+WA==
+      integrity: sha512-o1C6E2bCwTaIEmOnKc3KXAJJ7P37PDK5gM28VBQ3SalesmgyhpZZU3hIzfCkmEfGcKVci44tWQ8PJagNwdG6Fw==
   /@rollup/plugin-json/4.1.0_rollup@1.32.1:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@1.32.1
