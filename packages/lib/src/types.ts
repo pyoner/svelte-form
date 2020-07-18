@@ -43,10 +43,20 @@ export interface ErrorRecord {
 
 export type Errors = ErrorRecord | Error[];
 
+export type SvelteSchemaKeys =
+  | "field"
+  | "wrapper"
+  | "ctrl"
+  | "itemWrapper"
+  | "itemCtrl"
+  | "itemForm";
+
 export interface SvelteSchema extends JSONSchema {
   $svelte?: {
-    component?: typeof SvelteComponent;
-    props?: Props;
+    [P in SvelteSchemaKeys]: {
+      component?: typeof SvelteComponent;
+      props?: Props;
+    };
   };
 }
 
