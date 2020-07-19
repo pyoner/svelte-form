@@ -1,16 +1,19 @@
 <script lang="ts">
-  import { getComponent, getComponentProps } from "../../helpers";
-  import type { SvelteSchema, TSvelteComponent } from "../../types";
+  import { getProps, getComponent } from "../../helpers";
+  import type { SvelteSchema, SvelteComponentProps } from "../../types";
 
+  const key = "wrapper";
   export let errors: Error[] | null = null;
   export let schema: SvelteSchema;
-  export let component: TSvelteComponent;
+  export let component: SvelteComponentProps;
 </script>
 
-<svelte:component
-  this={getComponent(component)}
-  {...getComponentProps(component)}
-  {schema}
-  {errors}>
-  <slot />
-</svelte:component>
+{#if schema && component}
+  <svelte:component
+    this={getComponent(schema, component, key)}
+    {...getProps(schema, component, key)}
+    {schema}
+    {errors}>
+    <slot />
+  </svelte:component>
+{/if}

@@ -6,10 +6,10 @@ import type { JSONObject, JSONSchema } from "@pyoner/svelte-form-common";
 import type {
   FieldProps,
   Errors,
-  FormComponents,
   Props,
+  SvelteComponentProps,
   SvelteSchema,
-  TSvelteComponent,
+  SvelteSchemaKeys,
 } from "./types";
 
 export function createProps<T extends any, E extends Errors = Error[]>(
@@ -75,33 +75,61 @@ export function normalizeValue(value: any): any {
   return isObject(value) ? normalizeObject(value as JSONObject) : value;
 }
 
-export function getSchemaComponent(
+export function getComponentFromSchema(
   schema: SvelteSchema,
-  components: FormComponents
-): typeof SvelteComponent {
-  if (typeof schema.type !== "string") {
-    throw new Error(`Type "${schema.type}" is not supported`);
-  }
+  key: SvelteSchemaKeys
+): typeof SvelteComponent | undefined {
+  const obj = schema.$svelte && schema.$svelte[key];
 
-  return (
-    (schema.$svelte && schema.$svelte.component) || getComponent(components.fields[schema.type])
-  );
+  if (obj?.component) {
+    return obj.component;
+  }
 }
 
-export function getSchemaComponentProps(schema: SvelteSchema, components: FormComponents): Props {
-  if (typeof schema.type !== "string") {
-    throw new Error(`Type "${schema.type}" is not supported`);
-  }
+export function getPropsFromSchema(schema: SvelteSchema, key: SvelteSchemaKeys): Props | undefined {
+  const obj = schema.$svelte && schema.$svelte[key];
 
-  return (
-    (schema.$svelte && schema.$svelte.props) || getComponentProps(components.fields[schema.type])
-  );
+  if (obj?.props) {
+    return obj.props;
+  }
 }
 
-export function getComponent(container: TSvelteComponent): typeof SvelteComponent {
+export function getComponentFromContainer(container: SvelteComponentProps): typeof SvelteComponent {
   return Array.isArray(container) ? container[0] : container;
 }
 
-export function getComponentProps(container: TSvelteComponent): Props {
+export function getPropsFromContainer(container: SvelteComponentProps): Props {
   return Array.isArray(container) ? container[1] : {};
+}
+
+export function getProps(
+  schema: SvelteSchema,
+  container: SvelteComponentProps,
+  key: SvelteSchemaKeys
+): Props {
+  const component = getComponentFromSchema(schema, key);
+
+  const props = getPropsFromSchema(schema, key);
+  if (props) {
+    return props;
+  }
+
+  if (component) {
+    return {};
+  }
+
+  return getPropsFromContainer(container);
+}
+
+export function getComponent(
+  schema: SvelteSchema,
+  container: SvelteComponentProps,
+  key: SvelteSchemaKeys
+): typeof SvelteComponent {
+  const component = getComponentFromSchema(schema, key);
+  if (component) {
+    return component;
+  }
+
+  return getComponentFromContainer(container);
 }
