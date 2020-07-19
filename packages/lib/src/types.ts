@@ -2,13 +2,13 @@ import { SvelteComponent } from "svelte";
 import type { JSONSchema } from "@pyoner/svelte-form-common";
 
 export interface FieldComponents {
-  boolean: TSvelteComponent;
-  null: TSvelteComponent;
-  integer: TSvelteComponent;
-  number: TSvelteComponent;
-  string: TSvelteComponent;
-  array: TSvelteComponent;
-  object: TSvelteComponent;
+  boolean: SvelteComponentProps;
+  null: SvelteComponentProps;
+  integer: SvelteComponentProps;
+  number: SvelteComponentProps;
+  string: SvelteComponentProps;
+  array: SvelteComponentProps;
+  object: SvelteComponentProps;
 }
 
 export interface FieldProps<T extends any, E extends Errors = Error[]> {
@@ -21,12 +21,12 @@ export interface FieldProps<T extends any, E extends Errors = Error[]> {
 
 export type Props = Record<string, any>;
 
-export type TSvelteComponent = typeof SvelteComponent | [typeof SvelteComponent, Props];
+export type SvelteComponentProps = typeof SvelteComponent | [typeof SvelteComponent, Props];
 
 export interface FormComponents {
-  layout: TSvelteComponent;
-  wrapper: TSvelteComponent;
-  form: TSvelteComponent;
+  layout: SvelteComponentProps;
+  wrapper: SvelteComponentProps;
+  form: SvelteComponentProps;
   fields: FieldComponents;
 }
 
