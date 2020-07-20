@@ -11,51 +11,57 @@ export const schema = {
       title: "First name",
       default: "Chuck",
       $svelte: {
-        props: {
-          autofocus: true
-        }
-      }
+        field: {
+          props: {
+            autofocus: true,
+          },
+        },
+      },
     },
     lastName: {
       type: "string",
-      title: "Last name"
+      title: "Last name",
     },
     age: {
       type: "integer",
-      title: "Age"
+      title: "Age",
     },
     bio: {
       type: "string",
       title: "Bio",
       $svelte: {
-        component: extra.TextareaField
-      }
+        field: {
+          component: extra.TextareaField,
+        },
+      },
     },
     password: {
       type: "string",
       title: "Password",
       minLength: 3,
       $svelte: {
-        props: {
-          type: "password"
-        }
-      }
+        field: {
+          props: {
+            type: "password",
+          },
+        },
+      },
     },
     telephone: {
       type: "string",
       title: "Telephone",
-      minLength: 10
+      minLength: 10,
     },
     random: {
       type: "number",
-      title: "Random number"
-    }
-  }
+      title: "Random number",
+    },
+  },
 };
 
 export const value = {
   lastName: "Norris",
   age: 75,
   bio: "Roundhouse kicking asses since 1940",
-  password: "noneed"
+  password: "noneed",
 };

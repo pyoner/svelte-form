@@ -65,8 +65,8 @@
       {#each value as v, i (i)}
         <div class="item">
           <svelte:component
-            this={getComponent(schema.items, components.fields[schema.items.type], schema.items.type)}
-            props={getProps(schema.items, components.fields[schema.items.type], schema.items.type)}
+            this={getComponent(schema.items, components.fields[schema.items.type], 'field')}
+            props={getProps(schema.items, components.fields[schema.items.type], 'field')}
             {components}
             schema={schema.items}
             bind:value={v}

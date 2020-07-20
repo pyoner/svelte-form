@@ -6,11 +6,12 @@
   import {
     defaultValue,
     normalizeValue,
-    getSchemaComponent,
-    getSchemaComponentProps,
     getComponent,
-    getComponentProps,
+    getProps,
+    getComponentFromContainer,
+    getPropsFromContainer,
   } from "../helpers";
+  import Wrap from "./helpers/Wrap.svelte";
 
   type T = any;
   export let schema: JSONSchema;
@@ -47,19 +48,22 @@
   $: if (components && validator) {
     components = {
       ...components,
-      form: [getComponent(components.form), { validator, ...getComponentProps(components.form) }],
+      form: [
+        getComponentFromContainer(components.form),
+        { validator, ...getPropsFromContainer(components.form) },
+      ],
     };
   }
 </script>
 
 <form on:submit|preventDefault={submit} on:reset|preventDefault={reset}>
   <svelte:component
-    this={getComponent(components.layout)}
-    {...getComponentProps(components.layout)}>
+    this={getComponentFromContainer(components.layout)}
+    {...getPropsFromContainer(components.layout)}>
     <div slot="fields">
       <svelte:component
-        this={getSchemaComponent(schema, components)}
-        props={getSchemaComponentProps(schema, components)}
+        this={getComponent(schema, components.fields[schema.type], schema.type)}
+        props={getProps(schema, components.fields[schema.type], schema.type)}
         {components}
         {schema}
         bind:value

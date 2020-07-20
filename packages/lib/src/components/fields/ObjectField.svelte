@@ -20,8 +20,8 @@
   <Wrap {schema} {errors} component={components.wrapper}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
-        this={getComponent(propSchema, components.fields[propSchema.type], propSchema.type)}
-        props={getProps(propSchema, components.fields[propSchema.type], propSchema.type)}
+        this={getComponent(propSchema, components.fields[propSchema.type], 'field')}
+        props={getProps(propSchema, components.fields[propSchema.type], 'field')}
         {components}
         schema={propSchema}
         bind:value={value[key]}
