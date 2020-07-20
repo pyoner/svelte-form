@@ -43,6 +43,9 @@ export interface ErrorRecord {
 
 export type Errors = ErrorRecord | Error[];
 
+export type FuncProps = (props: Props) => Props;
+export type FuncComponent = (component: typeof SvelteComponent) => typeof SvelteComponent;
+
 export type SvelteSchemaKeys =
   | "field"
   | "wrapper"
@@ -54,8 +57,8 @@ export type SvelteSchemaKeys =
 export interface SvelteSchema extends JSONSchema {
   $svelte?: {
     [P in SvelteSchemaKeys]: {
-      component?: typeof SvelteComponent;
-      props?: Props;
+      component?: typeof SvelteComponent | FuncComponent;
+      props?: Props | FuncProps;
     };
   };
 }

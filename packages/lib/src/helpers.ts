@@ -1,4 +1,4 @@
-import { isObject } from "is-what";
+import { isObject, isFunction } from "is-what";
 import { SvelteComponent } from "svelte";
 
 import type { JSONObject, JSONSchema } from "@pyoner/svelte-form-common";
@@ -10,6 +10,8 @@ import type {
   SvelteComponentProps,
   SvelteSchema,
   SvelteSchemaKeys,
+  FuncProps,
+  FuncComponent,
 } from "./types";
 
 export function createProps<T extends any, E extends Errors = Error[]>(
@@ -78,7 +80,7 @@ export function normalizeValue(value: any): any {
 export function getComponentFromSchema(
   schema: SvelteSchema,
   key: SvelteSchemaKeys
-): typeof SvelteComponent | undefined {
+): typeof SvelteComponent | FuncComponent | undefined {
   const obj = schema.$svelte && schema.$svelte[key];
 
   if (obj?.component) {
@@ -86,7 +88,10 @@ export function getComponentFromSchema(
   }
 }
 
-export function getPropsFromSchema(schema: SvelteSchema, key: SvelteSchemaKeys): Props | undefined {
+export function getPropsFromSchema(
+  schema: SvelteSchema,
+  key: SvelteSchemaKeys
+): Props | FuncProps | undefined {
   const obj = schema.$svelte && schema.$svelte[key];
 
   if (obj?.props) {
@@ -126,10 +131,15 @@ export function getComponent(
   container: SvelteComponentProps,
   key: SvelteSchemaKeys
 ): typeof SvelteComponent {
+  const defaultComponent = getComponentFromContainer(container);
   const component = getComponentFromSchema(schema, key);
+
   if (component) {
+    if (isFunction(component)) {
+      return (component as FuncComponent)(defaultComponent);
+    }
     return component;
   }
 
-  return getComponentFromContainer(container);
+  return defaultComponent;
 }
