@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createProps, defaultValue, getComponent, getComponentProps } from "../../helpers";
+  import { createProps, defaultValue } from "../../helpers";
   import Wrap from "../helpers/Wrap.svelte";
 
   type T = number;
@@ -18,12 +18,6 @@
 
 {#if schema && components}
   <Wrap {schema} {errors} component={components.wrapper}>
-    <svelte:component
-      this={getComponent(components.wrapper)}
-      {...getComponentProps(components.wrapper)}
-      {schema}
-      {errors}>
-      <input {...props} type="number" step={props.step || 'any'} bind:value />
-    </svelte:component>
+    <input {...props} type="number" step={props.step || 'any'} bind:value />
   </Wrap>
 {/if}

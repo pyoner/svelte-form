@@ -1,22 +1,19 @@
 <script lang="ts">
-  import { createProps, getComponent, getComponentProps } from '../../helpers'
+  import { createProps, defaultValue } from "../../helpers";
+  import Wrap from "../helpers/Wrap.svelte";
 
-  const p = createProps<null>()
-  export let value = p.value
-  export let errors = p.errors
-  export let schema = p.schema
-  export let components = p.components
-  export let props = p.props
+  const p = createProps<null>();
+  export let value = p.value;
+  export let errors = p.errors;
+  export let schema = p.schema;
+  export let components = p.components;
+  export let props = p.props;
 
-  let checked = false
+  let checked = false;
 </script>
 
 {#if schema && components}
-  <svelte:component
-    this={getComponent(components.wrapper)}
-    {...getComponentProps(components.wrapper)}
-    {schema}
-    {errors}>
+  <Wrap {schema} {errors} component={components.wrapper}>
     <input {...props} type="checkbox" bind:checked />
-  </svelte:component>
+  </Wrap>
 {/if}

@@ -2,12 +2,13 @@
   import type { ErrorRecord } from "@pyoner/svelte-form-common";
   import {
     createProps,
-    getSchemaComponent,
-    getSchemaComponentProps,
     defaultValue,
     getComponent,
-    getComponentProps,
+    getProps,
+    getComponentFromContainer,
+    getPropsFromContainer,
   } from "../../helpers";
+  import Wrap from "../helpers/Wrap.svelte";
 
   type T = Array<any>;
   const p = createProps<T, ErrorRecord>([]);
@@ -59,16 +60,13 @@
 </script>
 
 {#if components && schema && schema.items && schema.items.type}
-  <svelte:component
-    this={getComponent(components.wrapper)}
-    {...getComponentProps(components.wrapper)}
-    {schema}>
+  <Wrap {schema} {errors} component={components.wrapper}>
     {#if value}
       {#each value as v, i (i)}
         <div class="item">
           <svelte:component
-            this={getSchemaComponent(schema.items, components)}
-            props={getSchemaComponentProps(schema.items, components)}
+            this={getComponent(schema.items, components.fields[schema.items.type], schema.items.type)}
+            props={getProps(schema.items, components.fields[schema.items.type], schema.items.type)}
             {components}
             schema={schema.items}
             bind:value={v}
@@ -102,8 +100,8 @@
 
     {#if showItemForm}
       <svelte:component
-        this={getComponent(components.form)}
-        {...getComponentProps(components.form)}
+        this={getComponentFromContainer(components.form)}
+        {...getPropsFromContainer(components.form)}
         schema={schema.items}
         {components}
         on:submit={submit}
@@ -113,5 +111,5 @@
       </svelte:component>
     {/if}
     <button type="button" on:click={renderItemForm}>New</button>
-  </svelte:component>
+  </Wrap>
 {/if}

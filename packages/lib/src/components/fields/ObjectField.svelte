@@ -1,13 +1,7 @@
 <script lang="ts">
   import type { ErrorRecord } from "../../types";
-  import {
-    createProps,
-    getSchemaComponent,
-    getSchemaComponentProps,
-    defaultValue,
-    getComponent,
-    getComponentProps,
-  } from "../../helpers";
+  import { createProps, defaultValue, getComponent, getProps } from "../../helpers";
+  import Wrap from "../helpers/Wrap.svelte";
 
   type T = object;
   const p = createProps<T, ErrorRecord>({});
@@ -23,18 +17,15 @@
 </script>
 
 {#if schema && components}
-  <svelte:component
-    this={getComponent(components.wrapper)}
-    {...getComponentProps(components.wrapper)}
-    {schema}>
+  <Wrap {schema} {errors} component={components.wrapper}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
-        this={getSchemaComponent(propSchema, components)}
-        props={getSchemaComponentProps(propSchema, components)}
+        this={getComponent(propSchema, components.fields[propSchema.type], propSchema.type)}
+        props={getProps(propSchema, components.fields[propSchema.type], propSchema.type)}
         {components}
         schema={propSchema}
         bind:value={value[key]}
         errors={errors && errors[key]} />
     {/each}
-  </svelte:component>
+  </Wrap>
 {/if}
