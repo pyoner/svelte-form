@@ -9,7 +9,6 @@
     getPropsFromContainer,
   } from "../../helpers";
   import Wrap from "../helpers/Wrap.svelte";
-  import ItemWrapper from "../ItemWrapper.svelte";
 
   type T = Array<any>;
   const p = createProps<T, ErrorRecord>([]);
@@ -80,29 +79,21 @@
           </div>
 
           <div slot="ctrl">
-            <button
-              type="button"
-              on:click={(e) => {
+            <svelte:component
+              this={getComponent(schema, components.itemCtrl, 'itemCtrl')}
+              {schema}
+              props={getProps(schema, components.itemCtrl, 'itemCtrl')}
+              remove={() => {
                 removeItem(i);
-              }}>
-              Remove
-            </button>
-            <button
-              type="button"
-              disabled={i <= 0}
-              on:click={(e) => {
+              }}
+              moveUp={() => {
                 moveItem(i, i - 1);
-              }}>
-              Move Up
-            </button>
-            <button
-              type="button"
-              disabled={i + 1 == value.length}
-              on:click={(e) => {
+              }}
+              moveDown={() => {
                 moveItem(i, i + 1);
-              }}>
-              Move Down
-            </button>
+              }}
+              position={i}
+              length={value.length} />
           </div>
 
         </svelte:component>
