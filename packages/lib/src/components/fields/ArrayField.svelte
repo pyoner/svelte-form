@@ -9,6 +9,7 @@
     getPropsFromContainer,
   } from "../../helpers";
   import Wrap from "../helpers/Wrap.svelte";
+  import ItemWrapper from "../ItemWrapper.svelte";
 
   type T = Array<any>;
   const p = createProps<T, ErrorRecord>([]);
@@ -63,38 +64,48 @@
   <Wrap {schema} {errors} component={components.wrapper}>
     {#if value}
       {#each value as v, i (i)}
-        <div class="item">
-          <svelte:component
-            this={getComponent(schema.items, components.fields[schema.items.type], 'field')}
-            props={getProps(schema.items, components.fields[schema.items.type], 'field')}
-            {components}
-            schema={schema.items}
-            bind:value={v}
-            errors={errors && errors[i]} />
-          <button
-            type="button"
-            on:click={(e) => {
-              removeItem(i);
-            }}>
-            Remove
-          </button>
-          <button
-            type="button"
-            disabled={i <= 0}
-            on:click={(e) => {
-              moveItem(i, i - 1);
-            }}>
-            Move Up
-          </button>
-          <button
-            type="button"
-            disabled={i + 1 == value.length}
-            on:click={(e) => {
-              moveItem(i, i + 1);
-            }}>
-            Move Down
-          </button>
-        </div>
+        <svelte:component
+          this={getComponent(schema, components.itemWrapper, 'itemWrapper')}
+          {schema}
+          props={getProps(schema, components.itemWrapper, 'itemWrapper')}>
+
+          <div slot="field">
+            <svelte:component
+              this={getComponent(schema.items, components.fields[schema.items.type], 'field')}
+              props={getProps(schema.items, components.fields[schema.items.type], 'field')}
+              {components}
+              schema={schema.items}
+              bind:value={v}
+              errors={errors && errors[i]} />
+          </div>
+
+          <div slot="ctrl">
+            <button
+              type="button"
+              on:click={(e) => {
+                removeItem(i);
+              }}>
+              Remove
+            </button>
+            <button
+              type="button"
+              disabled={i <= 0}
+              on:click={(e) => {
+                moveItem(i, i - 1);
+              }}>
+              Move Up
+            </button>
+            <button
+              type="button"
+              disabled={i + 1 == value.length}
+              on:click={(e) => {
+                moveItem(i, i + 1);
+              }}>
+              Move Down
+            </button>
+          </div>
+
+        </svelte:component>
       {/each}
     {/if}
 

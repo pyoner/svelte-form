@@ -27,6 +27,7 @@ export interface FormComponents {
   layout: SvelteComponentProps;
   wrapper: SvelteComponentProps;
   form: SvelteComponentProps;
+  itemWrapper: SvelteComponentProps;
   fields: FieldComponents;
 }
 
