@@ -28,6 +28,7 @@ export interface FormComponents {
   wrapper: SvelteComponentProps;
   form: SvelteComponentProps;
   itemWrapper: SvelteComponentProps;
+  itemForm: SvelteComponentProps;
   fields: FieldComponents;
 }
 

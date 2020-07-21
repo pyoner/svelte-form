@@ -10,6 +10,7 @@ export const defaultFormComponents: FormComponents = {
   wrapper: Wrapper,
   form: Form,
   itemWrapper: ItemWrapper,
+  itemForm: Form,
   fields: defaultFieldComponents,
 };
 

@@ -111,8 +111,8 @@
 
     {#if showItemForm}
       <svelte:component
-        this={getComponentFromContainer(components.form)}
-        {...getPropsFromContainer(components.form)}
+        this={getComponent(schema, components.itemForm, 'itemForm')}
+        {...getProps(schema, components.itemForm, 'itemForm')}
         schema={schema.items}
         {components}
         on:submit={submit}
