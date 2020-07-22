@@ -4,7 +4,8 @@ import Layout from "./Layout.svelte";
 import Form from "./Form.svelte";
 import ItemWrapper from "./ItemWrapper.svelte";
 import ItemCtrl from "./ItemCtrl.svelte";
-import { defaultFieldComponents } from "./fields";
+import AddItem from "./AddItem.svelte";
+import { defaultFieldComponents as fields } from "./fields";
 
 export const defaultFormComponents: FormComponents = {
   layout: Layout,
@@ -12,7 +13,8 @@ export const defaultFormComponents: FormComponents = {
   form: Form,
   itemWrapper: ItemWrapper,
   itemCtrl: ItemCtrl,
-  fields: defaultFieldComponents,
+  addItem: AddItem,
+  fields: fields,
 };
 
-export { Wrapper, Layout, Form, ItemWrapper };
+export { Wrapper, Layout, Form, ItemWrapper, ItemCtrl, AddItem, fields };

@@ -46,7 +46,6 @@
       return;
     }
     value = value.concat([event.detail]);
-    showItemForm = false;
     console.log("Submit", event);
   };
 
@@ -71,15 +70,13 @@
           {schema}
           props={getProps(schema, components.itemWrapper, 'itemWrapper')}>
 
-          <div slot="field">
-            <svelte:component
-              this={getComponent(schema.items, components.fields[schema.items.type], 'field')}
-              props={getProps(schema.items, components.fields[schema.items.type], 'field')}
-              {components}
-              schema={schema.items}
-              bind:value={v}
-              errors={errors && errors[i]} />
-          </div>
+          <svelte:component
+            this={getComponent(schema.items, components.fields[schema.items.type], 'field')}
+            props={getProps(schema.items, components.fields[schema.items.type], 'field')}
+            {components}
+            schema={schema.items}
+            bind:value={v}
+            errors={errors && errors[i]} />
 
           <div slot="ctrl">
             <svelte:component
@@ -103,6 +100,9 @@
       {/each}
     {/if}
 
-    <button type="button" on:click={addItem}>New</button>
+    <svelte:component
+      this={getComponent(schema, components.addItem, 'addItem')}
+      {addItem}
+      props={getProps(schema, components.addItem, 'addItem')} />
   </Wrap>
 {/if}

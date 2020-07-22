@@ -1,4 +1,4 @@
 <div class="item">
-  <slot name="field" />
+  <slot />
   <slot name="ctrl" />
 </div>

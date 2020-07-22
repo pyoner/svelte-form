@@ -29,6 +29,7 @@ export interface FormComponents {
   form: SvelteComponentProps;
   itemWrapper: SvelteComponentProps;
   itemCtrl: SvelteComponentProps;
+  addItem: SvelteComponentProps;
   fields: FieldComponents;
 }
 
@@ -54,7 +55,7 @@ export type SvelteSchemaKeys =
   | "ctrl"
   | "itemWrapper"
   | "itemCtrl"
-  | "itemForm";
+  | "addItem";
 
 export interface SvelteSchema extends JSONSchema {
   $svelte?: {
