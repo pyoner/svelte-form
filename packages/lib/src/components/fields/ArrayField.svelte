@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { ErrorRecord } from "@pyoner/svelte-form-common";
+  import { isObjectLike } from "is-what";
+  import type { ErrorRecord, JSONSchema } from "@pyoner/svelte-form-common";
   import {
     createProps,
     defaultValue,
@@ -40,11 +41,6 @@
     value = [...value];
   };
 
-  let showItemForm = false;
-  const renderItemForm = () => {
-    showItemForm = true;
-  };
-
   const submit = (event: CustomEvent) => {
     if (!value) {
       return;
@@ -56,6 +52,13 @@
 
   const reset = (event: CustomEvent) => {
     console.log("Reset", event);
+  };
+
+  const addItem = () => {
+    if (schema && isObjectLike<JSONSchema>(schema.items)) {
+      const item = defaultValue<T>(schema.items, null);
+      value = value ? value.concat([item]) : [item];
+    }
   };
 </script>
 
@@ -100,18 +103,6 @@
       {/each}
     {/if}
 
-    {#if showItemForm}
-      <svelte:component
-        this={getComponentFromContainer(components.form)}
-        {...getPropsFromContainer(components.form)}
-        schema={schema.items}
-        {components}
-        on:submit={submit}
-        on:reset={reset}>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </svelte:component>
-    {/if}
-    <button type="button" on:click={renderItemForm}>New</button>
+    <button type="button" on:click={addItem}>New</button>
   </Wrap>
 {/if}
