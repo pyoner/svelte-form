@@ -1,5 +1,6 @@
 import { isObject } from "is-what";
 import { SvelteComponent } from "svelte";
+import { SvelteComponent as InternalSvelteComponent } from "svelte/internal";
 
 import type { JSONObject, JSONSchema } from "@pyoner/svelte-form-common";
 
@@ -13,7 +14,6 @@ import type {
   FuncProps,
   FuncComponent,
 } from "./types";
-import { SvelteComponentDev } from "svelte/internal";
 
 export function createProps<T extends any, E extends Errors = Error[]>(
   value: T | null = null
@@ -127,8 +127,9 @@ export function getProps(
   return getPropsFromContainer(container);
 }
 
-export function isSvelteComponent(obj: any): obj is typeof SvelteComponentDev {
-  return Object.getPrototypeOf(obj) === SvelteComponentDev;
+export function isSvelteComponent(obj: any): obj is typeof SvelteComponent {
+  const cls = Object.getPrototypeOf(obj);
+  return cls === SvelteComponent || cls === InternalSvelteComponent;
 }
 
 export function getComponent(

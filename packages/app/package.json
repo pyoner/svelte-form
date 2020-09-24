@@ -27,7 +27,7 @@
     "format": "prettier --write 'src/**/*' 'test/**/*'"
   },
   "dependencies": {
-    "@pyoner/svelte-form": "workspace:^0.2.0",
+    "@pyoner/svelte-form": "workspace:^1.0.0",
     "@pyoner/svelte-form-ajv": "workspace:^0.1.0",
     "ajv": "^6.12.0"
   },
