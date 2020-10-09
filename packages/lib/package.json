@@ -1,6 +1,6 @@
 {
   "name": "@pyoner/svelte-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library that helps you build a HTML form from a JSON Schema",
   "keywords": [
     "svelte",
