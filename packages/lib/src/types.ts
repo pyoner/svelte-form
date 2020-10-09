@@ -1,4 +1,4 @@
-import { SvelteComponent } from "svelte";
+import type { SvelteComponent } from "svelte";
 import type { JSONSchema } from "@pyoner/svelte-form-common";
 
 export interface FieldComponents {
