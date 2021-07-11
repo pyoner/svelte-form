@@ -117,7 +117,7 @@
     "rollup": "^2.19.0",
     "rollup-plugin-analyzer": "^3.2.2",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "semantic-release": "^15.9.16",
+    "semantic-release": "^17.4.4",
     "shelljs": "^0.8.3",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.10.2",
