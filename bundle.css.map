@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../Wrapper.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">export let errors = null;\nexport let schema;\n</script>\n\n<style>\n  .error {\n    color: red;\n  }\n</style>\n\n{#if schema}\n  {#if schema.type == 'object' || schema.type == 'array'}\n    <fieldset>\n      <legend>{schema.title}</legend>\n\n      {#if schema.description}\n        <div class=\"description\">{schema.description}</div>\n      {/if}\n\n      <slot>A field is not implemented</slot>\n\n      {#if errors && errors.length}\n        {#each errors as error}\n          <div class=\"error\">{error.message}</div>\n        {/each}\n      {/if}\n    </fieldset>\n  {:else}\n    <div class=\"field\">\n      {#if schema.title}\n        <label class=\"label\">{schema.title}</label>\n      {/if}\n\n      <slot>A field is not implemented</slot>\n\n      {#if errors && errors.length}\n        {#each errors as error}\n          <div class=\"error\">{error.message}</div>\n        {/each}\n      {/if}\n\n      {#if schema.description}\n        <div class=\"description\">{schema.description}</div>\n      {/if}\n    </div>\n  {/if}\n{/if}\n"
+  ],
+  "names": [],
+  "mappings": "AAKE,MAAM,eAAC,CAAC,AACN,KAAK,CAAE,GAAG,AACZ,CAAC"
+}
