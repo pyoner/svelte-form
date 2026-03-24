@@ -5,7 +5,8 @@
   "description": "This monorepo includes packages:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "vp config"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,9 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^13.0.0",
     "@wessberg/rollup-plugin-ts": "^1.2.25",
-    "prettier": "^2.0.5",
-    "prettier-plugin-svelte": "^1.1.0",
     "rollup": "^2.19.0",
-    "typescript": "^3.9.5"
-  }
+    "typescript": "^3.9.5",
+    "vite-plus": "catalog:"
+  },
+  "packageManager": "pnpm@10.32.1"
 }

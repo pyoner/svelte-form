@@ -47,13 +47,7 @@
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "travis-deploy-once": "travis-deploy-once",
-    "format": "prettier --plugin-search-dir=. --write 'src/**/*' 'test/**/*'"
-  },
-  "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
+    "format": "vp fmt --plugin-search-dir=. 'src/**/*' 'test/**/*'"
   },
   "config": {
     "commitizen": {

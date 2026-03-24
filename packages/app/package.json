@@ -24,7 +24,7 @@
     "dev": "run-p start:dev autobuild",
     "start": "sirv public",
     "start:dev": "sirv public --dev",
-    "format": "prettier --write 'src/**/*' 'test/**/*'"
+    "format": "vp fmt 'src/**/*' 'test/**/*'"
   },
   "dependencies": {
     "@pyoner/svelte-form": "workspace:^1.0.1",

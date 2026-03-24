@@ -1,4 +1,0 @@
-pluginSearchDirs:
-  - ./node_modules
-plugins:
-  - ./node_modules/prettier-plugin-svelte
